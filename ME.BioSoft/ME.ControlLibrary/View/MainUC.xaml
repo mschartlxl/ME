@@ -1,0 +1,220 @@
+﻿<UserControl
+    x:Class="ME.ControlLibrary.View.MainUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Convert="clr-namespace:ME.ControlLibrary.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    xmlns:local="clr-namespace:ME.ControlLibrary.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tree="clr-namespace:ME.ControlLibrary.Model"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Style/ControlStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Convert:ProcessBarValueConverter x:Key="processBarValueConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid Background="#F0F0F0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource GridSpace}" />
+                <ColumnDefinition Width="1.5*" />
+                <ColumnDefinition Width="{StaticResource GridSpace}" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="{StaticResource GridSpace}" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource GridSpace}" />
+                    <RowDefinition />
+                    <RowDefinition Height="{StaticResource GridSpace}" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="1.5*" />
+                            <RowDefinition Height="{StaticResource GridSpace}" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Background="White" Orientation="Horizontal">
+                            <ProgressBar
+                                x:Name="pogess"
+                                Width="600"
+                                Margin="5,5,0,5"
+                                Minimum="0"
+                                Style="{StaticResource ProgressBarSuccess}" />
+                            <TextBlock
+                                x:Name="txtExecuInfo"
+                                Width="Auto"
+                                Margin="10,5,0,5"
+                                Text="" />
+                        </StackPanel>
+                        <RichTextBox
+                            x:Name="richAll"
+                            Grid.Row="1"
+                            Height="100"
+                            Margin="0,5,0,0"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                        <StackPanel
+                            Grid.Row="3"
+                            Margin="0,10"
+                            Orientation="Horizontal">
+                            <Button
+                                x:Name="btnInit"
+                                Click="btnInit_Click"
+                                Content="初始化所有" />
+                            <Button
+                                x:Name="btnRunAll"
+                                Margin="10,0"
+                                Click="btnRunAll_Click"
+                                Content="运行" />
+                            <Button
+                                x:Name="btnRunPause"
+                                Margin="10,0"
+                                Click="btnRunPause_Click"
+                                Content="暂停"
+                                IsEnabled="False" />
+                            <Button
+                                x:Name="btnRunStop"
+                                Margin="10,0"
+                                Click="btnRunStop_Click"
+                                Content="停止"
+                                IsEnabled="False" />
+                            <Button
+                                x:Name="btnSet"
+                                Margin="10,0"
+                                Click="btnSet_Click"
+                                Content="设置" />
+
+                        </StackPanel>
+                    </Grid>
+
+                    <TabControl Name="flowTabControl" Grid.Row="1">
+                        <TabItem
+                            Name="tbFlowTCA"
+                            Header="TCA"
+                            IsSelected="False">
+                            <local:UCCommandUnit x:Name="cmdTCA" />
+                        </TabItem>
+                        <TabItem Name="tbFlowACN" Header="ACN">
+                            <local:UCCommandUnit x:Name="cmdACN" />
+                        </TabItem>
+                        <TabItem Name="tbFlowcapA" Header="cap-AB">
+                            <local:UCCommandUnit x:Name="cmdcapA" />
+                        </TabItem>
+                        <!--<TabItem Name="tbFlowcapB" Header="cap-B">
+                            <local:UCCommandUnit x:Name="cmdcapB" />
+                        </TabItem>-->
+                        <TabItem Name="tbFlowO" Header="OXI">
+                            <local:UCCommandUnit x:Name="cmdO" />
+                        </TabItem>
+                        <TabItem Name="tbFlowT" Header="T">
+                            <local:UCCommandUnit x:Name="cmdT" />
+                        </TabItem>
+                        <TabItem Name="tbFlowA" Header="A">
+                            <local:UCCommandUnit x:Name="cmdA" />
+                        </TabItem>
+                        <TabItem Name="tbFlowC" Header="C">
+                            <local:UCCommandUnit x:Name="cmdC" />
+                        </TabItem>
+                        <TabItem Name="tbFlowG" Header="G">
+                            <local:UCCommandUnit x:Name="cmdG" />
+                        </TabItem>
+                        <TabItem Name="tbFlowACT" Header="ACT">
+                            <local:UCCommandUnit x:Name="cmdACT" />
+                        </TabItem>
+                    </TabControl>
+                    <Grid
+                        Name="MaskTree"
+                        Grid.Row="1"
+                        Background="#000"
+                        Opacity="0.5"
+                        Visibility="Collapsed" />
+                </Grid>
+            </Grid>
+            <GridSplitter
+                Grid.Column="2"
+                Margin="2,0,0,0"
+                HorizontalAlignment="Stretch" />
+            <Grid Grid.Column="3" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <Button
+                        x:Name="btnImportFile"
+                        Margin="10"
+                        Click="btnImportFile_Click"
+                        Content="导入指令集" />
+                    <Rectangle Height="80" />
+                    <Button
+                        x:Name="btnSave"
+                        Grid.Row="2"
+                        Margin="8,0"
+                        Click="btnSave_Click"
+                        Content="保存" />
+                    <Rectangle Height="80" />
+                    <Button
+                        x:Name="btnExportFile"
+                        Margin="10"
+                        Click="btnExportFile_Click"
+                        Content="导出指令集" />
+                </StackPanel>
+                <ListView
+                    x:Name="listview"
+                    Grid.Column="1"
+                    Background="White">
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Click="MenuItem_Click" Header="复制" />
+                            <MenuItem
+                                x:Name="menuBtnClear"
+                                Click="menuBtnClear_Click"
+                                Header="清除" />
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="ToolTip" Value="{Binding ContentCmd}" />
+                            <Setter Property="tree:ListViewDependency.ScrolledToView" Value="True" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding Path=TimeCmd}"
+                                    Header="时间" />
+                                <GridViewColumn
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding Path=IsSendCmd}"
+                                    Header="是否接受" />
+                                <GridViewColumn
+                                    Width="300"
+                                    DisplayMemberBinding="{Binding Path=ContentCmd}"
+                                    Header="指令" />
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
+        <Grid
+            Name="Mask"
+            Background="#000"
+            Opacity="0.5"
+            Visibility="Collapsed" />
+    </Grid>
+</UserControl>

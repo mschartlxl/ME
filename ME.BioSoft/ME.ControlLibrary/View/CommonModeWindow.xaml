@@ -1,0 +1,121 @@
+﻿<hc:Window
+    x:Class="ME.ControlLibrary.View.CommonModeWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:hc="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    Title="CommonModeWindow"
+    Width="900"
+    Height="660"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner">
+    <hc:Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Style/ControlStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style BasedOn="{StaticResource TextBlockBaseStyle}" TargetType="TextBlock">
+                <Setter Property="TextAlignment" Value="Right" />
+            </Style>
+
+            <Style TargetType="StackPanel">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </hc:Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" MinHeight="320" />
+            <RowDefinition Height="{StaticResource GridHeight}" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource GridSpace}" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="节点名称：" />
+                <TextBox Name="nodeName" Width="180" />
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="超时参数：" />
+                    <TextBox Name="oveerTime" />
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource GridSpace}" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="74" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="{StaticResource GridSpace}" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <Button
+                    x:Name="btnAdd"
+                    Click="btnAdd_Click"
+                    Content="添加"
+                    Style="{StaticResource NomalButton}" />
+
+                <Button
+                    x:Name="btnDel"
+                    Margin="8,0"
+                    Click="btnDel_Click"
+                    Content="删除"
+                    Style="{StaticResource NomalButton}" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" Margin="10,0">
+            <DataGrid
+                Name="datagrid"
+                AutoGenerateColumns="False"
+                Background="White"
+                BorderThickness="1"
+                CanUserAddRows="False"
+                ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
+                FontSize="14"
+                HeadersVisibility="Column"
+                LoadingRow="datagrid_LoadingRow"
+                RowStyle="{StaticResource DataGridRowStyle}"
+                ScrollViewer.CanContentScroll="False"
+                SelectionUnit="FullRow">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="60"
+                        Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridRow}}, Path=Header}"
+                        Header="序号" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding ParaName}"
+                        Header="设备" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <StackPanel Grid.Row="4">
+
+            <Button
+                x:Name="btnSave"
+                Click="btnSave_Click"
+                Content="保存"
+                IsDefault="True" />
+            <Rectangle Width="20" />
+            <Button
+                x:Name="btnCancle"
+                Click="btnCancle_Click"
+                Content="取消" />
+        </StackPanel>
+    </Grid>
+</hc:Window>

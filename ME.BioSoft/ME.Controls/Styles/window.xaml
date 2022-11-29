@@ -1,0 +1,342 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:Double x:Key="small-fontsize">12</sys:Double>
+    <sys:Double x:Key="normal-fontsize">14</sys:Double>
+    <sys:Double x:Key="large-fontsize">16</sys:Double>
+    <FontFamily x:Key="normal-fontfamily">思源黑体 CN</FontFamily>
+    <SolidColorBrush x:Key="main-background">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="normal-win-background">#CCC</SolidColorBrush>
+    <SolidColorBrush x:Key="normal-win-foreground">#464547</SolidColorBrush>
+    <SolidColorBrush x:Key="hover-win-background">#7FB80E</SolidColorBrush>
+    <SolidColorBrush x:Key="hover-win-foreground">#FFAA00</SolidColorBrush>
+    <SolidColorBrush x:Key="normal-win-border">#FFAA00</SolidColorBrush>
+    <SolidColorBrush x:Key="speical-win-border">Red</SolidColorBrush>
+    <sys:Double x:Key="small-win-width">60</sys:Double>
+    <sys:Double x:Key="normal-win-width">120</sys:Double>
+    <sys:Double x:Key="large-win-width">200</sys:Double>
+    <sys:Double x:Key="normal-win-height">25</sys:Double>
+    <sys:Double x:Key="large-win-height">30</sys:Double>
+    <VisualBrush
+        x:Key="areaPic"
+        AlignmentX="Left"
+        AlignmentY="Bottom"
+        Stretch="Fill">
+        <VisualBrush.Visual>
+            <Grid
+                Margin="-1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="1 0" EndPoint="1 1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.35" Color="#FFFFFF" />
+                            <GradientStop Offset="0.5" Color="#EAEAEA" />
+                            <GradientStop Offset="0.65" Color="#c2c2c2" />
+                            <GradientStop Offset="0.75" Color="#999797" />
+                            <GradientStop Offset="0.85" Color="#7E7D7D" />
+                            <GradientStop Offset="1" Color="#605E5E" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="0,50,58,0"
+                    Foreground="White"
+                    Text="{DynamicResource runningShow}" />
+            </Grid>
+        </VisualBrush.Visual>
+    </VisualBrush>
+
+    <VisualBrush
+        x:Key="areaPic1"
+        Stretch="Fill"
+        ViewportUnits="RelativeToBoundingBox">
+        <VisualBrush.Visual>
+            <Grid
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="15*" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    Width="60"
+                    Background="#DCEFB3"
+                    CornerRadius="0" />
+                <Border
+                    Grid.Column="1"
+                    Width="5"
+                    Margin="3,0,0,0"
+                    Background="#DCEFB3" />
+                <Border
+                    Grid.Column="2"
+                    Width="5"
+                    Margin="3,0,0,0"
+                    Background="#DCEFB3" />
+                <Border
+                    Grid.Column="3"
+                    Width="5"
+                    Margin="3,0"
+                    Background="#DCEFB3" />
+                <Border
+                    Grid.Column="4"
+                    Width="35"
+                    Background="White"
+                    CornerRadius="0,3,3,0" />
+                <TextBlock Text=" " />
+            </Grid>
+        </VisualBrush.Visual>
+    </VisualBrush>
+
+    <!--  关闭按钮  -->
+    <Style x:Key="CloseButton" TargetType="Button">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="52" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border
+                            Name="bd"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="#000"
+                            CornerRadius="5,5,0,0"
+                            Opacity="0"
+                            SnapsToDevicePixels="True"
+                            UseLayoutRounding="True" />
+                        <Image
+                            Width="12"
+                            Source="../Images/Close.png"
+                            Stretch="Uniform">
+                            <Image.RenderTransform>
+                                <RotateTransform x:Name="imgTransform" Angle="0" CenterX="6" CenterY="6" />
+                            </Image.RenderTransform>
+                        </Image>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Image.MouseEnter">
+                            <BeginStoryboard HandoffBehavior="Compose">
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        By="90"
+                                        Storyboard.TargetName="imgTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        Duration="0:0:.2" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Image.MouseLeave">
+                            <BeginStoryboard HandoffBehavior="Compose">
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        By="-90"
+                                        Storyboard.TargetName="imgTransform"
+                                        Storyboard.TargetProperty="Angle"
+                                        Duration="0:0:.2" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Opacity" Value="0.2" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="bd" Property="Opacity" Value="0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  窗体基样式  -->
+    <Style x:Key="winBase" TargetType="Window">
+        <Setter Property="Width" Value="350" />
+        <Setter Property="Height" Value="220" />
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="Background" Value="{StaticResource normal-win-background}" />
+    </Style>
+
+    <!--  弹窗模板  -->
+    <ControlTemplate x:Key="dialogWin" TargetType="Window">
+        <Border
+            x:Name="bd"
+            Background="Transparent"
+            BorderBrush="#1F62CB"
+            BorderThickness="1"
+            CornerRadius="6"
+            SnapsToDevicePixels="True"
+            UseLayoutRounding="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Border
+                    x:Name="gd"
+                    VerticalAlignment="Stretch"
+                    Background="#1F62CB"
+                    BorderThickness="0"
+                    CornerRadius="5,5,0,0"
+                    SnapsToDevicePixels="True"
+                    UseLayoutRounding="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Margin="6,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            Foreground="White"
+                            Text="{TemplateBinding Title}" />
+                        <StackPanel
+                            Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Stretch"
+                            Orientation="Horizontal">
+                            <Button x:Name="btnClose" Style="{StaticResource CloseButton}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1" Background="{TemplateBinding Background}">
+                    <TextBlock
+                        Margin="5,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window, AncestorLevel=1}, Path=Msg}"
+                        TextWrapping="Wrap" />
+                </Grid>
+                <Border
+                    Grid.Row="2"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="0,0,6,6">
+                    <StackPanel>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Button
+                                x:Name="btnOk"
+                                Height="28"
+                                Content="确定" />
+                            <Rectangle Width="6" />
+                            <Button
+                                x:Name="btnClose1"
+                                Height="28"
+                                Content="取消" />
+                        </StackPanel>
+                        <Rectangle Height="10" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+    <!--  弹窗样式  -->
+    <Style
+        x:Key="dialogStyle"
+        BasedOn="{StaticResource winBase}"
+        TargetType="Window">
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="Background" Value="{StaticResource normal-win-background}" />
+        <Setter Property="Template" Value="{StaticResource dialogWin}" />
+    </Style>
+
+    <!--  窗体模板  -->
+    <ControlTemplate x:Key="tempWin" TargetType="Window">
+        <Border
+            Width="{TemplateBinding Width}"
+            Height="{TemplateBinding Height}"
+            Background="Transparent"
+            BorderBrush="{StaticResource normal-win-border}"
+            BorderThickness="0"
+            CornerRadius="6"
+            SnapsToDevicePixels="True"
+            UseLayoutRounding="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0" />
+                </Grid.RowDefinitions>
+                <Border
+                    x:Name="gd"
+                    VerticalAlignment="Stretch"
+                    Background="#68768A"
+                    BorderThickness="0"
+                    CornerRadius="5,5,0,0"
+                    SnapsToDevicePixels="True"
+                    UseLayoutRounding="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Margin="10,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="#FFF"
+                            Text="{TemplateBinding Title}" />
+                        <StackPanel
+                            Grid.Column="2"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal">
+                            <Button x:Name="btnClose" Style="{StaticResource CloseButton}" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border
+                    x:Name="bd"
+                    Grid.Row="1"
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="0,0,6,6">
+                    <Grid>
+                        <Border
+                            CornerRadius="0,0,6,6"
+                            Opacity="0.1"
+                            SnapsToDevicePixels="True"
+                            UseLayoutRounding="True">
+                            <Border.Background>
+                                <ImageBrush ImageSource="../Images/ResultsBg.jpg" />
+                            </Border.Background>
+                        </Border>
+                        <ContentPresenter />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="WindowState" Value="Maximized">
+                <Setter TargetName="bd" Property="CornerRadius" Value="0" />
+                <Setter TargetName="gd" Property="CornerRadius" Value="0" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <!--  窗体样式  -->
+    <Style
+        x:Key="winStyle"
+        BasedOn="{StaticResource winBase}"
+        TargetType="Window">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="Template" Value="{StaticResource tempWin}" />
+    </Style>
+</ResourceDictionary>

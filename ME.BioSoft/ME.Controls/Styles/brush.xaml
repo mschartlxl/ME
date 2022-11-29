@@ -1,0 +1,61 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ME.Controls.Styles">
+    <SolidColorBrush x:Key="borderRedColor">#FD5858</SolidColorBrush>
+    <SolidColorBrush x:Key="borderBlueColor">#1F62CB</SolidColorBrush>
+
+    <!--  Logo Image Style  -->
+    <Style x:Key="LogoStyle" TargetType="Image">
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Tag" Value="{DynamicResource logo}" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Linear" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="logo">
+                <Setter Property="Source" Value="../Images/logo.png" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="logo_en">
+                <Setter Property="Source" Value="../Images/logo_en.png" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <!--  右键菜单样式  -->
+    <Style x:Key="{x:Type ContextMenu}" TargetType="{x:Type ContextMenu}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="#FFF" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <Border
+                        Background="#1F62CB"
+                        BorderBrush="#939FB0"
+                        BorderThickness="1.2"
+                        CornerRadius="3"
+                        Opacity="0.98"
+                        SnapsToDevicePixels="True"
+                        UseLayoutRounding="True">
+                        <StackPanel
+                            Margin="6"
+                            ClipToBounds="True"
+                            IsItemsHost="True"
+                            Orientation="Vertical" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelItemTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border Name="Border">
+            <Grid>
+                <ContentPresenter
+                    Margin="8,6"
+                    ContentSource="Header"
+                    RecognizesAccessKey="True" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+</ResourceDictionary>

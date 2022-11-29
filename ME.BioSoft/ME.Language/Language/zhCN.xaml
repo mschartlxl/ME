@@ -1,0 +1,1871 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--#region 通用模块-->
+
+    <!--#region UI-->
+    <sys:String x:Key="SoftwareName">
+        实时荧光PCR分析系统软件
+    </sys:String>
+    <sys:String x:Key="Add">
+        添加
+    </sys:String>
+    <sys:String x:Key="Edit">
+        编辑
+    </sys:String>
+    <sys:String x:Key="Delete">
+        删除
+    </sys:String>
+    <sys:String x:Key="Clear">
+        清空
+    </sys:String>
+
+    <sys:String x:Key="Mission">
+        让诊断更有价值
+    </sys:String>
+    <sys:String x:Key="msgConfirm">
+        确认
+    </sys:String>
+    <sys:String x:Key="msgError">
+        错误
+    </sys:String>
+    <sys:String x:Key="msgNotice">
+        注意
+    </sys:String>
+    <sys:String x:Key="msgWarning">
+        警告
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 后台-->
+    <sys:String x:Key="WaterBoxTemperature">
+        水箱温度
+    </sys:String>
+    <sys:String x:Key="SaveSuccess">
+        保存成功
+    </sys:String>
+    <sys:String x:Key="SaveFailed">
+        保存失败
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 登录+自检模块-->
+
+    <!--#region new-->
+    <sys:String x:Key="portNotFound">
+        端口不存在！
+    </sys:String>
+    <sys:String x:Key="WaitForConnectToServer">
+        正在连接服务端,请稍等......
+    </sys:String>
+    <sys:String x:Key="ConnectToServerSuccess">
+        已成功连接到服务端
+    </sys:String>
+    <sys:String x:Key="ConnectToServerFailed">
+        连接服务端失败，请检查网络配置或服务端是否已正常启动......
+    </sys:String>
+    <sys:String x:Key="OpenSerialPortFailed">
+        串口打开失败！
+    </sys:String>
+    <sys:String x:Key="CheckingEnum0">
+        自检正常
+    </sys:String>
+    <sys:String x:Key="CheckingEnum1">
+        通信异常
+    </sys:String>
+    <sys:String x:Key="CheckingEnum2">
+        设备故障
+    </sys:String>
+    <sys:String x:Key="CheckingEnum3">
+        设备异常
+    </sys:String>
+    <sys:String x:Key="CheckingEnum4">
+        程序异常
+    </sys:String>
+    <sys:String x:Key="PC-PLC-NoAnswer">
+        一体机未应答
+    </sys:String>
+    <sys:String x:Key="ContactTechnician">
+        设备故障，请联系技术支持人员......
+    </sys:String>
+    <sys:String x:Key="ReadKbError">
+        读E方错误
+    </sys:String>
+    <sys:String x:Key="ResetFailed">
+        复位失败
+    </sys:String>
+    <sys:String x:Key="ResetPhotoelectricityFailed">
+        复位出光电失败
+    </sys:String>
+    <sys:String x:Key="NodeNumError">
+        节点号错误
+    </sys:String>
+    <sys:String x:Key="FinishRowArmMotorCheck">
+        排臂电机自检,已完成
+    </sys:String>
+    <sys:String x:Key="FinishPlatformMotorCheck">
+        平台电机自检,已完成
+    </sys:String>
+    <sys:String x:Key="FinishPlungerPumpCheck">
+        柱塞泵自检,已完成
+    </sys:String>
+    <sys:String x:Key="FinishReturnTipHeadCheck">
+        退TIP头自检,已完成
+    </sys:String>
+    <sys:String x:Key="MagneticAdsorption">
+        磁吸附自检,已完成
+    </sys:String>
+    <sys:String x:Key="FinishDoorMotorCheck">
+        门电机自检,已完成
+    </sys:String>
+    <sys:String x:Key="PCRXMotor">
+        PCRX电机自检,已完成
+    </sys:String>
+    <sys:String x:Key="PCRYMotor">
+        PCRY电机自检,已完成
+    </sys:String>
+    <sys:String x:Key="FinishSplitTempControlCheck">
+        裂解位温控设备自检,已完成
+    </sys:String>
+    <sys:String x:Key="FinishDnaExtractionTempControlCheck">
+        核酸提取位温控设备自检,已完成
+    </sys:String>
+    <sys:String x:Key="FinishPcrLeftTempControlCheck">
+        PCR左侧温控设备自检,已完成
+    </sys:String>
+    <sys:String x:Key="FinishPcrRightTempControlCheck">
+        PCR右侧温控设备自检,已完成
+    </sys:String>
+    <sys:String x:Key="DeviceWorkFine">
+        设备运行正常
+    </sys:String>
+    <sys:String x:Key="TemperatureControlDeviceException">
+        温控设备异常......
+    </sys:String>
+    <sys:String x:Key="TemperatureNotReachSetValueInFiveSecond">
+        设备5秒内未达到指定温度！
+    </sys:String>
+    <!--#endregion-->
+
+    <sys:String x:Key="account">
+        用户名
+    </sys:String>
+    <sys:String x:Key="logo">
+        logo
+    </sys:String>
+    <sys:String x:Key="isRememberPwd">
+        是否记住密码
+    </sys:String>
+    <sys:String x:Key="pswIsError">
+        密码错误
+    </sys:String>
+    <sys:String x:Key="pswCanNotEmpty">
+        密码不能为空
+    </sys:String>
+    <sys:String x:Key="loginSystem">
+        登  录
+    </sys:String>
+    <sys:String x:Key="operatorSys">
+        操作员
+    </sys:String>
+    <sys:String x:Key="adminSys">
+        管理员
+    </sys:String>
+    <sys:String x:Key="userPwd">
+        密码
+    </sys:String>
+    <!--#endregion 登录模块-->
+
+    <!--#region 首页模块-->
+
+    <!--#region new-->
+    <sys:String x:Key="CodeAlreadyExists">
+        该码已存在
+    </sys:String>
+    <sys:String x:Key="ConnectToServer">
+        连接服务
+    </sys:String>
+    <sys:String x:Key="OpenAlarmInfoList">
+        打开报警信息列表
+    </sys:String>
+    <sys:String x:Key="WhetherTestFluoData">
+        是否测试荧光
+    </sys:String>
+    <sys:String x:Key="CurrentTemperature">
+        当前温度:
+    </sys:String>
+    <sys:String x:Key="Pcr1Area">
+        PCR1区
+    </sys:String>
+    <sys:String x:Key="Pcr2Area">
+        PCR2区
+    </sys:String>
+    <sys:String x:Key="Pcr3Area">
+        PCR3区
+    </sys:String>
+    <sys:String x:Key="Pcr4Area">
+        PCR4区
+    </sys:String>
+    <sys:String x:Key="PcrXArea">
+        PCR{0}区
+    </sys:String>
+    <sys:String x:Key="ExcuteXXXOperation">
+        执行【{0}】操作
+    </sys:String>
+    <sys:String x:Key="ModifyBarCode">
+        修改条码，修改后的条码为：{0}
+    </sys:String>
+    <sys:String x:Key="ConfirmPutConsumablesOnRecyclePos">
+        请确认是否将耗材摆放在回收位
+    </sys:String>
+    <sys:String x:Key="anythingNotPlaced">
+        未放置任何（PCR、核酸提取、裂解)器材
+    </sys:String>
+    <sys:String x:Key="Setting">
+        设置
+    </sys:String>
+    <sys:String x:Key="OpenDoorInTest">
+        实验中开启仪器门窗,易造成污染注意防护
+    </sys:String>
+    <sys:String x:Key="WaterTankTemperatureIsOver">
+        水箱温度超限，程序已停止
+    </sys:String>
+    <sys:String x:Key="PositionCheckForConfrirmButton">
+        在位检测（确定按钮）
+    </sys:String>
+    <sys:String x:Key="BarcodeFormatIsError">
+        条形码格式错误!
+    </sys:String>
+    <sys:String x:Key="NoAnswerFromDevice">
+        未收到设备反馈信息，请确定是否放置在{0}{1}位置
+    </sys:String>
+    <sys:String x:Key="DnaExtractionXArea">
+        核酸提取{0}区
+    </sys:String>
+    <sys:String x:Key="Splitting">
+        裂解
+    </sys:String>
+    <sys:String x:Key="PatienetInfoEntry">
+        患者信息录入
+    </sys:String>
+    <sys:String x:Key="PromptInfoForWholeProcess">
+        全流程测试时，必须PCR、核酸提取、裂解一一对应
+    </sys:String>
+    <sys:String x:Key="ExceptionInWholeProcessCheck">
+        全流程校验异常:{0}
+    </sys:String>
+    <sys:String x:Key="ExceptionInSavingTestResult">
+        保存测试结果数据异常：{0}
+    </sys:String>
+    <sys:String x:Key="TestIsStoped">
+        测量已经停止
+    </sys:String>
+    <sys:String x:Key="TestIsOver">
+        测量结束
+    </sys:String>
+    <sys:String x:Key="Stage">
+        阶段
+    </sys:String>
+    <sys:String x:Key="FinishExcute">
+        执行完成
+    </sys:String>
+    <sys:String x:Key="ForwardMove">
+        正向移动
+    </sys:String>
+    <sys:String x:Key="ReverseMove">
+        反向移动
+    </sys:String>
+    <sys:String x:Key="Offline">
+        脱机
+    </sys:String>
+    <sys:String x:Key="AbsolutelyMove">
+        绝对运动
+    </sys:String>
+    <sys:String x:Key="Scan">
+        扫描
+    </sys:String>
+    <sys:String x:Key="BarCodeCanNotEmpty">
+        条形码不能为空!
+    </sys:String>
+    <sys:String x:Key="BarCodeLengthIsIllegal">
+        条形码输入长度违法!
+    </sys:String>
+    <sys:String x:Key="BarCodeInputHaveError">
+        条形码输入有误!
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region old-->
+    <sys:String x:Key="winClose">
+        关闭
+    </sys:String>
+    <sys:String x:Key="openUVlamp">
+        紫外灯
+    </sys:String>
+    <sys:String x:Key="start">
+        开始
+    </sys:String>
+    <sys:String x:Key="stop">
+        停止
+    </sys:String>
+    <sys:String x:Key="result">
+        结果
+    </sys:String>
+    <sys:String x:Key="export">
+        导出
+    </sys:String>
+    <sys:String x:Key="print">
+        打印
+    </sys:String>
+    <sys:String x:Key="configuration">
+        配置
+    </sys:String>
+    <sys:String x:Key="sampleConfig">
+        样本配置
+    </sys:String>
+    <sys:String x:Key="maintain">
+        维护
+    </sys:String>
+    <sys:String x:Key="help">
+        帮助
+    </sys:String>
+    <sys:String x:Key="barCode">
+        条形码
+    </sys:String>
+    <sys:String x:Key="scanConfirm">
+        确定
+    </sys:String>
+    <sys:String x:Key="addInformation">
+        信息录入
+    </sys:String>
+    <sys:String x:Key="isRecycle">
+        是否回收
+    </sys:String>
+    <sys:String x:Key="nAcidExtractionOne">
+        核酸提取1区
+    </sys:String>
+    <sys:String x:Key="nAcidExtractionTwo">
+        核酸提取2区
+    </sys:String>
+    <sys:String x:Key="nAcidExtractionThree">
+        核酸提取3区
+    </sys:String>
+    <sys:String x:Key="nAcidExtractionFour">
+        核酸提取4区
+    </sys:String>
+    <sys:String x:Key="consumableOne">
+        耗材1区
+    </sys:String>
+    <sys:String x:Key="consumableTwo">
+        耗材2区
+    </sys:String>
+    <sys:String x:Key="consumableThree">
+        耗材3区
+    </sys:String>
+    <sys:String x:Key="consumableFour">
+        耗材4区
+    </sys:String>
+    <sys:String x:Key="runningShow">
+        正在运行中......
+    </sys:String>
+    <sys:String x:Key="yyPolarityList">
+        阴阳性列表
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion 首页模块-->
+
+    <!--#region 信息录入模块-->
+
+    <!--#region new-->
+    <!--#endregion-->
+
+    <sys:String x:Key="addRowInfo">
+        新增空行
+    </sys:String>
+    <sys:String x:Key="submitData">
+        提交数据
+    </sys:String>
+    <sys:String x:Key="delRowInfo">
+        删除选中行
+    </sys:String>
+    <sys:String x:Key="age">
+        年龄
+    </sys:String>
+    <sys:String x:Key="gender">
+        性别
+    </sys:String>
+    <sys:String x:Key="bedPosition">
+        床位
+    </sys:String>
+    <sys:String x:Key="processType">
+        样品类型
+    </sys:String>
+    <sys:String x:Key="contraion">
+        浓度
+    </sys:String>
+    <sys:String x:Key="qualityControl">
+        质控
+    </sys:String>
+    <sys:String x:Key="uSample">
+        未知样品
+    </sys:String>
+    <sys:String x:Key="sSample">
+        标准样品
+    </sys:String>
+    <sys:String x:Key="qControl">
+        质控品
+    </sys:String>
+    <sys:String x:Key="ntcControl">
+        阴性质控品
+    </sys:String>
+    <sys:String x:Key="checkData">
+        请检查提交的数据是否完整！
+    </sys:String>
+    <!--#endregion 信息录入模块-->
+
+    <!--#region 结果模块-->
+
+    <!--#region new-->
+
+    <sys:String x:Key="SelectChannelToDragThresholdLine">
+        选择对应通道来拖动阈值线
+    </sys:String>
+    <sys:String x:Key="SourceData">
+        原始数据
+    </sys:String>
+    <sys:String x:Key="PleaseWaitForSearching">
+        数据查询中，请稍等！
+    </sys:String>
+    <sys:String x:Key="FailedToSearchingResult">
+        查询结果数据失败：{0}
+    </sys:String>
+    <sys:String x:Key="FailedToSearchingTestTime">
+        查询检测时间信息失败：{0}
+    </sys:String>
+    <sys:String x:Key="(NoAmplification)NoTargetNegative">
+        (无扩增)目标不出，判阴性
+    </sys:String>
+    <sys:String x:Key="(NoAmplification)NoTarget">
+        (无扩增)目标不出
+    </sys:String>
+    <sys:String x:Key="InternalStandardNoAmplification">
+        内标无扩增
+    </sys:String>
+    <sys:String x:Key="NoAmplification">
+        无扩增
+    </sys:String>
+    <sys:String x:Key="PositionCheckFailedPleaseRedo">
+        位置({0})检测失败，建议重新取样或者重新提取检测。
+    </sys:String>
+    <sys:String x:Key="NoNegativeQualityControlPleaseRedo">
+        检测样品中没有阴性质控品,无法进行检测,请加入阴性质控品后,重新检测
+    </sys:String>
+    <sys:String x:Key="NoAmplificationInNegativeQualityControlPleaseRedo">
+        阴性质控品,内标无扩增,重做
+    </sys:String>
+    <sys:String x:Key="NegativeQualityControlCtGreaterThanCtReferenceValuePleaseRedo">
+        阴性质控品ct&gt;ct参照值,重做
+    </sys:String>
+    <sys:String x:Key="StandardNoAmplificationPleaseRedo">
+        标准品({0})无扩增,重做
+    </sys:String>
+    <sys:String x:Key="Redo">
+        重做
+    </sys:String>
+    <sys:String x:Key="UnknownAndInternalStandardNoAmplificationPleaseRedo">
+        未知样({0})无扩增,内标也无扩增,重做
+    </sys:String>
+    <sys:String x:Key="UnknownNoAmpAndInternalHaveAmpCtGreaterThanCtReferenceValuePleaseRedo">
+        未知样({0})无扩增,内标有扩增,Ct&gt;Ct参照,重做
+    </sys:String>
+    <sys:String x:Key="UnknownHaveAmplificationContrastConcentration">
+        未知样{0}有扩增,计算出浓度({1})与最低检出线对比
+    </sys:String>
+    <sys:String x:Key="saveResultError">
+        保存结果失败！
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region old-->
+    <sys:String x:Key="startDateTime">
+        开始时间：
+    </sys:String>
+    <sys:String x:Key="endDateTime">
+        结束时间：
+    </sys:String>
+    <sys:String x:Key="userId">
+        编号：
+    </sys:String>
+    <sys:String x:Key="userName">
+        姓名：
+    </sys:String>
+    <sys:String x:Key="yyPolarity">
+        阴阳性：
+    </sys:String>
+    <sys:String x:Key="yinPolarity">
+        阴性
+    </sys:String>
+    <sys:String x:Key="yangPolarity">
+        阳性
+    </sys:String>
+    <sys:String x:Key="unknown">
+        未知
+    </sys:String>
+    <sys:String x:Key="searchInfo">
+        查询
+    </sys:String>
+    <sys:String x:Key="positionReagent">
+        位置
+    </sys:String>
+    <sys:String x:Key="userIdgrid">
+        编号
+    </sys:String>
+    <sys:String x:Key="userNamegrid">
+        姓名
+    </sys:String>
+    <sys:String x:Key="yyPolaritygrid">
+        阴阳性
+    </sys:String>
+    <sys:String x:Key="well">
+        通道
+    </sys:String>
+    <sys:String x:Key="officeName">
+        科室
+    </sys:String>
+    <sys:String x:Key="inspectionItemName">
+        检验项目
+    </sys:String>
+    <sys:String x:Key="inspectionItemDetailName">
+        检验项
+    </sys:String>
+    <sys:String x:Key="ctValue">
+        CT值
+    </sys:String>
+    <sys:String x:Key="curveColor">
+        曲线颜色
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion 结果模块-->
+
+    <!--#region 导出模块-->
+
+    <!--#region new-->
+    <sys:String x:Key="ExportWindow-Import">
+        导出窗口-导入
+    </sys:String>
+    <sys:String x:Key="ImportSuccess">
+        导入成功
+    </sys:String>
+    <sys:String x:Key="ImportConfirm">
+        检验项已存在，是否要覆盖
+    </sys:String>
+    <sys:String x:Key="ImportFailed">
+        导入失败:{0}
+    </sys:String>
+    <sys:String x:Key="ExportWindow-Export">
+        导出窗口-导出
+    </sys:String>
+    <sys:String x:Key="PleaseSelectExportPath">
+        请选择导出路径
+    </sys:String>
+    <sys:String x:Key="ExportSuccess">
+        导出成功
+    </sys:String>
+    <sys:String x:Key="ExportFailed">
+        导出失败：{0}
+    </sys:String>
+    <sys:String x:Key="ExportWindow-Browse">
+        导出窗口-浏览
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region old-->
+    <sys:String x:Key="fileName">
+        文件名：
+    </sys:String>
+    <sys:String x:Key="exportOpt">
+        导出选项
+    </sys:String>
+    <sys:String x:Key="exportRes">
+        导出结果
+    </sys:String>
+    <sys:String x:Key="exportSource">
+        导出源数据
+    </sys:String>
+    <sys:String x:Key="exportExt">
+        导出格式：
+    </sys:String>
+    <sys:String x:Key="exportPath">
+        导出路径：
+    </sys:String>
+    <sys:String x:Key="browseFile">
+        浏览
+    </sys:String>
+    <sys:String x:Key="exportText">
+        导出内容：
+    </sys:String>
+
+    <sys:String x:Key="import">
+        导入导出
+    </sys:String>
+    <sys:String x:Key="importPath">
+        导入路径：
+    </sys:String>
+
+    <sys:String x:Key="importXmlFile">
+        导入
+    </sys:String>
+    <sys:String x:Key="exportXmlFile">
+        导出
+    </sys:String>
+
+    <sys:String x:Key="exportProcessId">
+        程序号：
+    </sys:String>
+    <sys:String x:Key="InspectionID">
+        检验项：
+    </sys:String>
+    <sys:String x:Key="wholeProcess">
+        全工艺流程
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion 导出模块-->
+
+    <!--#region 帮助模块-->
+
+    <sys:String x:Key="companyPro">
+        公司简介
+    </sys:String>
+    <sys:String x:Key="softVersion">
+        软件版本
+    </sys:String>
+    <sys:String x:Key="specification">
+        SOP
+    </sys:String>
+    <sys:String x:Key="companyProfile">
+        公司简介
+    </sys:String>
+    <sys:String x:Key="companyInfo">
+        北京卓诚惠生生物科技股份有限公司是专注于为医疗卫生领域提供病原微生物检测解决方案的国家高新技术企业。公司总部位于北京市中关村生命科学园，拥有2个研发中心和符合GMP要求的洁净厂房，通过ISO13485及ISO9001质量体系认证。员工总数有200多人，其中，研发团队有60人，60%以上为硕士及以上学历。公司2次获得北京市政府和国家相关部门颁发的科学技术奖三等奖，先后承担4项北京市科学技术委员会课题、国家“十三五”重大专项课题等政府项目，2020年研发的新型冠状病毒核酸检测试剂盒入选北京市科委重大项目。
+        2020年下半年，公司加大资产投入用于建设新生产研发基地和采购仪器设备等，新建8372平方米厂房，包括体外诊断试剂生产车间、全自动一体机组装车间以及库房、办公区等配套条件，投产3年后预计最大年产体外诊断试剂18250万人份，全自动一体机1000台，预计于2021年5月完成建设。
+        公司拥有多种多重PCR技术平台，开发了400余种诊断试剂。目前拥有19项授权发明专利，在申请发明专利30多项。产品随检测需求的变化不断迭代更新，完善PCR产业链，并同步开发了核酸提取仪、核酸提取试剂、全自动一体机、免疫胶体金、冻干预分装以及测序平台等系列产品。
+    </sys:String>
+    <sys:String x:Key="softVerPro">
+        软件版本
+    </sys:String>
+    <sys:String x:Key="softVer">
+        发布版本：v1
+    </sys:String>
+    <sys:String x:Key="xAbtSite">
+        官网：
+    </sys:String>
+    <sys:String x:Key="webUrl">
+        https://www.x-abt.com/
+    </sys:String>
+    <sys:String x:Key="contactInfo">
+        联系我们：4006-500-984
+    </sys:String>
+    <sys:String x:Key="companyAddress">
+        公司地址：北京市昌平区科学园路33号正旦国际C座
+    </sys:String>
+    <sys:String x:Key="particulars">
+        查看详情
+    </sys:String>
+    <sys:String x:Key="WholeVersionWithColon">
+        完整版本：
+    </sys:String>
+    <!--#endregion 帮助模块-->
+
+    <!--#region 配置-->
+
+    <!--#region new-->
+
+    <sys:String x:Key="Chinese">
+        中文
+    </sys:String>
+    <sys:String x:Key="TemperatureOutOfLimit">
+        温度超限值：
+    </sys:String>
+    <sys:String x:Key="CurveColorSetting">
+        曲线颜色设置：
+    </sys:String>
+    <sys:String x:Key="NameWithColon">
+        名称：
+    </sys:String>
+    <sys:String x:Key="StandardOrUnkownowSampleChannel">
+        (标准/未知)品通道：
+    </sys:String>
+    <sys:String x:Key="Setting-Close">
+        设置-关闭
+    </sys:String>
+    <sys:String x:Key="SettingXCurveColorFailed">
+        设置{0}曲线颜色失败：{1}
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region old-->
+    <sys:String x:Key="generalSetting">
+        通用设置
+    </sys:String>
+    <sys:String x:Key="batchNumSetting">
+        批号设置
+    </sys:String>
+    <sys:String x:Key="qualitativeSetting">
+        定性设置
+    </sys:String>
+    <sys:String x:Key="quantitativeSetting">
+        定量设置
+    </sys:String>
+    <sys:String x:Key="analysisType">
+        分析类型
+    </sys:String>
+    <sys:String x:Key="gainSetting">
+        增益设置
+    </sys:String>
+    <sys:String x:Key="language">
+        选择语言：
+    </sys:String>
+    <sys:String x:Key="IsQualitative">
+        启用定性
+    </sys:String>
+    <sys:String x:Key="IsQuantitative">
+        启用定量
+    </sys:String>
+    <sys:String x:Key="pcrNum">
+        PCR试剂批号：
+    </sys:String>
+    <sys:String x:Key="extractingNum">
+        核提试剂批号：
+    </sys:String>
+    <sys:String x:Key="conNum">
+        耗材批号：
+    </sys:String>
+    <sys:String x:Key="qualityNum">
+        质控批号：
+    </sys:String>
+    <sys:String x:Key="labNeibiao">
+        内标通道：
+    </sys:String>
+    <sys:String x:Key="ctCanzhao">
+        ct参照值：
+    </sys:String>
+    <sys:String x:Key="zuidijianchu">
+        最低检出线：
+    </sys:String>
+    <sys:String x:Key="neibiaoCTCanzhao">
+        内标ct参照值：
+    </sys:String>
+    <sys:String x:Key="gainName">
+        增益名称：
+    </sys:String>
+    <sys:String x:Key="coefficient">
+        相关系数：
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion 配置-->
+
+    <!--#region 标定-->
+
+    <sys:String x:Key="Calibration">
+        标定
+    </sys:String>
+
+    <!--#region 位置标定-->
+
+    <sys:String x:Key="PositionCalibration">
+        位置标定
+    </sys:String>
+    <sys:String x:Key="Motor">
+        电机
+    </sys:String>
+    <sys:String x:Key="PlatformMotor">
+        平台电机
+    </sys:String>
+    <sys:String x:Key="BarcodeScanMotor">
+        条码扫码电机
+    </sys:String>
+    <sys:String x:Key="PcrSacnXDirectionMotor">
+        PCR扫描X方向电机
+    </sys:String>
+    <sys:String x:Key="PcrSacnYDirectionMotor">
+        PCR扫描Y方向电机
+    </sys:String>
+    <sys:String x:Key="HorizontalDisplacement">
+        水平位移量:
+    </sys:String>
+    <sys:String x:Key="CurrentPostion">
+        当前位置:
+    </sys:String>
+    <sys:String x:Key="Forward">
+        向前
+    </sys:String>
+    <sys:String x:Key="Backward">
+        向后
+    </sys:String>
+    <sys:String x:Key="HReset">
+        H复位
+    </sys:String>
+    <sys:String x:Key="WriteIn">
+        写入
+    </sys:String>
+    <sys:String x:Key="HorizontalMotor">
+        水平电机
+    </sys:String>
+    <sys:String x:Key="VerticalMotor">
+        垂直电机
+    </sys:String>
+    <sys:String x:Key="TipHeadMotor">
+        扎TIP头电机
+    </sys:String>
+    <sys:String x:Key="ImbibitionMotor">
+        吸液电机
+    </sys:String>
+    <sys:String x:Key="MagneticAdsorptionMotor">
+        磁吸附电机
+    </sys:String>
+    <sys:String x:Key="PcrOpenCloseDoorMotor">
+        PCR开关门电机
+    </sys:String>
+    <sys:String x:Key="BackTipHeadMotor1">
+        退TIP头电机1
+    </sys:String>
+    <sys:String x:Key="BackTipHeadMotor2">
+        退TIP头电机2
+    </sys:String>
+    <sys:String x:Key="VerticalDisplacement">
+        垂直位移量:
+    </sys:String>
+    <sys:String x:Key="VReset">
+        V复位
+    </sys:String>
+
+    <!--#endregion 位置标定-->
+
+    <!--#region 温度标定-->
+
+    <!--#region UI-->
+    <sys:String x:Key="TemperatureCalibration">
+        温度标定
+    </sys:String>
+    <sys:String x:Key="StartCalibration">
+        开始标定
+    </sys:String>
+    <sys:String x:Key="StopCalibration">
+        停止标定
+    </sys:String>
+    <sys:String x:Key="DataExport">
+        数据导出
+    </sys:String>
+    <sys:String x:Key="TargetTemperature">
+        目标温度：
+    </sys:String>
+    <sys:String x:Key="ControlTemperature">
+        控温
+    </sys:String>
+    <sys:String x:Key="PatrolInspectionInstrumentAddress">
+        巡检仪地址：
+    </sys:String>
+    <sys:String x:Key="TemperatureCollcetionTimeLength">
+        每个温度采集时长(min)：
+    </sys:String>
+    <sys:String x:Key="CollectionFrequency">
+        采集频率(s)：
+    </sys:String>
+    <sys:String x:Key="ValidDataRange">
+        有效数据区间(min)：
+    </sys:String>
+    <sys:String x:Key="SettingValue">
+        设定值
+    </sys:String>
+    <sys:String x:Key="Temperature1">
+        温度1
+    </sys:String>
+    <sys:String x:Key="Temperature2">
+        温度2
+    </sys:String>
+    <sys:String x:Key="Temperature3">
+        温度3
+    </sys:String>
+    <sys:String x:Key="Temperature4">
+        温度4
+    </sys:String>
+    <sys:String x:Key="Temperature5">
+        温度5
+    </sys:String>
+    <sys:String x:Key="Temperature6">
+        温度6
+    </sys:String>
+    <sys:String x:Key="Temperature7">
+        温度7
+    </sys:String>
+    <sys:String x:Key="Temperature8">
+        温度8
+    </sys:String>
+    <sys:String x:Key="Temperature9">
+        温度9
+    </sys:String>
+    <sys:String x:Key="Temperature10">
+        温度10
+    </sys:String>
+    <sys:String x:Key="Temperature11">
+        温度11
+    </sys:String>
+    <sys:String x:Key="Temperature12">
+        温度12
+    </sys:String>
+    <sys:String x:Key="Temperature13">
+        温度13
+    </sys:String>
+    <sys:String x:Key="Temperature14">
+        温度14
+    </sys:String>
+    <sys:String x:Key="Temperature15">
+        温度15
+    </sys:String>
+    <sys:String x:Key="Temperature16">
+        温度16
+    </sys:String>
+    <sys:String x:Key="Temperature17">
+        温度17
+    </sys:String>
+    <sys:String x:Key="Temperature18">
+        温度18
+    </sys:String>
+    <sys:String x:Key="Temperature19">
+        温度19
+    </sys:String>
+    <sys:String x:Key="Temperature20">
+        温度20
+    </sys:String>
+    <sys:String x:Key="Temperature21">
+        温度21
+    </sys:String>
+    <sys:String x:Key="Temperature22">
+        温度22
+    </sys:String>
+    <sys:String x:Key="Temperature23">
+        温度23
+    </sys:String>
+    <sys:String x:Key="Temperature24">
+        温度24
+    </sys:String>
+    <sys:String x:Key="SummaryData">
+        汇总数据
+    </sys:String>
+    <sys:String x:Key="ChannelNum">
+        通道号
+    </sys:String>
+    <sys:String x:Key="AioAverage">
+        一体机均值
+    </sys:String>
+    <sys:String x:Key="PatrolInspectionInstrumentAverage">
+        巡检仪均值
+    </sys:String>
+    <sys:String x:Key="CalibrationData">
+        标定数据
+    </sys:String>
+    <sys:String x:Key="ReadWrite(Y/N)">
+        读写(Y/N)
+    </sys:String>
+    <sys:String x:Key="ParameterName">
+        参数名称
+    </sys:String>
+    <sys:String x:Key="Address">
+        地址
+    </sys:String>
+    <sys:String x:Key="Content">
+        内容
+    </sys:String>
+    <sys:String x:Key="Length">
+        长度
+    </sys:String>
+    <sys:String x:Key="AddParameter">
+        添加参数
+    </sys:String>
+    <sys:String x:Key="DeleteParameter">
+        删除参数
+    </sys:String>
+    <sys:String x:Key="WriteEprom">
+        写入EPROM
+    </sys:String>
+    <sys:String x:Key="ReadEprom">
+        读取EPROM
+    </sys:String>
+    <sys:String x:Key="AllSelect">
+        全部选中
+    </sys:String>
+    <sys:String x:Key="AllCancel">
+        全部取消
+    </sys:String>
+    <sys:String x:Key="SaveFile">
+        保存文件
+    </sys:String>
+    <sys:String x:Key="ReadFile">
+        读取文件
+    </sys:String>
+    <sys:String x:Key="SplittingNucleicAcidExtractionManualCalibration">
+        裂解核提手动标定
+    </sys:String>
+    <sys:String x:Key="PositionForHeader">
+        位置
+    </sys:String>
+    <sys:String x:Key="ReadValue1">
+        读值1
+    </sys:String>
+    <sys:String x:Key="ReadValue2">
+        读值2
+    </sys:String>
+    <sys:String x:Key="ReadValue3">
+        读值3
+    </sys:String>
+    <sys:String x:Key="ReadValue4">
+        读值4
+    </sys:String>
+    <sys:String x:Key="ReadValue5">
+        读值5
+    </sys:String>
+    <sys:String x:Key="ReadValue6">
+        读值6
+    </sys:String>
+    <sys:String x:Key="CalcIntoCalibrationData">
+        计算并入到标定数据
+    </sys:String>
+    <!--#endregion UI-->
+
+    <!--#region 后台-->
+
+    <sys:String x:Key="PcrLeft">
+        PCR左侧
+    </sys:String>
+
+    <sys:String x:Key="PcrRight">
+        PCR右侧
+    </sys:String>
+    <sys:String x:Key="NucleicAcidExtraction">
+        核提
+    </sys:String>
+    <sys:String x:Key="AllCollection">
+        全部采集
+    </sys:String>
+    <sys:String x:Key="OnlyAioCollection">
+        仅采集一体机
+    </sys:String>
+    <sys:String x:Key="OnlyPatrolInspectionInstrumentCollection">
+        仅采集巡检仪
+    </sys:String>
+    <sys:String x:Key="FailedCommunicateToPatrolInspectionInstrument">
+        询检仪器通信失败,请修改设置
+    </sys:String>
+    <sys:String x:Key="AioTemperatureOriginalData">
+        一体机温度原始数据
+    </sys:String>
+    <sys:String x:Key="PatrolInspectionInstrumentTemperatureOriginalData">
+        巡检仪温度原始数据
+    </sys:String>
+    <sys:String x:Key="ExportSummaryData">
+        汇总数据
+    </sys:String>
+    <sys:String x:Key="ExportCalibrationData">
+        标定数据
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 温漂标定-->
+
+    <!--#region UI-->
+    <sys:String x:Key="FluoTemperatureCalibraion">
+        荧光温飘
+    </sys:String>
+    <sys:String x:Key="CalibrationSetting">
+        标定设置
+    </sys:String>
+    <sys:String x:Key="CalibrationName">
+        标定名称
+    </sys:String>
+    <sys:String x:Key="CalibrationId(Address502)">
+        检测标识（地址502）
+    </sys:String>
+    <sys:String x:Key="InitSetting">
+        初始设置
+    </sys:String>
+    <sys:String x:Key="SettingTemperature">
+        设定温度：
+    </sys:String>
+    <sys:String x:Key="WaittingTime">
+        等待时间:
+    </sys:String>
+    <sys:String x:Key="CycleSetting">
+        循环设置
+    </sys:String>
+    <sys:String x:Key="CycleTimes">
+        循环次数：
+    </sys:String>
+    <sys:String x:Key="Time">
+        次
+    </sys:String>
+    <sys:String x:Key="Operation">
+        操作
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 后台-->
+
+    <sys:String x:Key="PleaseConfirmPutTargetBoard">
+        请确认是否放入工装板！
+    </sys:String>
+    <sys:String x:Key="Prompt">
+        提示
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 荧光一致性标定-->
+
+    <!--#region UI-->
+    <sys:String x:Key="FluoUnniformCalibration">
+        荧光一致性
+    </sys:String>
+    <sys:String x:Key="CalibrationNameWithColon">
+        标定名称：
+    </sys:String>
+    <sys:String x:Key="TemperatureWithSymbol">
+        温度(℃)：
+    </sys:String>
+    <sys:String x:Key="StableTimeSecond">
+        稳定时间(S)：
+    </sys:String>
+    <sys:String x:Key="ScanTimesWithColon">
+        扫描次数：
+    </sys:String>
+    <sys:String x:Key="HistoryCalibrationDataCollectionWithColon">
+        历史标定数据集：
+    </sys:String>
+    <sys:String x:Key="DarkBoardTargetValueWithColon">
+        背景目标值：
+    </sys:String>
+    <sys:String x:Key="DarkBoardTargetMinValueWithColon">
+        背景目标最小值：
+    </sys:String>
+    <sys:String x:Key="DarkBoardTargetMaxValueWithColon">
+        背景目标最大值：
+    </sys:String>
+    <sys:String x:Key="DarkBoardTargetAverageValueWithColon">
+        背景目标平均值：
+    </sys:String>
+    <sys:String x:Key="CurrentCalibrationChannelWithColon">
+        当前标定通道：
+    </sys:String>
+    <sys:String x:Key="HistoryCalibrationDataWithColon">
+        历史标定数据：
+    </sys:String>
+    <sys:String x:Key="TargetTargetBoardValueWithColon">
+        目标工装值：
+    </sys:String>
+    <sys:String x:Key="TargetBoardValueWithColon">
+        工装值：
+    </sys:String>
+    <sys:String x:Key="HistoryVerifyDataWithColon">
+        历史验证数据：
+    </sys:String>
+    <sys:String x:Key="Verify">
+        验证
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 后台-->
+
+    <sys:String x:Key="UserCancelOperation">
+        用户已取消操作
+    </sys:String>
+
+    <sys:String x:Key="PleasePut4DarkBoard">
+        请放入4个背景板
+    </sys:String>
+    <sys:String x:Key="FluoUniformCalibrationFailed">
+        荧光一致性背景板标定失败：{0}
+    </sys:String>
+    <sys:String x:Key="DarkBoardDataColletionInfo">
+        背景标定荧光数据采集中，当前采集次数：{0},总次数：{1}
+    </sys:String>
+    <sys:String x:Key="UserCancel">
+        用户取消
+    </sys:String>
+    <sys:String x:Key="FinishDarkBoardDataCollection">
+        背景标定荧光数据采集完成
+    </sys:String>
+    <sys:String x:Key="FailedToCollectionDarkBoardData">
+        采集背景板荧光数据失败：{0}
+    </sys:String>
+    <sys:String x:Key="TemperatureCheckingInfo">
+        {0}温度稳定检测中，剩余时间：{1}秒,总时间：{2}秒
+    </sys:String>
+    <sys:String x:Key="Again">
+        再次
+    </sys:String>
+    <sys:String x:Key="FinishTemperatureCalibration">
+        温度稳定已完成
+    </sys:String>
+    <sys:String x:Key="ChekingTemperatureStableFailed">
+        温度稳定检测失败：{0}
+    </sys:String>
+    <sys:String x:Key="WaittingForTemperatureReachToSetValue">
+        等待温度达到设定值中...
+    </sys:String>
+    <sys:String x:Key="WaittingForTemperatureReachToSetValueException">
+        等待温度达到设定值时异常：{0}
+    </sys:String>
+    <sys:String x:Key="CalibrationNameCannotEmpry">
+        标定名称不能为空
+    </sys:String>
+    <sys:String x:Key="PleaseSelectOneCalibration">
+        请先选择一个标定记录
+    </sys:String>
+    <sys:String x:Key="QueryNoOriginalData">
+        未查询到原始数据
+    </sys:String>
+    <sys:String x:Key="FluoUniformExportFailed">
+        荧光一致性标定原始数据导出失败：{0}
+    </sys:String>
+    <sys:String x:Key="XFluoDataColletionInfo">
+        {0}荧光数据采集中，当前采集次数：{1},总次数：{2}
+    </sys:String>
+    <sys:String x:Key="FinishXFluoDataColletion">
+        {0}荧光数据采集完成
+    </sys:String>
+    <sys:String x:Key="XFluoDataCollectionFailed">
+        {0}荧光数据采集失败：{1}
+    </sys:String>
+    <sys:String x:Key="PleasePut4TargetBaord">
+        请放入4个工装板
+    </sys:String>
+    <sys:String x:Key="TargetBoardCalibration">
+        工装板标定
+    </sys:String>
+    <sys:String x:Key="FluoUniformTargetBoardCalibrationFailed">
+        荧光一致性工装板标定失败：{0}
+    </sys:String>
+    <sys:String x:Key="PleaseSelectOneDarkBoardCalibration">
+        请先选择一个背景标定记录
+    </sys:String>
+    <sys:String x:Key="PleaseSelectLimitOneCalibrationChannel">
+        请至少选择一个标定通道
+    </sys:String>
+    <sys:String x:Key="TargetBoardXCalibrationNoSelected">
+        工装{0}标定未选择标定记录
+    </sys:String>
+    <sys:String x:Key="PleaseRestartPC-PLC">
+        请重新启动下位机后再进行测试
+    </sys:String>
+    <sys:String x:Key="TargetBoardVerify">
+        工装板验证
+    </sys:String>
+    <sys:String x:Key="FluoUniformTargetBoardVerifyFailed">
+        荧光一致性工装板验证失败：{0}
+    </sys:String>
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 荧光Y轴标定-->
+    <sys:String x:Key="FluoYCalibration">
+        荧光Y轴标定
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 荧光X轴标定-->
+    <sys:String x:Key="FluoXCalibration">
+        荧光X轴标定
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 操作日志-->
+
+    <!--#region UI-->
+    <sys:String x:Key="OperationRecord">
+        操作记录
+    </sys:String>
+    <sys:String x:Key="OperationUser">
+        用户
+    </sys:String>
+    <sys:String x:Key="OperationInformation">
+        信息
+    </sys:String>
+    <sys:String x:Key="OperationTime">
+        时间
+    </sys:String>
+    <sys:String x:Key="FirstPage">
+        首页
+    </sys:String>
+    <sys:String x:Key="PreviousPage">
+        上一页
+    </sys:String>
+    <sys:String x:Key="CurrentPage">
+        当前页:
+    </sys:String>
+    <sys:String x:Key="NextPage">
+        下一页
+    </sys:String>
+    <sys:String x:Key="EndPage">
+        尾页
+    </sys:String>
+    <sys:String x:Key="Jump">
+        跳转
+    </sys:String>
+    <sys:String x:Key="TotalRecords">
+        总记录数:
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 后台-->
+
+    <sys:String x:Key="DataAreSearching">
+        数据查询中
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 帮助-->
+
+    <!--#region UI-->
+
+    <!--#endregion UI-->
+
+    <!--#region 后台-->
+    <sys:String x:Key="Help-Close">
+        帮助-关闭
+    </sys:String>
+
+    <!--#endregion 后台-->
+
+    <!--#endregion 帮助-->
+
+    <!--#region 设置-->
+
+    <!--#region UI-->
+    <sys:String x:Key="ResetPassword">
+        重置密码
+    </sys:String>
+    <sys:String x:Key="ModifyPassword">
+        修改密码
+    </sys:String>
+    <sys:String x:Key="ChangeAccount">
+        切换账户
+    </sys:String>
+    <sys:String x:Key="SignOut">
+        退出
+    </sys:String>
+    <sys:String x:Key="AccountWithColon">
+        账户：
+    </sys:String>
+    <sys:String x:Key="Login">
+        登录
+    </sys:String>
+    <sys:String x:Key="LoginOut">
+        退出
+    </sys:String>
+    <sys:String x:Key="Cancel">
+        取消
+    </sys:String>
+    <sys:String x:Key="OldPasswordWithColon">
+        原密码：
+    </sys:String>
+    <sys:String x:Key="NewPasswordWithColon">
+        新密码：
+    </sys:String>
+    <sys:String x:Key="ConfirmPasswordWithColon">
+        确认密码：
+    </sys:String>
+    <sys:String x:Key="LogoutVerifyWithColon">
+        退出验证
+    </sys:String>
+    <sys:String x:Key="LogoutPasswordWithColon">
+        退出密码:
+    </sys:String>
+    <!--#endregion UI-->
+
+    <!--#region 后台-->
+    <sys:String x:Key="Reset-SignOut">
+        设置-退出
+    </sys:String>
+    <sys:String x:Key="Reset-ResetPassword">
+        设置-重置密码
+    </sys:String>
+    <sys:String x:Key="Reset-ModifyPassword">
+        设置-修改密码
+    </sys:String>
+    <sys:String x:Key="Reset-ChangeAccount">
+        设置-切换账号
+    </sys:String>
+    <sys:String x:Key="ResetPassword-Close">
+        重置密码-关闭
+    </sys:String>
+    <sys:String x:Key="ResetPassword-Confirm">
+        重置密码-确定
+    </sys:String>
+    <sys:String x:Key="ResetPasswordSuccess">
+        重置密码成功!
+    </sys:String>
+    <sys:String x:Key="PleaseFirstSelectAccount">
+        请先选择修改账户!
+    </sys:String>
+    <sys:String x:Key="ResetPassword-Cancel">
+        重置密码-取消
+    </sys:String>
+    <sys:String x:Key="ModifyPassword-Close">
+        修改密码-关闭
+    </sys:String>
+    <sys:String x:Key="NewPasswordCannotEmpty">
+        新密码不能为空
+    </sys:String>
+    <sys:String x:Key="ConfirmPasswordCannotEmpty">
+        确认密码不能为空
+    </sys:String>
+    <sys:String x:Key="InconsistentPasswords">
+        密码输入不一致，请重新输入
+    </sys:String>
+    <sys:String x:Key="PasswordsIsErrorPleaseRedo">
+        您输入的密码不正确，请重新输入
+    </sys:String>
+    <sys:String x:Key="ModifyPasswrodSuccess">
+        修改成功!
+    </sys:String>
+    <sys:String x:Key="ModifyPasswrod-Confirm">
+        修改密码-确定
+    </sys:String>
+    <sys:String x:Key="ModifyPasswrod-Cancel">
+        修改密码-取消
+    </sys:String>
+    <sys:String x:Key="LogoutConfrim-Close">
+        退出确认-关闭
+    </sys:String>
+    <sys:String x:Key="LogoutPasswordConfrim-Confirm">
+        注销密码确认-确定
+    </sys:String>
+    <sys:String x:Key="LogoutPasswordConfrim-Cancel">
+        注销密码确认-确定
+    </sys:String>
+    <!--#endregion 后台-->
+
+    <!--#endregion 帮助-->
+
+    <!--#region 报警-->
+    <!--#region UI-->
+    <sys:String x:Key="AlarmInfoList">
+        报警信息列表
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 其他-->
+
+    <sys:String x:Key="male">
+        男
+    </sys:String>
+    <sys:String x:Key="woman">
+        女
+    </sys:String>
+
+    <!--  后台配置  -->
+    <sys:String x:Key="queryResultIsEmpty">
+        查询结果为空
+    </sys:String>
+    <sys:String x:Key="startDateCannotGreaterThanEndDate">
+        开始时间不能大于结束时间
+    </sys:String>
+    <sys:String x:Key="pleaseStartDate">
+        请选择开始日期
+    </sys:String>
+    <sys:String x:Key="pleaseEndDate">
+        请选择结束日期
+    </sys:String>
+    <sys:String x:Key="fileNameNotNull">
+        文件名不允许为空
+    </sys:String>
+    <sys:String x:Key="selectFileNamePath">
+        请选择文件导出路径
+    </sys:String>
+    <sys:String x:Key="fileNameExtNotNull">
+        文件名后缀不允许为空
+    </sys:String>
+    <sys:String x:Key="exportSuccess">
+        导出成功,文件路径是：
+    </sys:String>
+    <sys:String x:Key="exportFail">
+        导出失败,请查询帮助菜单,联系售后咨询
+    </sys:String>
+    <sys:String x:Key="mainMessage">
+        提示信息。比如：倒计时、样品盘位置提示等
+    </sys:String>
+    <sys:String x:Key="mainForm">
+        主窗体
+    </sys:String>
+    <sys:String x:Key="operaSucess">
+        操作完成
+    </sys:String>
+    <sys:String x:Key="pleaseDeleteMessage">
+        请先选择要删除的行,再执行删除
+    </sys:String>
+    <sys:String x:Key="deleteOk">
+        确认删除选中行？
+    </sys:String>
+    <sys:String x:Key="deleteRecoverable">
+        此删除不可恢复
+    </sys:String>
+    <sys:String x:Key="makeRecoverable">
+        请确保有数据项,再点击提交数据
+    </sys:String>
+    <sys:String x:Key="newDataSuccess">
+        数据新增成功,可以开始做实验了
+    </sys:String>
+
+    <sys:String x:Key="userIdNotNull">
+        编号值不允许为空
+    </sys:String>
+    <sys:String x:Key="checkNoNotNull">
+        检查项目不允许为空
+    </sys:String>
+    <sys:String x:Key="sampleTypeNotNull">
+        样品类型不允许为空
+    </sys:String>
+    <sys:String x:Key="concenNotNull">
+        浓度值不允许为空
+    </sys:String>
+    <sys:String x:Key="qualityNotNull">
+        质控值不允许为空
+    </sys:String>
+    <sys:String x:Key="addressNotNull">
+        位置不允许为空
+    </sys:String>
+    <sys:String x:Key="wallNotNull">
+        通道数据长度为4,请检查
+    </sys:String>
+    <sys:String x:Key="exportConNull">
+        导出数据内容为空,请确保有实验数据.
+    </sys:String>
+    <sys:String x:Key="reagentBatches">
+        试剂批号
+    </sys:String>
+    <sys:String x:Key="materialBatchNumber">
+        耗材批号
+    </sys:String>
+    <sys:String x:Key="qualityBatchNumber">
+        质控批号
+    </sys:String>
+
+    <!--  20211012 新增  -->
+    <sys:String x:Key="saveInfo">
+        保存
+    </sys:String>
+    <sys:String x:Key="refresh">
+        刷新
+    </sys:String>
+    <sys:String x:Key="dataNumber">
+        序号
+    </sys:String>
+    <sys:String x:Key="dataType">
+        类型
+    </sys:String>
+    <sys:String x:Key="cmdName">
+        指令名称
+    </sys:String>
+    <sys:String x:Key="dataInfo">
+        信息
+    </sys:String>
+    <sys:String x:Key="datetime">
+        时间
+    </sys:String>
+    <sys:String x:Key="testTime">
+        检测时间：
+    </sys:String>
+    <sys:String x:Key="equipmentFailure">
+        设备故障，请联系技术支持人员......
+    </sys:String>
+    <sys:String x:Key="serialPortFailed">
+        串口打开失败，请检查串口地址
+    </sys:String>
+    <sys:String x:Key="closeDoorsPlease">
+        请关闭仪器门窗，以免造成污染
+    </sys:String>
+    <sys:String x:Key="recoveryTubeLocation">
+        回收管是否已放置在指定位置!
+    </sys:String>
+    <sys:String x:Key="doorLockIsNotLocked">
+        门锁没有锁住，请查看门锁是否关闭，再进行测试
+    </sys:String>
+    <sys:String x:Key="lackOfCoolant">
+        冷却液不足！
+    </sys:String>
+    <sys:String x:Key="enterBarcode">
+        请输入条码，确定裂解位的位置！
+    </sys:String>
+    <sys:String x:Key="testCompleted">
+        本次检测已完成,请取走耗材！
+    </sys:String>
+    <sys:String x:Key="testPCR">
+        即将进行PCR测试
+    </sys:String>
+    <sys:String x:Key="taskInProgress">
+        任务执行中,请稍后再试
+    </sys:String>
+    <sys:String x:Key="samplesIsReady">
+        样本准备好了吗？
+    </sys:String>
+    <sys:String x:Key="fengbanmo">
+        请先撕掉封板膜,并将耗材放在红色区域内
+    </sys:String>
+    <sys:String x:Key="setRedArea">
+        请将耗材放在红色区域内
+    </sys:String>
+    <sys:String x:Key="confirmSettedRedArea">
+        请确认已放在红色区域内？
+    </sys:String>
+    <sys:String x:Key="isCurrentPosition">
+        确定放在当前位置吗？
+    </sys:String>
+    <!--#endregion 其他-->
+
+    <!--#region 打印-->
+
+    <sys:String x:Key="patient">
+        患者
+    </sys:String>
+
+    <sys:String x:Key="selectPrintPatient">
+        选择打印患者
+    </sys:String>
+
+    <!--#endregion 打印-->
+
+    <sys:String x:Key="tempTimeOut">
+        温度稳定已超时，稳定超时时间为:
+    </sys:String>
+    <sys:String x:Key="pcrLeftTemp">
+        PCR左侧控温板设定
+    </sys:String>
+    <sys:String x:Key="pcrRightTemp">
+        PCR右侧控温板设定
+    </sys:String>
+    <sys:String x:Key="liejieTemp">
+        裂解温度设定
+    </sys:String>
+    <sys:String x:Key="hstqTemp">
+        核提温度设定
+    </sys:String>
+    <sys:String x:Key="stabilizingTemp">
+        正在稳定温度
+    </sys:String>
+    <sys:String x:Key="pcrScanData">
+        PCR扫描荧光数据
+    </sys:String>
+    <sys:String x:Key="remaining">
+        剩余
+    </sys:String>
+    <sys:String x:Key="totalLoop">
+        循环总数
+    </sys:String>
+    <sys:String x:Key="remainingLoop">
+        剩余循环数
+    </sys:String>
+    <sys:String x:Key="hour">
+        小时
+    </sys:String>
+    <sys:String x:Key="minute">
+        分钟
+    </sys:String>
+    <sys:String x:Key="second">
+        秒
+    </sys:String>
+    <sys:String x:Key="countdown">
+        倒计时：
+    </sys:String>
+    <sys:String x:Key="btnOpen">
+        开启
+    </sys:String>
+    <sys:String x:Key="msgUVLanmp">
+        设置时间不能小于设备运行时间
+    </sys:String>
+    <sys:String x:Key="removeConsumables">
+        请移走废弃耗材
+    </sys:String>
+    <sys:String x:Key="consumablesTimeReset">
+        耗材时间重置
+    </sys:String>
+    <sys:String x:Key="winLog">
+        日志
+    </sys:String>
+    <sys:String x:Key="selfTestRecord">
+        自检记录
+    </sys:String>
+    <sys:String x:Key="tubeA">
+        A管
+    </sys:String>
+    <sys:String x:Key="tubeB">
+        B管
+    </sys:String>
+    <sys:String x:Key="tubeC">
+        C管
+    </sys:String>
+    <sys:String x:Key="tubeD">
+        D管
+    </sys:String>
+    <sys:String x:Key="qualitativeAndGain">
+        定性和增益
+    </sys:String>
+    <sys:String x:Key="errorPosition">
+        位置输入的值有误,请重新输入！
+    </sys:String>
+    <sys:String x:Key="errorAge">
+        年龄输入有误，请检查！
+    </sys:String>
+    <sys:String x:Key="isMultiple">
+        开启孔位多选
+    </sys:String>
+    <sys:String x:Key="fluorescenceQuantity">
+        荧光量
+    </sys:String>
+    <sys:String x:Key="submitSuccessfully">
+        数据提交成功
+    </sys:String>
+    <sys:String x:Key="openTimeOut">
+        开启屏幕超时功能
+    </sys:String>
+    <sys:String x:Key="setTimeOut">
+        屏幕超时时间：
+    </sys:String>
+    <sys:String x:Key="inputNotZero">
+        请输入大于0的时间值！
+    </sys:String>
+    <sys:String x:Key="softIsLock">
+        软件已锁定，点击任意位置解锁。
+    </sys:String>
+    <sys:String x:Key="saveReStart">
+        保存后重启软件，设置生效！
+    </sys:String>
+    <sys:String x:Key="inputLoginPwd">
+        请输入登录密码：
+    </sys:String>
+    <sys:String x:Key="testShowTime">
+        当前实验时间：
+    </sys:String>
+    <sys:String x:Key="statusInfo">
+        状态信息：
+    </sys:String>
+    <sys:String x:Key="deviceLinkInfo">
+        设备已断开!
+    </sys:String>
+    <sys:String x:Key="setHole">
+        孔位设置
+    </sys:String>
+    <sys:String x:Key="selectCheckItem">
+        选择检验项目：
+    </sys:String>
+    <sys:String x:Key="showSelectHoleAndChart">
+        显示孔位选择和扩增图
+    </sys:String>
+    <sys:String x:Key="selectProcess">
+        选择流程：
+    </sys:String>
+    <sys:String x:Key="hstqProcess">
+        核酸提取流程
+    </sys:String>
+    <sys:String x:Key="fyProcess">
+        分液流程
+    </sys:String>
+    <sys:String x:Key="pcrProcess">
+        PCR流程
+    </sys:String>
+    <sys:String x:Key="checkName">
+        检验名称
+    </sys:String>
+    <sys:String x:Key="isStopRunning">
+        正在运行是否停止？
+    </sys:String>
+    <sys:String x:Key="selectAlgorithm">
+        选择算法：
+    </sys:String>
+    <sys:String x:Key="gyhAlgorithm">
+        归一化算法
+    </sys:String>
+    <sys:String x:Key="deltaRnAlgorithm">
+        DeltaRn算法
+    </sys:String>
+    <sys:String x:Key="checkItemIsExist">
+        检验项已存在，是否要覆盖？
+    </sys:String>
+    <sys:String x:Key="lisSetting">
+        Lis设置
+    </sys:String>
+    <sys:String x:Key="saveSetting">
+        保存设置
+    </sys:String>
+    <sys:String x:Key="loopNum">
+        循环数：
+    </sys:String>
+    <sys:String x:Key="checkItemSetting">
+        检验项配置
+    </sys:String>
+    <sys:String x:Key="editInfo">
+        手动录入信息
+    </sys:String>
+    <sys:String x:Key="isCancelScan">
+        您确定要取消该码？
+    </sys:String>
+    <sys:String x:Key="neibiaoDataNull">
+        无内标数据
+    </sys:String>
+    <sys:String x:Key="ntcControlNull">
+        未设置阴性质控品
+    </sys:String>
+    <sys:String x:Key="uSampleNull">
+        未找到未知样的孔位
+    </sys:String>
+    <sys:String x:Key="unSelectPCR">
+        当前流程配置未选择PCR流程，不能扫PCR码！
+    </sys:String>
+    <sys:String x:Key="unSelectHSTQ">
+        当前流程配置未选择核酸提取流程，不能扫裂解码！
+    </sys:String>
+    <sys:String x:Key="findLisCheckItemFail">
+        从LIS系统查询检验项目信息失败！
+    </sys:String>
+    <sys:String x:Key="pcrAreaNotPosition">
+        PCR区已没有空闲位置！
+    </sys:String>
+    <sys:String x:Key="splittingAreaNotPosition">
+        裂解区已没有空闲位置！
+    </sys:String>
+    <sys:String x:Key="hstqAreaNotPosition">
+        核提区已没有空闲位置！
+    </sys:String>
+
+    <sys:String x:Key="DevicePowerOn">
+        设备已上电
+    </sys:String>
+    <sys:String x:Key="DrawDispose">
+        是否进行退液处理
+    </sys:String>
+    <sys:String x:Key="OutBigTip">
+        是否进行退大tip头处理
+    </sys:String>
+    <sys:String x:Key="OutSmallTip">
+        是否进行退小tip头处理
+    </sys:String>
+
+</ResourceDictionary>

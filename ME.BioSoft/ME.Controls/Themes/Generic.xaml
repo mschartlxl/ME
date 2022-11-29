@@ -1,0 +1,26 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ME.Controls">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/ABTFlatButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/ABTPasswordBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/ABTAccountTextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/ABTGroupBox1.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/ABTImageButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/togglebutton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/brush.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/textblock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/textbox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/radiobutton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/checkbox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/listbox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/combobox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/passwordbox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/scrollViewer.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Styles/window.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

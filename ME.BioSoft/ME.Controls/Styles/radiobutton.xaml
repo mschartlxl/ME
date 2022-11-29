@@ -1,0 +1,103 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ME.Controls.Styles"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:Double x:Key="small-radio-fontsize">12</sys:Double>
+    <sys:Double x:Key="normal-radio-fontsize">14</sys:Double>
+    <sys:Double x:Key="large-radio-fontsize">16</sys:Double>
+    <FontFamily x:Key="normal-radio-fontfamily">思源黑体 CN</FontFamily>
+    <SolidColorBrush x:Key="main-radio-background">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="normal-radio-background">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="normal-radio-foreground">#464547</SolidColorBrush>
+    <SolidColorBrush x:Key="hover-radio-background">#7FB80E</SolidColorBrush>
+    <SolidColorBrush x:Key="hover-radio-foreground">#FFAA00</SolidColorBrush>
+    <SolidColorBrush x:Key="normal-radio-border">#FFAA00</SolidColorBrush>
+    <SolidColorBrush x:Key="speical-radio-border">#585EAA</SolidColorBrush>
+
+    <SolidColorBrush x:Key="normal-radio-disabledbackground" Color="#FFE6E6E6" />
+    <SolidColorBrush x:Key="normal-radio-disabledborder" Color="#FFBCBCBC" />
+    <SolidColorBrush x:Key="normal-radio-disabledglyph" Color="#FF707070" />
+    <Thickness x:Key="radio-margin">5,0</Thickness>
+    <sys:Double x:Key="small-radio-width">60</sys:Double>
+    <sys:Double x:Key="normal-radio-width">120</sys:Double>
+    <sys:Double x:Key="large-radio-width">200</sys:Double>
+    <sys:Double x:Key="normal-radio-height">25</sys:Double>
+    <sys:Double x:Key="large-radio-height">30</sys:Double>
+
+    <Style x:Key="radiobuttonbase" TargetType="{x:Type RadioButton}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FontSize" Value="{StaticResource small-radio-fontsize}" />
+        <Setter Property="Width" Value="auto" />
+        <Setter Property="Height" Value="{StaticResource normal-radio-height}" />
+        <Setter Property="FontFamily" Value="{StaticResource normal-radio-fontfamily}" />
+        <Setter Property="Width" Value="auto" />
+        <Setter Property="Height" Value="{StaticResource normal-radio-height}" />
+        <Setter Property="Background" Value="{StaticResource normal-radio-background}" />
+        <Setter Property="Foreground" Value="{StaticResource normal-radio-foreground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource speical-radio-border}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            x:Name="radioButtonBorder"
+                            Margin="1,1,2,1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="100">
+                            <Grid x:Name="markGrid" Margin="2">
+                                <Ellipse
+                                    x:Name="optionMark"
+                                    MinWidth="6"
+                                    MinHeight="6"
+                                    Fill="#7FB80E"
+                                    Opacity="0" />
+                            </Grid>
+                        </Border>
+                        <ContentPresenter
+                            x:Name="contentPresenter"
+                            Grid.Column="1"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Focusable="False"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="#7FB80E" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="radioButtonBorder" Property="Background" Value="{StaticResource normal-radio-disabledbackground}" />
+                            <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource normal-radio-disabledborder}" />
+                            <Setter TargetName="optionMark" Property="Fill" Value="{StaticResource normal-radio-disabledglyph}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="optionMark" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter TargetName="optionMark" Property="Opacity" Value="0.56" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource radiobuttonbase}" TargetType="RadioButton">
+        <Setter Property="Width" Value="auto" />
+    </Style>
+</ResourceDictionary>
