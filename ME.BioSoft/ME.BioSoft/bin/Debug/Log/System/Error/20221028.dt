@@ -1,0 +1,368 @@
+
+ 
+记录时间：2022-10-28 10:31:36,747 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:31:40,895 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：向上移动节点错误！
+异常信息：
+System.InvalidOperationException: appSettings 配置节中不存在项“pcType”。
+   在 System.Configuration.AppSettingsReader.GetValue(String key, Type type)
+   在 ME.ControlLibrary.Model.GlobalVariables..ctor() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 46
+   在 ME.ControlLibrary.Model.GlobalVariables.get_Instance() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 26
+   在 ME.ControlLibrary.View.UCCommandUnit.TreeViewNodeCopy(Object sender, RoutedEventArgs e) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 616
+
+ 
+记录时间：2022-10-28 10:31:42,109 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:31:43,523 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:31:43,972 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:31:45,244 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:31:48,672 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:31:51,960 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:31:53,396 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：向上移动节点错误！
+异常信息：
+System.InvalidOperationException: appSettings 配置节中不存在项“pcType”。
+   在 System.Configuration.AppSettingsReader.GetValue(String key, Type type)
+   在 ME.ControlLibrary.Model.GlobalVariables..ctor() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 46
+   在 ME.ControlLibrary.Model.GlobalVariables.get_Instance() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 26
+   在 ME.ControlLibrary.View.UCCommandUnit.TreeViewNodeCopy(Object sender, RoutedEventArgs e) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 616
+
+ 
+记录时间：2022-10-28 10:31:57,954 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:31:59,324 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:32:02,232 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:32:03,365 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:32:37,640 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:32:47,096 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:32:48,952 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:32:51,251 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：向上移动节点错误！
+异常信息：
+System.InvalidOperationException: appSettings 配置节中不存在项“pcType”。
+   在 System.Configuration.AppSettingsReader.GetValue(String key, Type type)
+   在 ME.ControlLibrary.Model.GlobalVariables..ctor() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 46
+   在 ME.ControlLibrary.Model.GlobalVariables.get_Instance() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 26
+   在 ME.ControlLibrary.View.UCCommandUnit.TreeViewNodeCopy(Object sender, RoutedEventArgs e) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 616
+
+ 
+记录时间：2022-10-28 10:33:01,269 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:37:40,894 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:37:42,988 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:37:54,868 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:01,985 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：向上移动节点错误！
+异常信息：
+System.InvalidOperationException: appSettings 配置节中不存在项“pcType”。
+   在 System.Configuration.AppSettingsReader.GetValue(String key, Type type)
+   在 ME.ControlLibrary.Model.GlobalVariables..ctor() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 46
+   在 ME.ControlLibrary.Model.GlobalVariables.get_Instance() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 26
+   在 ME.ControlLibrary.View.UCCommandUnit.TreeViewNodeCopy(Object sender, RoutedEventArgs e) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 616
+
+ 
+记录时间：2022-10-28 10:38:04,753 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:07,562 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:09,376 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:10,552 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:11,092 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:11,588 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:12,470 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:18,352 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:38:53,951 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：向上移动节点错误！
+异常信息：
+System.InvalidOperationException: appSettings 配置节中不存在项“pcType”。
+   在 System.Configuration.AppSettingsReader.GetValue(String key, Type type)
+   在 ME.ControlLibrary.Model.GlobalVariables..ctor() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 46
+   在 ME.ControlLibrary.Model.GlobalVariables.get_Instance() 位置 C:\ME.BioSoft\ME.ControlLibrary\Model\GlobalVariables.cs:行号 26
+   在 ME.ControlLibrary.View.UCCommandUnit.TreeViewNodeCopy(Object sender, RoutedEventArgs e) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 616
+
+ 
+记录时间：2022-10-28 10:43:46,273 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 10:56:43,581 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 11:50:08,713 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 13:23:17,579 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 13:43:05,127 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 14:43:34,895 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 14:43:41,108 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:29:22,357 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：“在“System.Windows.StaticResourceExtension”上提供值时引发了异常。”，行号为“28”，行位置为“14”。
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:06,593 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:08,291 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:09,665 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:12,410 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:13,716 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:15,602 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:17,965 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:35,138 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:50:35,180 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：
+
+ 
+记录时间：2022-10-28 15:53:40,917 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：获取粘贴内容出错
+异常信息：

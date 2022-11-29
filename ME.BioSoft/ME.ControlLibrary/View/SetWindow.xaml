@@ -1,0 +1,64 @@
+﻿<Window
+    x:Class="ME.ControlLibrary.View.SetWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    xmlns:local="clr-namespace:ME.ControlLibrary.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="SetWindow"
+    Width="400"
+    Height="250"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Style/ControlStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="{StaticResource GridHeight}" />
+            </Grid.RowDefinitions>
+            <Border
+                Grid.Row="0"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                        Margin="20,5"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="当前泵编号:" />
+                        <TextBox Margin="10,0" IsReadOnly="True" />
+                        <Button Content="查询" />
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="1"
+                        Margin="20,5"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="修改后编号:" />
+                        <TextBox Margin="10,0" IsReadOnly="True" />
+                        <Button Content="修改" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Background="White"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1,0,1,1" />
+        </Grid>
+    </Grid>
+</Window>

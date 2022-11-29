@@ -1,0 +1,60 @@
+
+ 
+记录时间：2022-10-26 14:37:07,772 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：初始化指令集树异常：未将对象引用设置到对象的实例。
+异常信息：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 ME.BaseCore.CommonMode.GetFromXElement(XElement xml) 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 418
+   在 ME.BaseCore.NodeInfo.get_objParent() 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 292
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTreeNode(TreeItem parentTreeItem, TreeNodeStructureModel childTreeNodeStructureModel) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 87
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTreeNode(TreeItem parentTreeItem, TreeNodeStructureModel childTreeNodeStructureModel) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 103
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTree(List`1 paraNodeInfos) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 69
+
+ 
+记录时间：2022-10-26 14:37:20,147 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：初始化指令集树异常：未将对象引用设置到对象的实例。
+异常信息：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 ME.BaseCore.CommonMode.GetFromXElement(XElement xml) 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 418
+   在 ME.BaseCore.NodeInfo.get_objParent() 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 292
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTreeNode(TreeItem parentTreeItem, TreeNodeStructureModel childTreeNodeStructureModel) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 87
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTreeNode(TreeItem parentTreeItem, TreeNodeStructureModel childTreeNodeStructureModel) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 103
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTree(List`1 paraNodeInfos) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 69
+
+ 
+记录时间：2022-10-26 16:46:09,188 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：初始化指令集树异常：StartIndex 不能小于 0。
+参数名: startIndex
+异常信息：
+System.ArgumentOutOfRangeException: StartIndex 不能小于 0。
+参数名: startIndex
+   在 System.String.Remove(Int32 startIndex, Int32 count)
+   在 ME.BaseCore.CommonMode.get_StrCommands10() 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 440
+   在 ME.BaseCore.CommonMode.get_GetNodeName() 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 424
+   在 ME.BaseCore.NodeInfo.get_objParent() 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 326
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTreeNode(TreeItem parentTreeItem, TreeNodeStructureModel childTreeNodeStructureModel) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 87
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTreeNode(TreeItem parentTreeItem, TreeNodeStructureModel childTreeNodeStructureModel) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 103
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTree(List`1 paraNodeInfos) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 69
+
+ 
+记录时间：2022-10-26 16:46:55,400 
+线程ID：[1] 
+日志级别：ERROR 
+日志内容：初始化指令集树异常：StartIndex 不能小于 0。
+参数名: startIndex
+异常信息：
+System.ArgumentOutOfRangeException: StartIndex 不能小于 0。
+参数名: startIndex
+   在 System.String.Remove(Int32 startIndex, Int32 count)
+   在 ME.BaseCore.CommonMode.get_StrCommands10() 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 440
+   在 ME.BaseCore.CommonMode.get_GetNodeName() 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 424
+   在 ME.BaseCore.NodeInfo.get_objParent() 位置 C:\ME.BioSoft\ME.BaseCore\TreeNodeInfo.cs:行号 326
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTreeNode(TreeItem parentTreeItem, TreeNodeStructureModel childTreeNodeStructureModel) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 87
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTreeNode(TreeItem parentTreeItem, TreeNodeStructureModel childTreeNodeStructureModel) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 103
+   在 ME.ControlLibrary.View.UCCommandUnit.InitTree(List`1 paraNodeInfos) 位置 C:\ME.BioSoft\ME.ControlLibrary\View\UCCommandUnit.xaml.cs:行号 69

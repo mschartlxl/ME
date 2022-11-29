@@ -1,0 +1,42 @@
+﻿
+//==========================================================================================================
+系统时间：11/13/2022 14:40:39  当前线程ID：1
+日志等级：
+日志内容：批量查询标定数据异常：调用的目标发生了异常。
+异常信息：
+  >>异常消息（Message）：调用的目标发生了异常。
+  >>异常来源（Source）：mscorlib
+  >>异常类型（ExceptionType）：System.Reflection.TargetInvocationException
+  >>原生异常类型（BaseExceptionType）：System.InvalidOperationException
+  >>出错的方法签名（TargetSite）：System.Object CreateInstance(System.RuntimeType, Boolean, Boolean, Boolean ByRef, System.RuntimeMethodHandleInternal ByRef, Boolean ByRef)
+  >>堆栈信息（StackTrace）：
+   在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   在 System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   在 System.Activator.CreateInstance[T]()
+   在 LinqToDB.Data.DataConnection.<>c__111`1.<CreateDataProvider>b__111_0()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 LinqToDB.DataProvider.SQLite.SQLiteTools.GetDataProvider(String providerName)
+   在 LinqToDB.DataProvider.SQLite.SQLiteTools.ProviderDetector(IConnectionStringSettings css, String connectionString)
+   在 LinqToDB.Data.DataConnection.ConfigurationInfo.<>c__DisplayClass12_0.<GetDataProvider>b__0(Func`3 d)
+   在 System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   在 System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   在 LinqToDB.Data.DataConnection.ConfigurationInfo.GetDataProvider(IConnectionStringSettings css, String connectionString)
+   在 LinqToDB.Data.DataConnection.ConfigurationInfo.get_DataProvider()
+   在 LinqToDB.Data.DataConnection..ctor(LinqToDBConnectionOptions options)
+   在 LinqToDB.Data.DataConnection..ctor()
+   在 ME.DB.MEDBDB..ctor() 位置 C:\ME.BioSoft\ME.DB\CopyMe.SQLite.generated.cs:行号 27
+   在 ME.DB.PlatformActionDAL.SearchMany(Func`2 search) 位置 C:\ME.BioSoft\ME.DB\PlatformActionDAL.cs:行号 48
+>>========================== 内部异常（InnerException）==========================
+  >>异常消息（Message）：Cannot load assembly System.Data.SQLite
+  >>异常来源（Source）：linq2db
+  >>异常类型（ExceptionType）：System.InvalidOperationException
+  >>原生异常类型（BaseExceptionType）：System.InvalidOperationException
+  >>出错的方法签名（TargetSite）：LinqToDB.DataProvider.SQLite.SQLiteProviderAdapter CreateAdapter(System.String, System.String, System.String)
+  >>堆栈信息（StackTrace）：
+   在 LinqToDB.DataProvider.SQLite.SQLiteProviderAdapter.CreateAdapter(String assemblyName, String clientNamespace, String prefix)
+   在 LinqToDB.DataProvider.SQLite.SQLiteProviderAdapter.GetInstance(String name)
+   在 LinqToDB.DataProvider.SQLite.SQLiteDataProvider..ctor(String name, MappingSchema mappingSchema)
+   在 LinqToDB.DataProvider.SQLite.SQLiteDataProviderClassic..ctor()

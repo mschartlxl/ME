@@ -1,0 +1,1870 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--#region 通用模块-->
+
+    <!--#region UI-->
+    <sys:String x:Key="SoftwareName">
+        Software of fully automated PCR analysis system
+    </sys:String>
+    <sys:String x:Key="Add">
+        Add
+    </sys:String>
+    <sys:String x:Key="Edit">
+        Edit
+    </sys:String>
+    <sys:String x:Key="Delete">
+        Delete
+    </sys:String>
+    <sys:String x:Key="Clear">
+        Clear
+    </sys:String>
+
+    <sys:String x:Key="Mission">
+        Make diagnosis more valuable
+    </sys:String>
+    <sys:String x:Key="msgConfirm">
+        Confirm
+    </sys:String>
+    <sys:String x:Key="msgError">
+        Error
+    </sys:String>
+    <sys:String x:Key="msgNotice">
+        Notice
+    </sys:String>
+    <sys:String x:Key="msgWarning">
+        Warning
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 后台-->
+    <sys:String x:Key="WaterBoxTemperature">
+        Water tank temperature
+    </sys:String>
+    <sys:String x:Key="SaveSuccess">
+        Successfully saved
+    </sys:String>
+    <sys:String x:Key="SaveFailed">
+        Failed to save
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 登录+自检模块-->
+
+    <!--#region new-->
+    <sys:String x:Key="portNotFound">
+        Port not found!
+    </sys:String>
+    <sys:String x:Key="WaitForConnectToServer">
+        Connecting to the server, please wait......
+    </sys:String>
+    <sys:String x:Key="ConnectToServerSuccess">
+        Connected successfully to the server
+    </sys:String>
+    <sys:String x:Key="ConnectToServerFailed">
+        Failed to connect to the server. Please check the network configuration or whether the server has been booted normally......
+    </sys:String>
+    <sys:String x:Key="OpenSerialPortFailed">
+        Fail to turn on the serial port！
+    </sys:String>
+    <sys:String x:Key="CheckingEnum0">
+        Normal self-test
+    </sys:String>
+    <sys:String x:Key="CheckingEnum1">
+        Abnormal communication
+    </sys:String>
+    <sys:String x:Key="CheckingEnum2">
+        Equipment failure
+    </sys:String>
+    <sys:String x:Key="CheckingEnum3">
+        Abnormal equipment
+    </sys:String>
+    <sys:String x:Key="CheckingEnum4">
+        Abnormal program
+    </sys:String>
+    <sys:String x:Key="PC-PLC-NoAnswer">
+        No response from all-in-one
+    </sys:String>
+    <sys:String x:Key="ContactTechnician">
+        Equipment error, please contact technical support......
+    </sys:String>
+    <sys:String x:Key="ReadKbError">
+        Errors in reading the exp
+    </sys:String>
+    <sys:String x:Key="ResetFailed">
+        Fail to reset
+    </sys:String>
+    <sys:String x:Key="ResetPhotoelectricityFailed">
+        Fail to reset photoelectricity
+    </sys:String>
+    <sys:String x:Key="NodeNumError">
+        Errors in node number
+    </sys:String>
+    <sys:String x:Key="FinishRowArmMotorCheck">
+        Self-test of arm motor, done
+    </sys:String>
+    <sys:String x:Key="FinishPlatformMotorCheck">
+        Self-test of platform motor, done
+    </sys:String>
+    <sys:String x:Key="FinishPlungerPumpCheck">
+        Self-test of plunger pump, done
+    </sys:String>
+    <sys:String x:Key="FinishReturnTipHeadCheck">
+        Self-test of TIP step backward, done
+    </sys:String>
+    <sys:String x:Key="MagneticAdsorption">
+        Self-test of magnetic adsorption, done
+    </sys:String>
+    <sys:String x:Key="FinishDoorMotorCheck">
+        Self-test of door motor, done
+    </sys:String>
+    <sys:String x:Key="PCRXMotor">
+        Self-test of PCRX motor, done
+    </sys:String>
+    <sys:String x:Key="PCRYMotor">
+        Self-test of PCRY motor, done
+    </sys:String>
+    <sys:String x:Key="FinishSplitTempControlCheck">
+        Self-test of temperature control equipment at the lysis site, done
+    </sys:String>
+    <sys:String x:Key="FinishDnaExtractionTempControlCheck">
+        Self-test of temperature control equipment at nucleic acid extraction site, done
+    </sys:String>
+    <sys:String x:Key="FinishPcrLeftTempControlCheck">
+        Self-test left temperature control equipment of PCR, done
+    </sys:String>
+    <sys:String x:Key="FinishPcrRightTempControlCheck">
+        Self-test right temperature control equipment of PCR, done
+    </sys:String>
+    <sys:String x:Key="DeviceWorkFine">
+        Normal equipment operation
+    </sys:String>
+    <sys:String x:Key="TemperatureControlDeviceException">
+        Temperature control device, abnormal......
+    </sys:String>
+    <sys:String x:Key="TemperatureNotReachSetValueInFiveSecond">
+        Device does not reach specified temperature within 5 seconds
+    </sys:String>
+    <!--#endregion-->
+
+    <sys:String x:Key="account">
+        User ID
+    </sys:String>
+    <sys:String x:Key="logo">
+        logo_en
+    </sys:String>
+    <sys:String x:Key="isRememberPwd">
+        Whether to remember the password
+    </sys:String>
+    <sys:String x:Key="pswIsError">
+        Password is error
+    </sys:String>
+    <sys:String x:Key="pswCanNotEmpty">
+        Password can not be empty
+    </sys:String>
+    <sys:String x:Key="loginSystem">
+        LogIn
+    </sys:String>
+    <sys:String x:Key="operatorSys">
+        Operator
+    </sys:String>
+    <sys:String x:Key="adminSys">
+        Administrator
+    </sys:String>
+    <sys:String x:Key="userPwd">
+        Password
+    </sys:String>
+    <!--#endregion 登录模块-->
+
+    <!--#region 首页模块-->
+
+    <!--#region new-->
+    <sys:String x:Key="CodeAlreadyExists">
+        The code already exists
+    </sys:String>
+    <sys:String x:Key="ConnectToServer">
+        Connecting service
+    </sys:String>
+    <sys:String x:Key="OpenAlarmInfoList">
+        Open the list of alarm messages
+    </sys:String>
+    <sys:String x:Key="WhetherTestFluoData">
+        Is fluorescence tested
+    </sys:String>
+    <sys:String x:Key="CurrentTemperature">
+        Current temperature:
+    </sys:String>
+    <sys:String x:Key="Pcr1Area">
+        PCR zone1
+    </sys:String>
+    <sys:String x:Key="Pcr2Area">
+        PCR zone2
+    </sys:String>
+    <sys:String x:Key="Pcr3Area">
+        PCR zone3
+    </sys:String>
+    <sys:String x:Key="Pcr4Area">
+        PCR zone4
+    </sys:String>
+    <sys:String x:Key="PcrXArea">
+        PCR zone1{0}
+    </sys:String>
+    <sys:String x:Key="ExcuteXXXOperation">
+        Excute {0} operation
+    </sys:String>
+    <sys:String x:Key="ModifyBarCode">
+        Modify barcode, the modified barcode is：{0}
+    </sys:String>
+    <sys:String x:Key="ConfirmPutConsumablesOnRecyclePos">
+        Please confirm whether to put the consumables in the recycling space
+    </sys:String>
+    <sys:String x:Key="anythingNotPlaced">
+        No equipment (PCR, nucleic acid extraction and splitting) was placed
+    </sys:String>
+    <sys:String x:Key="Setting">
+        Setting
+    </sys:String>
+    <sys:String x:Key="OpenDoorInTest">
+        Opening the instrument door and window during the experiment may cause pollution. Please be cautious
+    </sys:String>
+    <sys:String x:Key="WaterTankTemperatureIsOver">
+        Water tank temperature exceeds limit, program has stopped
+    </sys:String>
+    <sys:String x:Key="PositionCheckForConfrirmButton">
+        In position detection (confirmation button)
+    </sys:String>
+    <sys:String x:Key="BarcodeFormatIsError">
+        Wrong barcode format!
+    </sys:String>
+    <sys:String x:Key="NoAnswerFromDevice">
+        No feedback received from the device, please determine if it is placed in position{0}{1}
+    </sys:String>
+    <sys:String x:Key="DnaExtractionXArea">
+        Nucleic acid extraction zone{0}
+    </sys:String>
+    <sys:String x:Key="Splitting">
+        Lysis
+    </sys:String>
+    <sys:String x:Key="PatienetInfoEntry">
+        Patient information entry
+    </sys:String>
+    <sys:String x:Key="PromptInfoForWholeProcess">
+        PCR, nucleic acid extraction and lysis must correspond one to the other for full process testing
+    </sys:String>
+    <sys:String x:Key="ExceptionInWholeProcessCheck">
+        Full process calibration, abnormal:{0}
+    </sys:String>
+    <sys:String x:Key="ExceptionInSavingTestResult">
+        Test result data saving, abnormal：{0}
+    </sys:String>
+    <sys:String x:Key="TestIsStoped">
+        Measurement has stopped
+    </sys:String>
+    <sys:String x:Key="TestIsOver">
+        End of measurement
+    </sys:String>
+    <sys:String x:Key="Stage">
+        Phase
+    </sys:String>
+    <sys:String x:Key="FinishExcute">
+        Execution complete
+    </sys:String>
+    <sys:String x:Key="ForwardMove">
+        Forward movement
+    </sys:String>
+    <sys:String x:Key="ReverseMove">
+        Reverse movement
+    </sys:String>
+    <sys:String x:Key="Offline">
+        Offline
+    </sys:String>
+    <sys:String x:Key="AbsolutelyMove">
+        Absolute movement
+    </sys:String>
+    <sys:String x:Key="Scan">
+        Scanning
+    </sys:String>
+    <sys:String x:Key="BarCodeCanNotEmpty">
+        Barcode cannot be empty!
+    </sys:String>
+    <sys:String x:Key="BarCodeLengthIsIllegal">
+        Barcode input length invalid!
+    </sys:String>
+    <sys:String x:Key="BarCodeInputHaveError">
+        Barcode input error!
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region old-->
+    <sys:String x:Key="winClose">
+        Close
+    </sys:String>
+    <sys:String x:Key="openUVlamp">
+        UltraViolet lamp
+    </sys:String>
+    <sys:String x:Key="start">
+        Start
+    </sys:String>
+    <sys:String x:Key="stop">
+        Stop
+    </sys:String>
+    <sys:String x:Key="result">
+        Results
+    </sys:String>
+    <sys:String x:Key="export">
+        Export
+    </sys:String>
+    <sys:String x:Key="print">
+        Print
+    </sys:String>
+    <sys:String x:Key="configuration">
+        Settings
+    </sys:String>
+    <sys:String x:Key="sampleConfig">
+        Sample settings
+    </sys:String>
+    <sys:String x:Key="maintain">
+        Maintenance
+    </sys:String>
+    <sys:String x:Key="help">
+        Help
+    </sys:String>
+    <sys:String x:Key="barCode">
+        Barcode
+    </sys:String>
+    <sys:String x:Key="scanConfirm">
+        Confirm
+    </sys:String>
+    <sys:String x:Key="addInformation">
+        Information entry
+    </sys:String>
+    <sys:String x:Key="isRecycle">
+        Recycle
+    </sys:String>
+    <sys:String x:Key="nAcidExtractionOne">
+        Nucleic acid extraction zone1
+    </sys:String>
+    <sys:String x:Key="nAcidExtractionTwo">
+        Nucleic acid extraction zone2
+    </sys:String>
+    <sys:String x:Key="nAcidExtractionThree">
+        Nucleic acid extraction zone3
+    </sys:String>
+    <sys:String x:Key="nAcidExtractionFour">
+        Nucleic acid extraction zone4
+    </sys:String>
+    <sys:String x:Key="consumableOne">
+        Consumables zone1
+    </sys:String>
+    <sys:String x:Key="consumableTwo">
+        Consumables zone2
+    </sys:String>
+    <sys:String x:Key="consumableThree">
+        Consumables zone3
+    </sys:String>
+    <sys:String x:Key="consumableFour">
+        Consumables zone4
+    </sys:String>
+    <sys:String x:Key="runningShow">
+        Running......
+    </sys:String>
+    <sys:String x:Key="yyPolarityList">
+        阴阳性列表
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion 首页模块-->
+
+    <!--#region 信息录入模块-->
+
+    <!--#region new-->
+    <!--#endregion-->
+
+    <sys:String x:Key="addRowInfo">
+        Insert
+    </sys:String>
+    <sys:String x:Key="submitData">
+        Submit
+    </sys:String>
+    <sys:String x:Key="delRowInfo">
+        Delete
+    </sys:String>
+    <sys:String x:Key="age">
+        Age
+    </sys:String>
+    <sys:String x:Key="gender">
+        Sex
+    </sys:String>
+    <sys:String x:Key="bedPosition">
+        Bed
+    </sys:String>
+    <sys:String x:Key="processType">
+        Sample type
+    </sys:String>
+    <sys:String x:Key="contraion">
+        Concentration
+    </sys:String>
+    <sys:String x:Key="qualityControl">
+        Control
+    </sys:String>
+    <sys:String x:Key="uSample">
+        Unknown sample
+    </sys:String>
+    <sys:String x:Key="sSample">
+        Standard sample
+    </sys:String>
+    <sys:String x:Key="qControl">
+        Control
+    </sys:String>
+    <sys:String x:Key="ntcControl">
+        NTC
+    </sys:String>
+    <sys:String x:Key="checkData">
+        Please check the completion of submitted data!
+    </sys:String>
+    <!--#endregion 信息录入模块-->
+
+    <!--#region 结果模块-->
+
+    <!--#region new-->
+
+    <sys:String x:Key="SelectChannelToDragThresholdLine">
+        Select the corresponding channel to drag the threshold line
+    </sys:String>
+    <sys:String x:Key="SourceData">
+        Original data
+    </sys:String>
+    <sys:String x:Key="PleaseWaitForSearching">
+        Data query in process, please wait！
+    </sys:String>
+    <sys:String x:Key="FailedToSearchingResult">
+        Fail to search results data：{0}
+    </sys:String>
+    <sys:String x:Key="FailedToSearchingTestTime">
+        Failure to query detection time：{0}
+    </sys:String>
+    <sys:String x:Key="(NoAmplification)NoTargetNegative">
+        (No amplification) No target strips, negative
+    </sys:String>
+    <sys:String x:Key="(NoAmplification)NoTarget">
+        (No amplification) No target strips
+    </sys:String>
+    <sys:String x:Key="InternalStandardNoAmplification">
+        No amplification of internal standard
+    </sys:String>
+    <sys:String x:Key="NoAmplification">
+        No amplification
+    </sys:String>
+    <sys:String x:Key="PositionCheckFailedPleaseRedo">
+        Fail to test position ({0}). Recommend resampling or re-extracting to test
+    </sys:String>
+    <sys:String x:Key="NoNegativeQualityControlPleaseRedo">
+        No negative control in the test sample, no test can be performed, please add negative control and re-test
+    </sys:String>
+    <sys:String x:Key="NoAmplificationInNegativeQualityControlPleaseRedo">
+        Negative control, no amplification of internal standard, please redo
+    </sys:String>
+    <sys:String x:Key="NegativeQualityControlCtGreaterThanCtReferenceValuePleaseRedo">
+        Negative control, ct&gt;ct reference value, please redo
+    </sys:String>
+    <sys:String x:Key="StandardNoAmplificationPleaseRedo">
+        No amplification of standard ({0}), please redo.
+    </sys:String>
+    <sys:String x:Key="Redo">
+        Redo
+    </sys:String>
+    <sys:String x:Key="UnknownAndInternalStandardNoAmplificationPleaseRedo">
+        Unknown sample({0}) no amplification, no amplification of internal standard, redo
+    </sys:String>
+    <sys:String x:Key="UnknownNoAmpAndInternalHaveAmpCtGreaterThanCtReferenceValuePleaseRedo">
+        Unknown sample({0}) no amplification, internal standard amplified, Ct&gt;Ct reference, redo
+    </sys:String>
+    <sys:String x:Key="UnknownHaveAmplificationContrastConcentration">
+        Unknown sample {0} amplified, calculated concentration {1} compared to the minimum detection line
+    </sys:String>
+    <sys:String x:Key="saveResultError">
+        SaveResultError！
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region old-->
+    <sys:String x:Key="startDateTime">
+        Start time：
+    </sys:String>
+    <sys:String x:Key="endDateTime">
+        End time：
+    </sys:String>
+    <sys:String x:Key="userId">
+        Number：
+    </sys:String>
+    <sys:String x:Key="userName">
+        Name：
+    </sys:String>
+    <sys:String x:Key="yyPolarity">
+        Negative or positive：
+    </sys:String>
+    <sys:String x:Key="yinPolarity">
+        Negative
+    </sys:String>
+    <sys:String x:Key="yangPolarity">
+        Positive
+    </sys:String>
+    <sys:String x:Key="unknown">
+        Unknown
+    </sys:String>
+    <sys:String x:Key="searchInfo">
+        Inquire
+    </sys:String>
+    <sys:String x:Key="positionReagent">
+        Location
+    </sys:String>
+    <sys:String x:Key="userIdgrid">
+        Number
+    </sys:String>
+    <sys:String x:Key="userNamegrid">
+        Name
+    </sys:String>
+    <sys:String x:Key="yyPolaritygrid">
+        Negative or positive
+    </sys:String>
+    <sys:String x:Key="well">
+        Channel
+    </sys:String>
+    <sys:String x:Key="officeName">
+        Department
+    </sys:String>
+    <sys:String x:Key="inspectionItemName">
+        Inspection Item
+    </sys:String>
+    <sys:String x:Key="inspectionItemDetailName">
+        Inspection Item Detail
+    </sys:String>
+    <sys:String x:Key="ctValue">
+        Ct value
+    </sys:String>
+    <sys:String x:Key="curveColor">
+        Curve color
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion 结果模块-->
+
+    <!--#region 导出模块-->
+
+    <!--#region new-->
+    <sys:String x:Key="ExportWindow-Import">
+        Export window - Import
+    </sys:String>
+    <sys:String x:Key="ImportSuccess">
+        Successfully imported
+    </sys:String>
+    <sys:String x:Key="ImportConfirm">
+        Inspection item already exists, do you want to overwrite it
+    </sys:String>
+    <sys:String x:Key="ImportFailed">
+        Fail to import:{0}
+    </sys:String>
+    <sys:String x:Key="ExportWindow-Export">
+        Export window - Export
+    </sys:String>
+    <sys:String x:Key="PleaseSelectExportPath">
+        Please select the export routine
+    </sys:String>
+    <sys:String x:Key="ExportSuccess">
+        Successfully exported
+    </sys:String>
+    <sys:String x:Key="ExportFailed">
+        Fail to export：{0}
+    </sys:String>
+    <sys:String x:Key="ExportWindow-Browse">
+        Export window - Browse
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region old-->
+    <sys:String x:Key="fileName">
+        File name：
+    </sys:String>
+    <sys:String x:Key="exportOpt">
+        Export option
+    </sys:String>
+    <sys:String x:Key="exportRes">
+        Export results
+    </sys:String>
+    <sys:String x:Key="exportSource">
+        Export the source data
+    </sys:String>
+    <sys:String x:Key="exportExt">
+        Export format：
+    </sys:String>
+    <sys:String x:Key="exportPath">
+        Export routine：
+    </sys:String>
+    <sys:String x:Key="browseFile">
+        Browse
+    </sys:String>
+    <sys:String x:Key="exportText">
+        Export content：
+    </sys:String>
+
+    <sys:String x:Key="import">
+        Import &amp; Export
+    </sys:String>
+    <sys:String x:Key="importPath">
+        Import routine：
+    </sys:String>
+
+    <sys:String x:Key="importXmlFile">
+        Import
+    </sys:String>
+    <sys:String x:Key="exportXmlFile">
+        Export
+    </sys:String>
+
+    <sys:String x:Key="exportProcessId">
+        Program number：
+    </sys:String>
+    <sys:String x:Key="InspectionID">
+        Inspection item：
+    </sys:String>
+    <sys:String x:Key="wholeProcess">
+        Full process flow
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion 导出模块-->
+
+    <!--#region 帮助模块-->
+
+    <sys:String x:Key="companyPro">
+        About us
+    </sys:String>
+    <sys:String x:Key="softVersion">
+        Release version
+    </sys:String>
+    <sys:String x:Key="specification">
+        SOP
+    </sys:String>
+    <sys:String x:Key="companyProfile">
+        About us
+    </sys:String>
+    <sys:String x:Key="companyInfo">
+        Beijing Applied Biological Technologies Co., Ltd. , a molecular diagnostic enterprise specializing in the development of detection solutions for pathogenic microbes, is headquartered in the Zhongguancun Life Science Park in Beijing.
+        Based on multiplex PCR platform, our company have developed and produced more than 400 types of PCR detection reagent for CDCs and hospitals.  In addition, the headquarter of X-ABT bio-tech are equipped with high end laboratories （Molecular Biology Lab，DNA Sequencing Lab and Immunology Lab）and advanced instruments（Fluorescent PCR platform, Automatic Detection Platform，Freeze Drying Technology Platform，Immunology Technology Platform，Third Generation Sequencing Platform）. Besides, we have been developing genetic testing projects like tumor genetic testing and pharmacogemonic testing.
+    </sys:String>
+
+    <sys:String x:Key="softVerPro">
+        Software version
+    </sys:String>
+    <sys:String x:Key="softVer">
+        Software version：v1
+    </sys:String>
+    <sys:String x:Key="xAbtSite">
+        Website：
+    </sys:String>
+    <sys:String x:Key="webUrl">
+        https://www.x-abt.com/portal/index/indexen.html
+    </sys:String>
+    <sys:String x:Key="contactInfo">
+        Contact us：4006-500-984
+    </sys:String>
+    <sys:String x:Key="companyAddress">
+        Address：C, Zhengdan International Building, No.33 Kexueyuan Road, Changping, Beijing.
+    </sys:String>
+    <sys:String x:Key="particulars">
+        Details
+    </sys:String>
+    <sys:String x:Key="WholeVersionWithColon">
+        Full version：
+    </sys:String>
+    <!--#endregion 帮助模块-->
+
+    <!--#region 配置-->
+
+    <!--#region new-->
+
+    <sys:String x:Key="Chinese">
+        Chinese
+    </sys:String>
+    <sys:String x:Key="TemperatureOutOfLimit">
+        Temperature exceeded limit：
+    </sys:String>
+    <sys:String x:Key="CurveColorSetting">
+        Curve color setting：
+    </sys:String>
+    <sys:String x:Key="NameWithColon">
+        Name：
+    </sys:String>
+    <sys:String x:Key="StandardOrUnkownowSampleChannel">
+        (standard/ unknown)product channel：
+    </sys:String>
+    <sys:String x:Key="Setting-Close">
+        Setting-Close
+    </sys:String>
+    <sys:String x:Key="SettingXCurveColorFailed">
+        Failure to set the color of {0} Curve：{1}
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region old-->
+    <sys:String x:Key="generalSetting">
+        General settings
+    </sys:String>
+    <sys:String x:Key="batchNumSetting">
+        Batch number setting
+    </sys:String>
+    <sys:String x:Key="qualitativeSetting">
+        Qualitative setting
+    </sys:String>
+    <sys:String x:Key="quantitativeSetting">
+        Quantitative setting
+    </sys:String>
+    <sys:String x:Key="analysisType">
+        Analysis type
+    </sys:String>
+    <sys:String x:Key="gainSetting">
+        Gain setting
+    </sys:String>
+    <sys:String x:Key="language">
+        Language：
+    </sys:String>
+    <sys:String x:Key="IsQualitative">
+        Enable qualitative
+    </sys:String>
+    <sys:String x:Key="IsQuantitative">
+        Enable quantitative
+    </sys:String>
+    <sys:String x:Key="pcrNum">
+        PCR reagent batch number：
+    </sys:String>
+    <sys:String x:Key="extractingNum">
+        Nucid acid extraction reageant batch number：
+    </sys:String>
+    <sys:String x:Key="conNum">
+        Consumables batch number：
+    </sys:String>
+    <sys:String x:Key="qualityNum">
+        Control batch number：
+    </sys:String>
+    <sys:String x:Key="labNeibiao">
+        Internal standard channel：
+    </sys:String>
+    <sys:String x:Key="ctCanzhao">
+        CT reference-values：
+    </sys:String>
+    <sys:String x:Key="zuidijianchu">
+        Minimal detection line：
+    </sys:String>
+    <sys:String x:Key="neibiaoCTCanzhao">
+        Internal standard of CT reference-values：
+    </sys:String>
+    <sys:String x:Key="gainName">
+        Game name：
+    </sys:String>
+    <sys:String x:Key="coefficient">
+        Relevant parameter：
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion 配置-->
+
+    <!--#region 标定-->
+
+    <sys:String x:Key="Calibration">
+        Callibration
+    </sys:String>
+
+    <!--#region 位置标定-->
+
+    <sys:String x:Key="PositionCalibration">
+        Position Callibration
+    </sys:String>
+    <sys:String x:Key="Motor">
+        Motor
+    </sys:String>
+    <sys:String x:Key="PlatformMotor">
+        Platform motor
+    </sys:String>
+    <sys:String x:Key="BarcodeScanMotor">
+        Barcode scanning motor
+    </sys:String>
+    <sys:String x:Key="PcrSacnXDirectionMotor">
+        PCR scanning motor of X-direction
+    </sys:String>
+    <sys:String x:Key="PcrSacnYDirectionMotor">
+        PCR scanning motor of Y-direction
+    </sys:String>
+    <sys:String x:Key="HorizontalDisplacement">
+        Horizontal displacement:
+    </sys:String>
+    <sys:String x:Key="CurrentPostion">
+        Current position:
+    </sys:String>
+    <sys:String x:Key="Forward">
+        Forward
+    </sys:String>
+    <sys:String x:Key="Backward">
+        Backward
+    </sys:String>
+    <sys:String x:Key="HReset">
+        H reset
+    </sys:String>
+    <sys:String x:Key="WriteIn">
+        Write-in
+    </sys:String>
+    <sys:String x:Key="HorizontalMotor">
+        Horizontal motor
+    </sys:String>
+    <sys:String x:Key="VerticalMotor">
+        Vertical motor
+    </sys:String>
+    <sys:String x:Key="TipHeadMotor">
+        Prick tip head motor
+    </sys:String>
+    <sys:String x:Key="ImbibitionMotor">
+        Liquid suction motor
+    </sys:String>
+    <sys:String x:Key="MagneticAdsorptionMotor">
+        Magnetic adsorption motor
+    </sys:String>
+    <sys:String x:Key="PcrOpenCloseDoorMotor">
+        PCR switching door motor
+    </sys:String>
+    <sys:String x:Key="BackTipHeadMotor1">
+        TIP step backward motor1
+    </sys:String>
+    <sys:String x:Key="BackTipHeadMotor2">
+        TIP step backward motor2
+    </sys:String>
+    <sys:String x:Key="VerticalDisplacement">
+        Vertical displacement :
+    </sys:String>
+    <sys:String x:Key="VReset">
+        V Reset
+    </sys:String>
+
+    <!--#endregion 位置标定-->
+
+    <!--#region 温度标定-->
+
+    <!--#region UI-->
+    <sys:String x:Key="TemperatureCalibration">
+        Temperature calibration
+    </sys:String>
+    <sys:String x:Key="StartCalibration">
+        Start to calibrate
+    </sys:String>
+    <sys:String x:Key="StopCalibration">
+        Stop calibration
+    </sys:String>
+    <sys:String x:Key="DataExport">
+        Data export
+    </sys:String>
+    <sys:String x:Key="TargetTemperature">
+        Target temperature：
+    </sys:String>
+    <sys:String x:Key="ControlTemperature">
+        Control temperature
+    </sys:String>
+    <sys:String x:Key="PatrolInspectionInstrumentAddress">
+        Address of inspecting instrument：
+    </sys:String>
+    <sys:String x:Key="TemperatureCollcetionTimeLength">
+        Each duration of temperature collecting(min) ：
+    </sys:String>
+    <sys:String x:Key="CollectionFrequency">
+        Collecting frequency(S)：
+    </sys:String>
+    <sys:String x:Key="ValidDataRange">
+        Effective data interval (min)：
+    </sys:String>
+    <sys:String x:Key="SettingValue">
+        Set value
+    </sys:String>
+    <sys:String x:Key="Temperature1">
+        Temperature1
+    </sys:String>
+    <sys:String x:Key="Temperature2">
+        Temperature2
+    </sys:String>
+    <sys:String x:Key="Temperature3">
+        Temperature3
+    </sys:String>
+    <sys:String x:Key="Temperature4">
+        Temperature4
+    </sys:String>
+    <sys:String x:Key="Temperature5">
+        Temperature5
+    </sys:String>
+    <sys:String x:Key="Temperature6">
+        Temperature6
+    </sys:String>
+    <sys:String x:Key="Temperature7">
+        Temperature7
+    </sys:String>
+    <sys:String x:Key="Temperature8">
+        Temperature8
+    </sys:String>
+    <sys:String x:Key="Temperature9">
+        Temperature9
+    </sys:String>
+    <sys:String x:Key="Temperature10">
+        Temperature10
+    </sys:String>
+    <sys:String x:Key="Temperature11">
+        Temperature11
+    </sys:String>
+    <sys:String x:Key="Temperature12">
+        Temperature12
+    </sys:String>
+    <sys:String x:Key="Temperature13">
+        Temperature13
+    </sys:String>
+    <sys:String x:Key="Temperature14">
+        Temperature14
+    </sys:String>
+    <sys:String x:Key="Temperature15">
+        Temperature15
+    </sys:String>
+    <sys:String x:Key="Temperature16">
+        Temperature16
+    </sys:String>
+    <sys:String x:Key="Temperature17">
+        Temperature17
+    </sys:String>
+    <sys:String x:Key="Temperature18">
+        Temperature18
+    </sys:String>
+    <sys:String x:Key="Temperature19">
+        Temperature19
+    </sys:String>
+    <sys:String x:Key="Temperature20">
+        Temperature20
+    </sys:String>
+    <sys:String x:Key="Temperature21">
+        Temperature21
+    </sys:String>
+    <sys:String x:Key="Temperature22">
+        Temperature22
+    </sys:String>
+    <sys:String x:Key="Temperature23">
+        Temperature23
+    </sys:String>
+    <sys:String x:Key="Temperature24">
+        Temperature24
+    </sys:String>
+    <sys:String x:Key="SummaryData">
+        Aggregate data
+    </sys:String>
+    <sys:String x:Key="ChannelNum">
+        Channel number
+    </sys:String>
+    <sys:String x:Key="AioAverage">
+        Average value of all-in-one
+    </sys:String>
+    <sys:String x:Key="PatrolInspectionInstrumentAverage">
+        Average value of inspecting instrument
+    </sys:String>
+    <sys:String x:Key="CalibrationData">
+        Callibration data
+    </sys:String>
+    <sys:String x:Key="ReadWrite(Y/N)">
+        Read and write(Y/N)
+    </sys:String>
+    <sys:String x:Key="ParameterName">
+        Parameter name
+    </sys:String>
+    <sys:String x:Key="Address">
+        Address
+    </sys:String>
+    <sys:String x:Key="Content">
+        Content
+    </sys:String>
+    <sys:String x:Key="Length">
+        Length
+    </sys:String>
+    <sys:String x:Key="AddParameter">
+        Add parameters
+    </sys:String>
+    <sys:String x:Key="DeleteParameter">
+        Delete parameters
+    </sys:String>
+    <sys:String x:Key="WriteEprom">
+        Write in EPROM
+    </sys:String>
+    <sys:String x:Key="ReadEprom">
+        Read EPROM
+    </sys:String>
+    <sys:String x:Key="AllSelect">
+        Select all
+    </sys:String>
+    <sys:String x:Key="AllCancel">
+        Cancel all
+    </sys:String>
+    <sys:String x:Key="SaveFile">
+        Save File
+    </sys:String>
+    <sys:String x:Key="ReadFile">
+        Read File
+    </sys:String>
+    <sys:String x:Key="SplittingNucleicAcidExtractionManualCalibration">
+        Mannual calibration of lysis and nucleic acid extraction
+    </sys:String>
+    <sys:String x:Key="PositionForHeader">
+        Location
+    </sys:String>
+    <sys:String x:Key="ReadValue1">
+        Read value1
+    </sys:String>
+    <sys:String x:Key="ReadValue2">
+        Read value2
+    </sys:String>
+    <sys:String x:Key="ReadValue3">
+        Read value3
+    </sys:String>
+    <sys:String x:Key="ReadValue4">
+        Read value4
+    </sys:String>
+    <sys:String x:Key="ReadValue5">
+        Read value5
+    </sys:String>
+    <sys:String x:Key="ReadValue6">
+        Read value6
+    </sys:String>
+    <sys:String x:Key="CalcIntoCalibrationData">
+        Calculate and incorporate into calibration data
+    </sys:String>
+    <!--#endregion UI-->
+
+    <!--#region 后台-->
+
+    <sys:String x:Key="PcrLeft">
+        Left side of PCR
+    </sys:String>
+
+    <sys:String x:Key="PcrRight">
+        Right side of PCR
+    </sys:String>
+    <sys:String x:Key="NucleicAcidExtraction">
+        Nucleic acid extraction
+    </sys:String>
+    <sys:String x:Key="AllCollection">
+        Collecting all
+    </sys:String>
+    <sys:String x:Key="OnlyAioCollection">
+        Only collecting all-in-one
+    </sys:String>
+    <sys:String x:Key="OnlyPatrolInspectionInstrumentCollection">
+        Only collecting inspecting instrument
+    </sys:String>
+    <sys:String x:Key="FailedCommunicateToPatrolInspectionInstrument">
+        Communication failure of the inspecting instrument, please modify the settings
+    </sys:String>
+    <sys:String x:Key="AioTemperatureOriginalData">
+        All-in-one Temperature Original data
+    </sys:String>
+    <sys:String x:Key="PatrolInspectionInstrumentTemperatureOriginalData">
+        inspecting instrument Temperature Original data
+    </sys:String>
+    <sys:String x:Key="ExportSummaryData">
+        Aggregate data
+    </sys:String>
+    <sys:String x:Key="ExportCalibrationData">
+        Callibration data
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 温漂标定-->
+
+    <!--#region UI-->
+    <sys:String x:Key="FluoTemperatureCalibraion">
+        FluorescentTemperatureDrift
+    </sys:String>
+    <sys:String x:Key="CalibrationSetting">
+        Calibration setting
+    </sys:String>
+    <sys:String x:Key="CalibrationName">
+        Calibration name
+    </sys:String>
+    <sys:String x:Key="CalibrationId(Address502)">
+        Self-test mark (Address:502)
+    </sys:String>
+    <sys:String x:Key="InitSetting">
+        Initial settings
+    </sys:String>
+    <sys:String x:Key="SettingTemperature">
+        Set temperature：
+    </sys:String>
+    <sys:String x:Key="WaittingTime">
+        Waiting time:
+    </sys:String>
+    <sys:String x:Key="CycleSetting">
+        Cycle setting
+    </sys:String>
+    <sys:String x:Key="CycleTimes">
+        Times of cycles：
+    </sys:String>
+    <sys:String x:Key="Time">
+        Times
+    </sys:String>
+    <sys:String x:Key="Operation">
+        Operation
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 后台-->
+
+    <sys:String x:Key="PleaseConfirmPutTargetBoard">
+        Please check if you put in the tooling plate!
+    </sys:String>
+    <sys:String x:Key="Prompt">
+        Tips
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 荧光一致性标定-->
+
+    <!--#region UI-->
+    <sys:String x:Key="FluoUnniformCalibration">
+        Fluorescence Consistency
+    </sys:String>
+    <sys:String x:Key="CalibrationNameWithColon">
+        Calliberation name：
+    </sys:String>
+    <sys:String x:Key="TemperatureWithSymbol">
+        Temperature(℃)：
+    </sys:String>
+    <sys:String x:Key="StableTimeSecond">
+        Stabilisation time (S)
+    </sys:String>
+    <sys:String x:Key="ScanTimesWithColon">
+        Scanning times：
+    </sys:String>
+    <sys:String x:Key="HistoryCalibrationDataCollectionWithColon">
+        Collection of historical calibraton data：
+    </sys:String>
+    <sys:String x:Key="DarkBoardTargetValueWithColon">
+        Background target value ：
+    </sys:String>
+    <sys:String x:Key="DarkBoardTargetMinValueWithColon">
+        Minimal value of background value ：
+    </sys:String>
+    <sys:String x:Key="DarkBoardTargetMaxValueWithColon">
+        Maximal value of background value：
+    </sys:String>
+    <sys:String x:Key="DarkBoardTargetAverageValueWithColon">
+        Average value of background value：
+    </sys:String>
+    <sys:String x:Key="CurrentCalibrationChannelWithColon">
+        Current calibration channel：
+    </sys:String>
+    <sys:String x:Key="HistoryCalibrationDataWithColon">
+        Historical calibraton data：
+    </sys:String>
+    <sys:String x:Key="TargetTargetBoardValueWithColon">
+        Target tool values：
+    </sys:String>
+    <sys:String x:Key="TargetBoardValueWithColon">
+        Tool values：
+    </sys:String>
+    <sys:String x:Key="HistoryVerifyDataWithColon">
+        Historical Verification data：
+    </sys:String>
+    <sys:String x:Key="Verify">
+        Verification
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 后台-->
+
+    <sys:String x:Key="UserCancelOperation">
+        User has cancelled operation
+    </sys:String>
+
+    <sys:String x:Key="PleasePut4DarkBoard">
+        Please put in 4 background plates
+    </sys:String>
+    <sys:String x:Key="FluoUniformCalibrationFailed">
+        Calibration failure of fluorescence consistency for background calibration plate：{0}
+    </sys:String>
+    <sys:String x:Key="DarkBoardDataColletionInfo">
+        Background calibration fluorescence data is being collected, times of current collection：{0},Total number of times：{1}
+    </sys:String>
+    <sys:String x:Key="UserCancel">
+        Cancelled by user
+    </sys:String>
+    <sys:String x:Key="FinishDarkBoardDataCollection">
+        Background calibration fluorescence data collection, done
+    </sys:String>
+    <sys:String x:Key="FailedToCollectionDarkBoardData">
+        Fail to collect background plate calibration fluorescence data：{0}
+    </sys:String>
+    <sys:String x:Key="TemperatureCheckingInfo">
+        {0}Temperature stability detection is in progress，remaining time：{1} second,total time：{2}second
+    </sys:String>
+    <sys:String x:Key="Again">
+        Again
+    </sys:String>
+    <sys:String x:Key="FinishTemperatureCalibration">
+        Temperature stability, done
+    </sys:String>
+    <sys:String x:Key="ChekingTemperatureStableFailed">
+        Fail to detect temperature stability：{0}
+    </sys:String>
+    <sys:String x:Key="WaittingForTemperatureReachToSetValue">
+        Waiting for temperature to reach set value...
+    </sys:String>
+    <sys:String x:Key="WaittingForTemperatureReachToSetValueException">
+        Abnormality when waiting for temperature to reach set value：{0}
+    </sys:String>
+    <sys:String x:Key="CalibrationNameCannotEmpry">
+        Calibration name can not be empty
+    </sys:String>
+    <sys:String x:Key="PleaseSelectOneCalibration">
+        Please select a calibration record
+    </sys:String>
+    <sys:String x:Key="QueryNoOriginalData">
+        Original data not queried
+    </sys:String>
+    <sys:String x:Key="FluoUniformExportFailed">
+        Export failure of original data for fluorescence consistency calibration：{0}
+    </sys:String>
+    <sys:String x:Key="XFluoDataColletionInfo">
+        {0}Background calibration fluorescence data is being collected, times of current collection：{1},Total number of times：{2}
+    </sys:String>
+    <sys:String x:Key="FinishXFluoDataColletion">
+        {0} Fluorescence data collection, done
+    </sys:String>
+    <sys:String x:Key="XFluoDataCollectionFailed">
+        {0}Fail to collect fluorescence data：{1}
+    </sys:String>
+    <sys:String x:Key="PleasePut4TargetBaord">
+        Please put in 4 tooling plates.
+    </sys:String>
+    <sys:String x:Key="TargetBoardCalibration">
+        Tooling plate calibration
+    </sys:String>
+    <sys:String x:Key="FluoUniformTargetBoardCalibrationFailed">
+        Fluorescence consistency Tooling plate calibration Failed：{0}
+    </sys:String>
+    <sys:String x:Key="PleaseSelectOneDarkBoardCalibration">
+        Please select a background calibration record first.
+    </sys:String>
+    <sys:String x:Key="PleaseSelectLimitOneCalibrationChannel">
+        Please select at least one calibration channel.
+    </sys:String>
+    <sys:String x:Key="TargetBoardXCalibrationNoSelected">
+        No calibration record selected for tool {0} calibration
+    </sys:String>
+    <sys:String x:Key="PleaseRestartPC-PLC">
+        Please restart the lower computer and test again.
+    </sys:String>
+    <sys:String x:Key="TargetBoardVerify">
+        Tooling plate validation
+    </sys:String>
+    <sys:String x:Key="FluoUniformTargetBoardVerifyFailed">
+        Validation failure of fluorescence consistency for tooling plate：{0}
+    </sys:String>
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 荧光Y轴标定-->
+    <sys:String x:Key="FluoYCalibration">
+        Fluorescent Y-axis calibration
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 荧光X轴标定-->
+    <sys:String x:Key="FluoXCalibration">
+        Fluorescent X-axis calibration
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 操作日志-->
+
+    <!--#region UI-->
+    <sys:String x:Key="OperationRecord">
+        Operation record
+    </sys:String>
+    <sys:String x:Key="OperationUser">
+        User
+    </sys:String>
+    <sys:String x:Key="OperationInformation">
+        Information
+    </sys:String>
+    <sys:String x:Key="OperationTime">
+        Time
+    </sys:String>
+    <sys:String x:Key="FirstPage">
+        First
+    </sys:String>
+    <sys:String x:Key="PreviousPage">
+        Previous
+    </sys:String>
+    <sys:String x:Key="CurrentPage">
+        Current:
+    </sys:String>
+    <sys:String x:Key="NextPage">
+        Next
+    </sys:String>
+    <sys:String x:Key="EndPage">
+        End
+    </sys:String>
+    <sys:String x:Key="Jump">
+        Jump
+    </sys:String>
+    <sys:String x:Key="TotalRecords">
+        TotalRecords:
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#region 后台-->
+
+    <sys:String x:Key="DataAreSearching">
+        Data query in process
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 帮助-->
+
+    <!--#region UI-->
+
+    <!--#endregion UI-->
+
+    <!--#region 后台-->
+    <sys:String x:Key="Help-Close">
+        Help-close
+    </sys:String>
+
+    <!--#endregion 后台-->
+
+    <!--#endregion 帮助-->
+
+    <!--#region 设置-->
+
+    <!--#region UI-->
+    <sys:String x:Key="ResetPassword">
+        Reset password
+    </sys:String>
+    <sys:String x:Key="ModifyPassword">
+        Change password
+    </sys:String>
+    <sys:String x:Key="ChangeAccount">
+        Switching users
+    </sys:String>
+    <sys:String x:Key="SignOut">
+        Log out
+    </sys:String>
+    <sys:String x:Key="AccountWithColon">
+        Account:
+    </sys:String>
+    <sys:String x:Key="Login">
+        Log in
+    </sys:String>
+    <sys:String x:Key="LoginOut">
+        Log out
+    </sys:String>
+    <sys:String x:Key="Cancel">
+        Cancel
+    </sys:String>
+    <sys:String x:Key="OldPasswordWithColon">
+        Old password:
+    </sys:String>
+    <sys:String x:Key="NewPasswordWithColon">
+        New password:
+    </sys:String>
+    <sys:String x:Key="ConfirmPasswordWithColon">
+        Confirm password:
+    </sys:String>
+    <sys:String x:Key="LogoutVerifyWithColon">
+        Logout verification
+    </sys:String>
+    <sys:String x:Key="LogoutPasswordWithColon">
+        Logout password:
+    </sys:String>
+    <!--#endregion UI-->
+
+    <!--#region 后台-->
+    <sys:String x:Key="Reset-SignOut">
+        Setting-Logout
+    </sys:String>
+    <sys:String x:Key="Reset-ResetPassword">
+        Setting-Reset password
+    </sys:String>
+    <sys:String x:Key="Reset-ModifyPassword">
+        Setting-Change password
+    </sys:String>
+    <sys:String x:Key="Reset-ChangeAccount">
+        Setting-Switching users
+    </sys:String>
+    <sys:String x:Key="ResetPassword-Close">
+        Reset password-Close
+    </sys:String>
+    <sys:String x:Key="ResetPassword-Confirm">
+        Reset password-Confirm
+    </sys:String>
+    <sys:String x:Key="ResetPasswordSuccess">
+        Successfully reset password!
+    </sys:String>
+    <sys:String x:Key="PleaseFirstSelectAccount">
+        Please choose to modify your account first!
+    </sys:String>
+    <sys:String x:Key="ResetPassword-Cancel">
+        Reset password-Cancel
+    </sys:String>
+    <sys:String x:Key="ModifyPassword-Close">
+        Change password-Close
+    </sys:String>
+    <sys:String x:Key="NewPasswordCannotEmpty">
+        New password cannot be empty
+    </sys:String>
+    <sys:String x:Key="ConfirmPasswordCannotEmpty">
+        Confirm password can not be empty
+    </sys:String>
+    <sys:String x:Key="InconsistentPasswords">
+        Password input is inconsistent, please re-enter
+    </sys:String>
+    <sys:String x:Key="PasswordsIsErrorPleaseRedo">
+        The password you entered is incorrect, please re-enter
+    </sys:String>
+    <sys:String x:Key="ModifyPasswrodSuccess">
+        Successfully modified!
+    </sys:String>
+    <sys:String x:Key="ModifyPasswrod-Confirm">
+        Change password-Confirm
+    </sys:String>
+    <sys:String x:Key="ModifyPasswrod-Cancel">
+        Change password-Cancel
+    </sys:String>
+    <sys:String x:Key="LogoutConfrim-Close">
+        LogoutConfrim-Close
+    </sys:String>
+    <sys:String x:Key="LogoutPasswordConfrim-Confirm">
+        Logout password confirmation - Confirm
+    </sys:String>
+    <sys:String x:Key="LogoutPasswordConfrim-Cancel">
+        Logout password confirmation - Cancel
+    </sys:String>
+    <!--#endregion 后台-->
+
+    <!--#endregion 帮助-->
+
+    <!--#region 报警-->
+    <!--#region UI-->
+    <sys:String x:Key="AlarmInfoList">
+        Alarm message list
+    </sys:String>
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region 其他-->
+
+    <sys:String x:Key="male">
+        Male
+    </sys:String>
+    <sys:String x:Key="woman">
+        Female
+    </sys:String>
+
+    <!--  后台配置  -->
+    <sys:String x:Key="queryResultIsEmpty">
+        The query result is empty.
+    </sys:String>
+    <sys:String x:Key="startDateCannotGreaterThanEndDate">
+        The start time cannot be greater than the end time.
+    </sys:String>
+    <sys:String x:Key="pleaseStartDate">
+        Please select a start date.
+    </sys:String>
+    <sys:String x:Key="pleaseEndDate">
+        Please select an end date.
+    </sys:String>
+    <sys:String x:Key="fileNameNotNull">
+        File name is not allowed to be empty.
+    </sys:String>
+    <sys:String x:Key="selectFileNamePath">
+        Please select the file export path.
+    </sys:String>
+    <sys:String x:Key="fileNameExtNotNull">
+        File name suffix cannot be empty.
+    </sys:String>
+    <sys:String x:Key="exportSuccess">
+        Successfully exported,file path is：
+    </sys:String>
+    <sys:String x:Key="exportFail">
+        Fail to export,Please check the help menu and contact after-sales consultation.
+    </sys:String>
+    <sys:String x:Key="mainMessage">
+        Prompt information. For example: countdown, sample tray position reminder, etc.
+    </sys:String>
+    <sys:String x:Key="mainForm">
+        Main form
+    </sys:String>
+    <sys:String x:Key="operaSucess">
+        Operation completed
+    </sys:String>
+    <sys:String x:Key="pleaseDeleteMessage">
+        Please select the row to be deleted, and then delete it.
+    </sys:String>
+    <sys:String x:Key="deleteOk">
+        Confirm to delete the selected row？
+    </sys:String>
+    <sys:String x:Key="deleteRecoverable">
+        This deletion is not recoverable
+    </sys:String>
+    <sys:String x:Key="makeRecoverable">
+        Please make sure there are data items, and then click submit data.
+    </sys:String>
+    <sys:String x:Key="newDataSuccess">
+        The data is successfully added, and you can start the experiment
+    </sys:String>
+
+    <sys:String x:Key="userIdNotNull">
+        Number value cannot be empty.
+    </sys:String>
+    <sys:String x:Key="checkNoNotNull">
+        Check item cannot be empty.
+    </sys:String>
+    <sys:String x:Key="sampleTypeNotNull">
+        Sample type cannot be empty.
+    </sys:String>
+    <sys:String x:Key="concenNotNull">
+        Concentration value cannot be empty.
+    </sys:String>
+    <sys:String x:Key="qualityNotNull">
+        Control value cannot be empty.
+    </sys:String>
+    <sys:String x:Key="addressNotNull">
+        Location cannot be empty.
+    </sys:String>
+    <sys:String x:Key="wallNotNull">
+        The channel data length is 4, please check
+    </sys:String>
+    <sys:String x:Key="exportConNull">
+        The exported data content is empty, please make sure there is experimental data.
+    </sys:String>
+    <sys:String x:Key="reagentBatches">
+        Reagent batch number
+    </sys:String>
+    <sys:String x:Key="materialBatchNumber">
+        Consumables batch number
+    </sys:String>
+    <sys:String x:Key="qualityBatchNumber">
+        Control batch number
+    </sys:String>
+
+    <!--  20211012 新增  -->
+    <sys:String x:Key="saveInfo">
+        Save
+    </sys:String>
+    <sys:String x:Key="refresh">
+        Refresh
+    </sys:String>
+    <sys:String x:Key="dataNumber">
+        Number
+    </sys:String>
+    <sys:String x:Key="dataType">
+        Type
+    </sys:String>
+    <sys:String x:Key="cmdName">
+        Instruction name
+    </sys:String>
+    <sys:String x:Key="dataInfo">
+        Information
+    </sys:String>
+    <sys:String x:Key="datetime">
+        Time
+    </sys:String>
+    <sys:String x:Key="testTime">
+        Testing time：
+    </sys:String>
+    <sys:String x:Key="equipmentFailure">
+        Equipment error, please contact technical support……
+    </sys:String>
+    <sys:String x:Key="serialPortFailed">
+        Failed to open the serial port, please check the serial address.
+    </sys:String>
+    <sys:String x:Key="closeDoorsPlease">
+        Please close the instrument door and windows to avoid pollution.
+    </sys:String>
+    <sys:String x:Key="recoveryTubeLocation">
+        Whether the recovery tube has been placed in the designated position!
+    </sys:String>
+    <sys:String x:Key="doorLockIsNotLocked">
+        The instrument door is unlocked. Please check whether the instrument door is locked before another testing.
+    </sys:String>
+    <sys:String x:Key="lackOfCoolant">
+        Insufficient Coolant！
+    </sys:String>
+    <sys:String x:Key="enterBarcode">
+        Please enter the barcode and ensure the lysis site!
+    </sys:String>
+    <sys:String x:Key="testCompleted">
+        Test is done, please remove the consumables！
+    </sys:String>
+    <sys:String x:Key="testPCR">
+        PCR test is going to be performed.
+    </sys:String>
+    <sys:String x:Key="taskInProgress">
+        Task in process, please try again later.
+    </sys:String>
+    <sys:String x:Key="samplesIsReady">
+        Are the samples ready?
+    </sys:String>
+    <sys:String x:Key="fengbanmo">
+        Please tear off the sealing film first and then place consumables in the red area.
+    </sys:String>
+    <sys:String x:Key="setRedArea">
+        Please place consumables into the red area.
+    </sys:String>
+    <sys:String x:Key="confirmSettedRedArea">
+        Please confirm that it has been placed in the red area?
+    </sys:String>
+    <sys:String x:Key="isCurrentPosition">
+        Are you sure to put in the current position？
+    </sys:String>
+    <!--#endregion 其他-->
+
+    <!--#region 打印-->
+
+    <sys:String x:Key="patient">
+        Patient
+    </sys:String>
+
+    <sys:String x:Key="selectPrintPatient">
+        Select Print Patients
+    </sys:String>
+    <!--#endregion 打印-->
+
+    <sys:String x:Key="tempTimeOut">
+        Temperature stabilization has timed out, stabilization timeout is:
+    </sys:String>
+    <sys:String x:Key="pcrLeftTemp">
+        PCR temperature control plate (L) set at
+    </sys:String>
+    <sys:String x:Key="pcrRightTemp">
+        PCR temperature control plate (R) set at
+    </sys:String>
+    <sys:String x:Key="liejieTemp">
+        Lysis temperature set at
+    </sys:String>
+    <sys:String x:Key="hstqTemp">
+        Nucleic acid extraction temperature set at
+    </sys:String>
+    <sys:String x:Key="stabilizingTemp">
+        Temperature being stabilised
+    </sys:String>
+    <sys:String x:Key="pcrScanData">
+        PCR scan fluorescence data
+    </sys:String>
+    <sys:String x:Key="remaining">
+        Remainging
+    </sys:String>
+    <sys:String x:Key="totalLoop">
+        Total times of cycles
+    </sys:String>
+    <sys:String x:Key="remainingLoop">
+        Remaining times of cycles
+    </sys:String>
+    <sys:String x:Key="hour">
+        Hour
+    </sys:String>
+    <sys:String x:Key="minute">
+        Minute
+    </sys:String>
+    <sys:String x:Key="second">
+        Second
+    </sys:String>
+    <sys:String x:Key="countdown">
+        Countdown：
+    </sys:String>
+    <sys:String x:Key="btnOpen">
+        Open
+    </sys:String>
+    <sys:String x:Key="msgUVLanmp">
+        The setting time cannot be less than the device running time.
+    </sys:String>
+    <sys:String x:Key="removeConsumables">
+        Please remove the discarded consumables.
+    </sys:String>
+    <sys:String x:Key="consumablesTimeReset">
+        Consumables time reset
+    </sys:String>
+    <sys:String x:Key="winLog">
+        Log
+    </sys:String>
+    <sys:String x:Key="selfTestRecord">
+        Self-test record
+    </sys:String>
+    <sys:String x:Key="tubeA">
+        Tube A
+    </sys:String>
+    <sys:String x:Key="tubeB">
+        Tube B
+    </sys:String>
+    <sys:String x:Key="tubeC">
+        Tube C
+    </sys:String>
+    <sys:String x:Key="tubeD">
+        Tube D
+    </sys:String>
+    <sys:String x:Key="qualitativeAndGain">
+        Qualitative and gain
+    </sys:String>
+    <sys:String x:Key="errorPosition">
+        Errors in the value input in the position , please re-enter it!
+    </sys:String>
+    <sys:String x:Key="errorAge">
+        Age input error, please check!
+    </sys:String>
+    <sys:String x:Key="isMultiple">
+        Open choose multiple holes
+    </sys:String>
+    <sys:String x:Key="fluorescenceQuantity">
+        荧光量
+    </sys:String>
+    <sys:String x:Key="submitSuccessfully">
+        数据提交成功
+    </sys:String>
+    <sys:String x:Key="openTimeOut">
+        开启屏幕超时功能
+    </sys:String>
+    <sys:String x:Key="setTimeOut">
+        屏幕超时时间：
+    </sys:String>
+    <sys:String x:Key="inputNotZero">
+        请输入大于0的时间值！
+    </sys:String>
+    <sys:String x:Key="softIsLock">
+        软件已锁定，点击任意位置解锁。
+    </sys:String>
+    <sys:String x:Key="saveReStart">
+        保存后重启软件，设置生效！
+    </sys:String>
+    <sys:String x:Key="inputLoginPwd">
+        请输入登录密码：
+    </sys:String>
+    <sys:String x:Key="testShowTime">
+        当前实验时间：
+    </sys:String>
+    <sys:String x:Key="statusInfo">
+        状态信息：
+    </sys:String>
+    <sys:String x:Key="deviceLinkInfo">
+        Device disconnected!
+    </sys:String>
+    <sys:String x:Key="setHole">
+        孔位设置
+    </sys:String>
+    <sys:String x:Key="selectCheckItem">
+        选择检验项目：
+    </sys:String>
+    <sys:String x:Key="showSelectHoleAndChart">
+        显示孔位选择和扩增图
+    </sys:String>
+    <sys:String x:Key="selectProcess">
+        选择流程：
+    </sys:String>
+    <sys:String x:Key="hstqProcess">
+        核酸提取流程
+    </sys:String>
+    <sys:String x:Key="fyProcess">
+        分液流程
+    </sys:String>
+    <sys:String x:Key="pcrProcess">
+        PCR流程
+    </sys:String>
+    <sys:String x:Key="checkName">
+        检验名称
+    </sys:String>
+    <sys:String x:Key="isStopRunning">
+        正在运行是否停止？
+    </sys:String>
+    <sys:String x:Key="selectAlgorithm">
+        选择算法：
+    </sys:String>
+    <sys:String x:Key="gyhAlgorithm">
+        归一化算法
+    </sys:String>
+    <sys:String x:Key="deltaRnAlgorithm">
+        DeltaRn算法
+    </sys:String>
+    <sys:String x:Key="checkItemIsExist">
+        检验项已存在，是否要覆盖？
+    </sys:String>
+    <sys:String x:Key="lisSetting">
+        Lis设置
+    </sys:String>
+    <sys:String x:Key="saveSetting">
+        保存设置
+    </sys:String>
+    <sys:String x:Key="loopNum">
+        循环数：
+    </sys:String>
+    <sys:String x:Key="checkItemSetting">
+        检验项配置
+    </sys:String>
+    <sys:String x:Key="editInfo">
+        手动录入信息
+    </sys:String>
+    <sys:String x:Key="isCancelScan">
+        您确定要取消该码？
+    </sys:String>
+    <sys:String x:Key="neibiaoDataNull">
+        无内标数据
+    </sys:String>
+    <sys:String x:Key="ntcControlNull">
+        未设置阴性质控品
+    </sys:String>
+    <sys:String x:Key="uSampleNull">
+        未找到未知样的孔位
+    </sys:String>
+    <sys:String x:Key="unSelectPCR">
+        当前流程配置未选择PCR流程，不能扫PCR码！
+    </sys:String>
+    <sys:String x:Key="unSelectHSTQ">
+        当前流程配置未选择核酸提取流程，不能扫裂解码！
+    </sys:String>
+    <sys:String x:Key="findLisCheckItemFail">
+        从LIS系统查询检验项目信息失败！
+    </sys:String>
+    <sys:String x:Key="pcrAreaNotPosition">
+        PCR区已没有空闲位置！
+    </sys:String>
+    <sys:String x:Key="splittingAreaNotPosition">
+        裂解区已没有空闲位置！
+    </sys:String>
+    <sys:String x:Key="hstqAreaNotPosition">
+        核提区已没有空闲位置！
+    </sys:String>
+
+    <sys:String x:Key="DevicePowerOn">
+        The device is powered on
+    </sys:String>
+    <sys:String x:Key="DrawDispose">
+        Whether to conduct liquid withdrawal treatment
+    </sys:String>
+    <sys:String x:Key="OutBigTip">
+        Do you want to enlarge the tip header
+    </sys:String>
+    <sys:String x:Key="OutSmallTip">
+        Do you want to reduce the tip header
+    </sys:String>
+
+</ResourceDictionary>

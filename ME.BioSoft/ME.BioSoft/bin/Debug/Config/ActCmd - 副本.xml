@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StepInfo StepName="" Operator="">
+  <CmdTCA>
+    <CommandUnit Number="0" CmdUnitId="" CmdUnitName="TCA" CycleNumber="1" IsEnable="false" Times="0">
+      <NodeInfos>
+        <NodeInfo csNodeMode="0" IsEnabled="true" NodeName="测试循环" NodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" ParentNodeId="0">
+          <LoopMode NodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" ParentNodeId="0" NodeName="测试循环" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="0" CycleNumber="1" />
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="70098295-a858-4fa3-8ba4-174a21265911" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="70098295-a858-4fa3-8ba4-174a21265911" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:16,名称:TCA吸液,距离:0,速度:80" ParaType="1" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="53d474fc-34bf-49ec-b5c5-ffb41611302c" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="53d474fc-34bf-49ec-b5c5-ffb41611302c" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:16,名称:TCA吸液,距离:6000,速度:80" ParaType="1" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="f3aa9cde-8085-42c3-adb1-f455b79abe1a" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="f3aa9cde-8085-42c3-adb1-f455b79abe1a" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:1,名称:旋切阀1,孔:8" ParaType="2" />
+              <CommandPara Number="0" ParaName="序号:8,名称:电磁阀8,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:15,名称:电磁阀15,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:25,名称:电磁阀25,开关:1" ParaType="3" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="d3ccd6a0-2db7-4dfd-bddb-90de2c3f5fdd" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="d3ccd6a0-2db7-4dfd-bddb-90de2c3f5fdd" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:16,名称:注射泵16,距离:0,速度:80" ParaType="1" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="2" IsEnabled="true" NodeName="WaitNode" NodeId="8c532f0f-46d0-409b-960f-6a46839623c1" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <WaitMode NodeId="8c532f0f-46d0-409b-960f-6a46839623c1" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="WaitNode" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="2" WaitTime="40000" />
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="9cf88d6d-9123-4018-9376-f77c35ceced1" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="9cf88d6d-9123-4018-9376-f77c35ceced1" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:1,名称:旋切阀1,孔:0" ParaType="2" />
+              <CommandPara Number="0" ParaName="序号:8,名称:电磁阀8,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:15,名称:电磁阀15,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:25,名称:电磁阀25,开关:0" ParaType="3" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="c6e71ca8-8cec-4602-98f3-b03f319538cd" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="c6e71ca8-8cec-4602-98f3-b03f319538cd" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:15,名称:电磁阀15,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:24,名称:电磁阀24,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:25,名称:电磁阀25,开关:1" ParaType="3" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="2" IsEnabled="true" NodeName="WaitNode" NodeId="62110bc7-a67b-4e20-b7a8-c29032c82861" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <WaitMode NodeId="62110bc7-a67b-4e20-b7a8-c29032c82861" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="WaitNode" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="2" WaitTime="3000" />
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="efd3e047-2ece-432c-9ec4-82941eba337b" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="efd3e047-2ece-432c-9ec4-82941eba337b" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:15,名称:电磁阀15,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:24,名称:电磁阀24,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:25,名称:电磁阀25,开关:0" ParaType="3" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="7fa08882-b8af-4dd2-b73f-c4af8c19ab9f" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="7fa08882-b8af-4dd2-b73f-c4af8c19ab9f" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:12,名称:电磁阀12,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:13,名称:电磁阀13,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:14,名称:电磁阀14,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:15,名称:电磁阀15,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:24,名称:电磁阀24,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:25,名称:电磁阀25,开关:1" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:26,名称:电磁阀26,开关:1" ParaType="3" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="2" IsEnabled="true" NodeName="WaitNode" NodeId="bfaa388a-f50f-4187-a55c-188b95d8e0f1" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <WaitMode NodeId="bfaa388a-f50f-4187-a55c-188b95d8e0f1" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="WaitNode" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="2" WaitTime="5000" />
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="cbf513a7-d021-4ef3-a5d3-dadd8c6f474a" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="cbf513a7-d021-4ef3-a5d3-dadd8c6f474a" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:12,名称:电磁阀12,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:13,名称:电磁阀13,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:14,名称:电磁阀14,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:15,名称:电磁阀15,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:24,名称:电磁阀24,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:25,名称:电磁阀25,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:26,名称:电磁阀26,开关:0" ParaType="3" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="" NodeId="62ab332b-b830-4f07-97ec-975590174553" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c">
+          <CommonMode NodeId="62ab332b-b830-4f07-97ec-975590174553" ParentNodeId="3b42bd0b-d71d-4ff0-bc18-a36176c3052c" NodeName="" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:12,名称:电磁阀12,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:13,名称:电磁阀13,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:14,名称:电磁阀14,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:15,名称:电磁阀15,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:24,名称:电磁阀24,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:25,名称:电磁阀25,开关:0" ParaType="3" />
+              <CommandPara Number="0" ParaName="序号:26,名称:电磁阀26,开关:0" ParaType="3" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+        <NodeInfo csNodeMode="1" IsEnabled="true" NodeName="电磁阀测试" NodeId="5333c20a-91de-40c4-917d-9e23e5785cd6" ParentNodeId="0">
+          <CommonMode NodeId="5333c20a-91de-40c4-917d-9e23e5785cd6" ParentNodeId="0" NodeName="电磁阀测试" IsEnabled="true" IsRollback="false" RollbackFlag="" csNodeMode="1" IsReadAnswerData="true" Overtime="15" WaitTime="0" CheckType="1">
+            <CommandParas>
+              <CommandPara Number="0" ParaName="序号:1,名称:电磁阀1,开关:1" ParaType="3" />
+            </CommandParas>
+          </CommonMode>
+        </NodeInfo>
+      </NodeInfos>
+    </CommandUnit>
+  </CmdTCA>
+</StepInfo>

@@ -1,0 +1,35 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ME.Controls.Styles"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:Double x:Key="datepicker-small-fontsize">12</sys:Double>
+    <sys:Double x:Key="datepicker-normal-fontsize">14</sys:Double>
+    <sys:Double x:Key="datepicker-large-fontsize">16</sys:Double>
+    <FontFamily x:Key="datepicker-normal-fontfamily">Microsoft YaHei UI</FontFamily>
+    <SolidColorBrush x:Key="normal-datepicker-background">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="normal-datepicker-foreground">#464547</SolidColorBrush>
+    <SolidColorBrush x:Key="hover-datepicker-background">#7FB80E</SolidColorBrush>
+    <SolidColorBrush x:Key="hover-datepicker-foreground">#FFAA00</SolidColorBrush>
+    <SolidColorBrush x:Key="datepicker-normal-border">#FFAA00</SolidColorBrush>
+    <SolidColorBrush x:Key="datepicker-speical-border">#585EAA</SolidColorBrush>
+    <sys:Double x:Key="datepicker-small-width">60</sys:Double>
+    <sys:Double x:Key="datepicker-normal-width">120</sys:Double>
+    <sys:Double x:Key="datepicker-large-width">200</sys:Double>
+    <sys:Double x:Key="datepicker-normal-height">25</sys:Double>
+    <sys:Double x:Key="datepicker-large-height">30</sys:Double>
+    <Thickness x:Key="normal-datepicker-borderThickness">1</Thickness>
+
+    <Style x:Key="datepickerBase" TargetType="DatePicker">
+        <Setter Property="Background" Value="{DynamicResource normal-datepicker-background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource datepicker-normal-border}" />
+        <Setter Property="BorderThickness" Value="{DynamicResource normal-datepicker-borderThickness}" />
+        <Setter Property="FontFamily" Value="{DynamicResource datepicker-normal-fontfamily}" />
+        <Setter Property="FontSize" Value="{DynamicResource datepicker-normal-fontsize}" />
+        <Setter Property="Foreground" Value="{DynamicResource normal-datepicker-foreground}" />
+        <Setter Property="Width" Value="{DynamicResource datepicker-normal-width}" />
+        <Setter Property="Height" Value="{DynamicResource datepicker-normal-height}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
+</ResourceDictionary>
