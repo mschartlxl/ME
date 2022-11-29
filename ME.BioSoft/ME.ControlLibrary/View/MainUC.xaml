@@ -74,6 +74,11 @@
                                 Click="btnInit_Click"
                                 Content="初始化所有" />
                             <Button
+                                x:Name="btnSet"
+                                Margin="10,0"
+                                Click="btnSet_Click"
+                                Content="设置" />
+                            <Button
                                 x:Name="btnRunAll"
                                 Margin="10,0"
                                 Click="btnRunAll_Click"
@@ -90,11 +95,7 @@
                                 Click="btnRunStop_Click"
                                 Content="停止"
                                 IsEnabled="False" />
-                            <Button
-                                x:Name="btnSet"
-                                Margin="10,0"
-                                Click="btnSet_Click"
-                                Content="设置" />
+
 
                         </StackPanel>
                     </Grid>

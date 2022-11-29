@@ -9,6 +9,7 @@
     Title="SetWindow"
     Width="400"
     Height="250"
+    ResizeMode="NoResize"
     ShowInTaskbar="False"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
@@ -39,8 +40,11 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Text="当前泵编号:" />
-                        <TextBox Margin="10,0" IsReadOnly="True" />
-                        <Button Content="查询" />
+                        <TextBox
+                            Margin="10,0"
+                            IsEnabled="False"
+                            Text="{Binding ReadNumber}" />
+                        <Button Command="{Binding ReadCmd}" Content="查询" />
                     </StackPanel>
                     <StackPanel
                         Grid.Row="1"
@@ -48,8 +52,8 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Text="修改后编号:" />
-                        <TextBox Margin="10,0" IsReadOnly="True" />
-                        <Button Content="修改" />
+                        <TextBox Margin="10,0" Text="{Binding EditNumber}" />
+                        <Button Command="{Binding EditCmd}" Content="修改" />
                     </StackPanel>
                 </Grid>
             </Border>
@@ -58,7 +62,13 @@
                 Grid.Row="1"
                 Background="White"
                 BorderBrush="{StaticResource BorderBrush}"
-                BorderThickness="1,0,1,1" />
+                BorderThickness="1,0,1,1">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="Red"
+                    Text="注:查询注射泵地址的时候，只能要查询的泵连接上，其他断开" />
+            </Border>
         </Grid>
     </Grid>
 </Window>

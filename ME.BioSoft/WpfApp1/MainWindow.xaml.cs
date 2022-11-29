@@ -21,11 +21,28 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static byte[] cmdPumpReadAddr = new byte[] { 0xcc, 0x0c, 0x20, 0x00, 0x00, 0xdd };
+
         public MainWindow()
         {
             InitializeComponent();
+            var gt=cmdPumpReadAddr[1].ToString("X2");
+            var iu=Convert.ToInt16(cmdPumpReadAddr[1]);
+        var df = byteToHexStr(cmdPumpReadAddr);
+            //var d = Convert.ToInt16(df);
         }
-
+        public  string byteToHexStr(byte[] bytes)
+        {
+            string returnStr = "";
+            if (bytes != null)
+            {
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    returnStr += bytes[i].ToString("X2");
+                }
+            }
+            return returnStr;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
