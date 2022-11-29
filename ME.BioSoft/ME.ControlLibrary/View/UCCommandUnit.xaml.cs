@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Common;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Reflection;
@@ -447,13 +448,13 @@ namespace ME.ControlLibrary.View
         /// 树显示蒙板
         /// </summary>
         /// <param name="isShow"></param>
-        //public void ShowMaskTree(bool isShow)
-        //{
-        //    if (isShow == true)
-        //        Mask.Visibility = Visibility.Visible;
-        //    else
-        //        Mask.Visibility = Visibility.Collapsed;
-        //}
+        public void ShowMaskTree(bool isShow)
+        {
+            if (isShow == true)
+                MaskTree.Visibility = Visibility.Visible;
+            else
+                MaskTree.Visibility = Visibility.Collapsed;
+        }
         /// <summary>
         /// 是否显示蒙板
         /// </summary>
@@ -1167,17 +1168,26 @@ namespace ME.ControlLibrary.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void MenuZx_Click(object sender, RoutedEventArgs e)
+        public  void MenuZx_Click(object sender, RoutedEventArgs e)
         {
+            SelectItemExec();
+        }
+        private async void SelectItemExec()
+        {
+            btnSingleRun.IsEnabled = false;
+            btnSinglePause.IsEnabled = true;
+            btnSingleStop.IsEnabled = true;
             CommandMessage.Instance.tokenSource = new CancellationTokenSource();
             CommandMessage.Instance.Flag = true;
-            await ExecuteCommand(new object(),true);
+            await ExecuteCommand(new object(), true);
+            btnSingleRun.IsEnabled = true;
+            btnSinglePause.IsEnabled = false;
+            btnSingleStop.IsEnabled = false;
         }
-
         public async Task ExecuteCommand(object sender, bool ismenuexecute)
         {
-            WeakReferenceMessenger.Default.Send(new ShowMask() { IsShow = true });
-            TreeItem selectItem = new TreeItem();
+            ShowMaskTree(true);
+             TreeItem selectItem = new TreeItem();
             if (sender is TreeItem treeViewItem)
             {
                 selectItem = treeViewItem;
@@ -1227,9 +1237,7 @@ namespace ME.ControlLibrary.View
                 }
 
             }
-            WeakReferenceMessenger.Default.Send( new ShowMask() { IsShow=false});
-
-
+            ShowMaskTree(false);
         }
 
         /// <summary>
@@ -1580,6 +1588,37 @@ namespace ME.ControlLibrary.View
             myTreeView.ContextMenu = GetItemRightContextMenu();
         }
 
+        private  void btnSingleRun_Click(object sender, RoutedEventArgs e)
+        {
+            if (MaskTree.Visibility == Visibility.Visible) 
+            {
+                MessageBox.Show("程序运行中,请稍后....！", "提示", 1);
+                return;
+            }
+            SelectItemExec();
+        }
+
+        private void btnSinglePause_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnSinglePause.Content.ToString() == "暂停")
+            {
+                CommandMessage.Instance.Flag = false;
+                btnSinglePause.Content = "继续";
+                ShowMaskTree(false);
+            }
+            else
+            {
+                CommandMessage.Instance.Flag = true;
+                btnSinglePause.Content = "暂停";
+                ShowMaskTree(true);
+            }
+        }
+
+        private void btnSingleStop_Click(object sender, RoutedEventArgs e)
+        {
+            CommandMessage.Instance.tokenSource.Cancel();
+            btnSingleStop.IsEnabled = false;
+        }
     }
     /// <summary>
     /// 树节点数据结构模型

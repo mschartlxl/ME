@@ -67,16 +67,7 @@ namespace ME.ControlLibrary.View
                 }
 
             });
-            WeakReferenceMessenger.Default.Register<ShowMask>(this, (th, me) =>
-            {
-                this.Dispatcher.Invoke(() =>
-                {
 
-                    ShowMaskTree(me.IsShow);
-
-                });
-
-            });
 
         }
 
@@ -129,17 +120,7 @@ namespace ME.ControlLibrary.View
             else
                 Mask.Visibility = Visibility.Collapsed;
         }
-        /// <summary>
-        /// 显示蒙板
-        /// </summary>
-        /// <param name="isShow"></param>
-        public void ShowMaskTree(bool isShow)
-        {
-            if (isShow == true)
-                MaskTree.Visibility = Visibility.Visible;
-            else
-                MaskTree.Visibility = Visibility.Collapsed;
-        }
+
         /// <summary>
         /// 获取数据，待优化
         /// </summary>
@@ -253,21 +234,29 @@ namespace ME.ControlLibrary.View
             System.Windows.Clipboard.Clear();
             System.Windows.Clipboard.SetText(jsonStr);
         }
-
+        private void RuningEnabled()
+        {
+            btnRunAll.IsEnabled = false;
+            btnRunPause.IsEnabled = true;
+            btnRunStop.IsEnabled = true;
+        }
         private async void btnRunAll_Click(object sender, RoutedEventArgs e)
         {
-            if (MaskTree.Visibility == Visibility.Visible)
+            foreach (var t in flowTabControl.Items)
             {
-                MessageBox.Show("运行中.....,请稍后！", "提示", 1);
-                return;
+                var curItem = t as TabItem;
+                var acomm = curItem.Content as UCCommandUnit;
+                if (acomm.MaskTree.Visibility == Visibility.Visible)
+                {
+                    MessageBox.Show("程序运行中,请稍后....！", "提示", 1);
+                    return;
+                }
             }
             richAll.Focus();
             richAll.IsEnabled = false;
             pogess.Value = 0;
             actcount = 0;
-            btnRunAll.IsEnabled = false;
-            btnRunPause.IsEnabled = true;
-            btnRunStop.IsEnabled = true;
+            RuningEnabled();
             CommandMessage.Instance.tokenSource = new CancellationTokenSource();
             CommandMessage.Instance.Flag = true;
             var richStart = richAll.Document.ContentStart;
@@ -282,7 +271,7 @@ namespace ME.ControlLibrary.View
                 textRange.Select(richStart.GetPositionAtOffset(itemindex), richStart.GetPositionAtOffset(itemindex + 1));
                 itemindex++;
                 textRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
-                textRange.ApplyPropertyValue(TextElement.FontWeightProperty,FontWeights.Bold);
+                textRange.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
                 foreach (var t in flowTabControl.Items)
                 {
                     var curItem = t as TabItem;
@@ -331,7 +320,7 @@ namespace ME.ControlLibrary.View
         /// </summary>
         /// <param name="listAll"></param>
         /// <returns></returns>
-        private double CalcCount(List<char> listAll) 
+        private double CalcCount(List<char> listAll)
         {
             double allcount = 0;
             foreach (var item in listAll)
@@ -345,39 +334,63 @@ namespace ME.ControlLibrary.View
                         // curItem.IsSelected = true;
                         foreach (var itemx in acomm.myTreeView.Items.SourceCollection)
                         {
-
                             var selectItem = itemx as TreeItem;
-                            NodeInfo selectNodeInfo = selectItem.Tag;
-                            if (selectNodeInfo != null)
-                            {
-                                switch (selectNodeInfo.csNodeMode)
-                                {
-                                    case NodeModel.LoopMode:
-                                        {
-                                            LoopMode loopMode = selectNodeInfo.objParent as LoopMode;
-                                            int CycleNumber = loopMode.CycleNumber;
-                                            allcount++;
-                                            do
-                                            {
-
-                                                allcount += selectItem.Children.Count;
-                                                CycleNumber--;
-                                            } while (CycleNumber >= 1);
-                                            break;
-
-                                        }
-                                    default:
-                                        allcount++;
-                                        break;
-                                }
-
-                            }
+                            CycleCount(selectItem, ref allcount);
                         }
                     }
                 }
 
             }
             return allcount;
+        }
+        /// <summary>
+        /// 循环计算Count
+        /// </summary>
+        /// <param name="selectItem"></param>
+        /// <param name="allcount"></param>
+        private void CycleCount(TreeItem selectItem, ref double allcount)
+        {
+
+            NodeInfo selectNodeInfo = selectItem.Tag;
+            if (selectNodeInfo != null)
+            {
+                switch (selectNodeInfo.csNodeMode)
+                {
+                    case NodeModel.LoopMode:
+                        {
+                            LoopMode loopMode = selectNodeInfo.objParent as LoopMode;
+                            int CycleNumber = loopMode.CycleNumber;
+                            allcount++;
+                            do
+                            {
+
+                                //allcount += selectItem.Children.Count;
+                                foreach (var child in selectItem.Children)
+                                {
+                                    if (child.Tag != null)
+                                    {
+                                        if (child.Tag.csNodeMode == NodeModel.LoopMode)
+                                        {
+                                            CycleCount(child, ref allcount);
+                                        }
+                                        else
+                                        {
+                                            allcount++;
+                                        }
+                                    }
+                                }
+                                CycleNumber--;
+                            } while (CycleNumber >= 1);
+                            break;
+
+                        }
+                    default:
+                        allcount++;
+                        break;
+                }
+
+            }
+
         }
         private void btnRunPause_Click(object sender, RoutedEventArgs e)
         {
@@ -391,11 +404,6 @@ namespace ME.ControlLibrary.View
                 CommandMessage.Instance.Flag = true;
                 btnRunPause.Content = "暂停";
             }
-        }
-
-        private void btnRunConitue_Click(object sender, RoutedEventArgs e)
-        {
-            CommandMessage.Instance.Flag = true;
         }
 
         private void btnRunStop_Click(object sender, RoutedEventArgs e)
@@ -424,16 +432,16 @@ namespace ME.ControlLibrary.View
 
             };
             setWindow.ShowDialog();
-           
+
             ShowMask(false);
         }
     }
     public class MessageInfo
     {
         public bool Flag { get; set; }
-        public bool IsShow { get; set; }
+
     }
-    public class ShowMask
+    public class ShowInfo
     {
         public bool IsShow { get; set; }
     }

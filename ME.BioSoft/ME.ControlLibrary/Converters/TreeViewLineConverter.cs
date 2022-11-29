@@ -20,6 +20,7 @@ namespace ME.ControlLibrary.Converters
             TreeViewItem item = values[2] as TreeViewItem;
             if (item == null) { return double.NaN;  }
             ItemsControl ic = ItemsControl.ItemsControlFromItemContainer(item);
+            if (ic == null) { return double.NaN; }
             bool isLastOne = ic.ItemContainerGenerator.IndexFromContainer(item) == ic.Items.Count - 1;
 
             Rectangle rectangle = values[3] as Rectangle;

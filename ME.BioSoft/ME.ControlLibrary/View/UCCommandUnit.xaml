@@ -251,6 +251,26 @@
                     hc:IconElement.Width="20"
                     Click="btnMoveDown_Click"
                     Style="{StaticResource NomalButton}" />
+                <Button
+                    x:Name="btnSingleRun"
+                    Margin="10"
+                    Click="btnSingleRun_Click"
+                    Content="运行"
+                    Style="{StaticResource NomalButton}" />
+                <Button
+                    x:Name="btnSinglePause"
+                    Margin="10"
+                    Click="btnSinglePause_Click"
+                    Content="暂停"
+                    IsEnabled="False"
+                    Style="{StaticResource NomalButton}" />
+                <Button
+                    x:Name="btnSingleStop"
+                    Margin="10"
+                    Click="btnSingleStop_Click"
+                    Content="停止"
+                    IsEnabled="False"
+                    Style="{StaticResource NomalButton}" />
             </StackPanel>
         </Border>
         <TreeView
@@ -333,6 +353,11 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-
+        <Grid
+            Name="MaskTree"
+            Grid.Row="1"
+            Background="#000"
+            Opacity="0.5"
+            Visibility="Collapsed" />
     </Grid>
 </UserControl>

@@ -135,12 +135,7 @@
                             <local:UCCommandUnit x:Name="cmdACT" />
                         </TabItem>
                     </TabControl>
-                    <Grid
-                        Name="MaskTree"
-                        Grid.Row="1"
-                        Background="#000"
-                        Opacity="0.5"
-                        Visibility="Collapsed" />
+                   
                 </Grid>
             </Grid>
             <GridSplitter
