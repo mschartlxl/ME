@@ -254,8 +254,7 @@ namespace ME.ControlLibrary.View
             }
             richAll.Focus();
             richAll.IsEnabled = false;
-            pogess.Value = 0;
-            actcount = 0;
+
             RuningEnabled();
             CommandMessage.Instance.tokenSource = new CancellationTokenSource();
             CommandMessage.Instance.Flag = true;
@@ -264,7 +263,7 @@ namespace ME.ControlLibrary.View
             textRange.ClearAllProperties();
             listAll = textRange.Text.Replace("\n", "").Replace(" ", "").Replace("\t", "").Replace("\r", "").ToCharArray().ToList();
             var itemindex = 2;
-            pogess.Maximum = CalcCount(listAll);
+        
             var tabcount = 0;
             foreach (var item in listAll)
             {
@@ -277,10 +276,13 @@ namespace ME.ControlLibrary.View
                     var curItem = t as TabItem;
                     if (curItem.Header.ToString() == item.ToString())
                     {
+                        pogess.Value = 0;
+                        actcount = 0;
                         tabcount++;
                         txtExecuInfo.Text = $"第{tabcount}个";
                         var acomm = curItem.Content as UCCommandUnit;
                         curItem.IsSelected = true;
+                        pogess.Maximum = CalcCount(acomm);
                         foreach (var itemx in acomm.myTreeView.Items.SourceCollection)
                         {
                             var selectItem = itemx as TreeItem;
@@ -320,26 +322,13 @@ namespace ME.ControlLibrary.View
         /// </summary>
         /// <param name="listAll"></param>
         /// <returns></returns>
-        private double CalcCount(List<char> listAll)
+        private double CalcCount(UCCommandUnit acomm)
         {
             double allcount = 0;
-            foreach (var item in listAll)
+            foreach (var itemx in acomm.myTreeView.Items.SourceCollection)
             {
-                foreach (var t in flowTabControl.Items)
-                {
-                    var curItem = t as TabItem;
-                    if (curItem.Header.ToString() == item.ToString())
-                    {
-                        var acomm = curItem.Content as UCCommandUnit;
-                        // curItem.IsSelected = true;
-                        foreach (var itemx in acomm.myTreeView.Items.SourceCollection)
-                        {
-                            var selectItem = itemx as TreeItem;
-                            CycleCount(selectItem, ref allcount);
-                        }
-                    }
-                }
-
+                var selectItem = itemx as TreeItem;
+                CycleCount(selectItem, ref allcount);
             }
             return allcount;
         }
