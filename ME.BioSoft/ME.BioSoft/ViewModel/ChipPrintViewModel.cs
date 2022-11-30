@@ -3,14 +3,18 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using HandyControl.Controls;
 using LinqToDB.Common;
+using ME.BaseCore.Instrument;
+using ME.BioSoft.Model;
 using ME.ControlLibrary.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 using MessageBox = ME.ControlLibrary.View.UMessageBox;
 namespace ME.BioSoft.ViewModel
@@ -23,19 +27,25 @@ namespace ME.BioSoft.ViewModel
         public static int timespan = 120;
         public ChipPrintViewModel()
         {
-            Init();
+            InitPlatForm();
+            InitZAxis();
+            this.IsActive = true;
+        }
+        private void InitPlatForm()
+        {
+            PlatForm();
+            PlatFormFiled();
+        }
+        private void PlatFormFiled ()
+        {
             SendSportCmd = new RelayCommand(SendSport);
             FindOriginCmd = new RelayCommand(FindOrigin);
             BreakEnableCmd = new RelayCommand(BreakEnable);
             EmergencyStopCmd = new RelayCommand(EmergencyStop);
             EnableCmd = new RelayCommand(Enable);
             ConnectCmd = new RelayCommand(Connect);
-            this.IsActive = true;
         }
-        private void Init()
-        {
-            PlatForm();
-        }
+        #region 平台调试
         private void PlatForm()
         {
             if (connectText == "连接")
@@ -340,6 +350,35 @@ namespace ME.BioSoft.ViewModel
         {
             PlatForm();
         }
+        #endregion
+        #region Z轴调试
+        private ObservableCollection<ZAxisItem> zAxisItems;
+        /// <summary>
+        /// 
+        /// </summary>
+        public ObservableCollection<ZAxisItem> ZAxisItems
+        {
+            get => zAxisItems;
+            set
+            {
+                zAxisItems = value;
+                SetProperty(ref zAxisItems, value);
+            }
+        }
+        private void InitZAxis()
+        {
+            ZAxisFiled();
+        }
+        private void ZAxisFiled() 
+        {
+            ZAxisItems = new ObservableCollection<ZAxisItem>();
+           var zlist= ListConfig.GetInstance().ListZAxisNumber;
+            foreach (var z in zlist) 
+            {
+                ZAxisItems.Add(new ZAxisItem() { IsCheck=true,CkContent=$"Z{z.Type}"});
+            }
+        }
+        #endregion
         public void Receive(string message)
         {
 

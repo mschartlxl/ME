@@ -39,7 +39,7 @@
                         Margin="20,5"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="当前泵编号:" />
+                        <TextBlock VerticalAlignment="Center" Text="当前(泵或旋切阀)编号:" />
                         <TextBox
                             Margin="10,0"
                             IsEnabled="False"
@@ -51,7 +51,7 @@
                         Margin="20,5"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="修改后编号:" />
+                        <TextBlock VerticalAlignment="Center" Text="修改后(泵或旋切阀)编号:" />
                         <TextBox Margin="10,0" Text="{Binding EditNumber}" />
                         <Button Command="{Binding EditCmd}" Content="修改" />
                     </StackPanel>

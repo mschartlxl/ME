@@ -214,16 +214,108 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             Width="80"
-                            Command="{Binding EnableCmd}"
-                            Content="使能" />
+                            Command="{Binding ConnectCmd}"
+                            Content="{Binding ConnectText}" />
                         <Button
                             Grid.Row="1"
                             Grid.Column="2"
                             Width="80"
-                            Command="{Binding ConnectCmd}"
-                            Content="{Binding ConnectText}" />
+                            Command="{Binding EnableCmd}"
+                            Content="使能" />
+
                     </Grid>
 
+                </Grid>
+            </Border>
+            <Border
+                Grid.Row="1"
+                Height="200"
+                Margin="2"
+                VerticalAlignment="Top"
+                Background="#D5D5D5"
+                BorderBrush="#1f62cb"
+                BorderThickness="1"
+                CornerRadius="3,3,3,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ItemsControl
+                        Grid.ColumnSpan="3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ItemsSource="{Binding ZAxisItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <CheckBox
+                                        Margin="10,0,10,0"
+                                        Content="{Binding CkContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        IsChecked="{Binding IsCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="距离:" />
+                        <TextBox Width="120" Text="{Binding ZAxisDistance}" />
+                    </StackPanel>
+                    <!--  第三行  -->
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Width="80"
+                        Command="{Binding BreakEnableCmd}"
+                        Content="归零" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="80"
+                        Command="{Binding BreakEnableCmd}"
+                        Content="设置速度" />
+                    <Button
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Width="80"
+                        Command="{Binding BreakEnableCmd}"
+                        Content="读位置" />
+                    <!--  第四行  -->
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Width="80"
+                        Command="{Binding BreakEnableCmd}"
+                        Content="开机使能" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Width="80"
+                        Command="{Binding BreakEnableCmd}"
+                        Content="移动" />
+                    <Button
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Width="80"
+                        Command="{Binding BreakEnableCmd}"
+                        Content="停止" />
                 </Grid>
             </Border>
         </Grid>

@@ -37,6 +37,7 @@ namespace ME.BaseCore.Instrument
         public  List<ComBoxItem> ListPumpNumber { get; set; } = new List<ComBoxItem>();
         public List<ComBoxItem> ListReCircleNumber { get; set; } = new List<ComBoxItem>();
         public List<ComBoxItem> ListSwitchNumber { get; set; } = new List<ComBoxItem>();
+        public List<ComBoxItem> ListZAxisNumber { get; set; } = new List<ComBoxItem>();
         public  void ReadConfig()
         {
             var serialcfg = AppDomain.CurrentDomain.BaseDirectory + "Config/ConfigList.xml";
@@ -59,6 +60,11 @@ namespace ME.BaseCore.Instrument
                     {
                         ListSwitchNumber = GetElement(instrumentEE);
                     }
+                    if (paramNum == "ZAxis")
+                    {
+                        ListZAxisNumber = GetElement(instrumentEE);
+                    }
+                    
                 }
             }
         }

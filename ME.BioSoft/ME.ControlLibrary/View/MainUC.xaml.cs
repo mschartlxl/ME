@@ -417,7 +417,7 @@ namespace ME.ControlLibrary.View
             SetWindow setWindow = new SetWindow
             {
                 Owner = _Owner,
-                Title = "添加指令"
+                Title = "设置泵或旋切阀编号"
 
             };
             setWindow.ShowDialog();
