@@ -283,38 +283,38 @@
                         Grid.Row="2"
                         Grid.Column="0"
                         Width="80"
-                        Command="{Binding BreakEnableCmd}"
+                        Command="{Binding ZAxisFindZeroCmd}"
                         Content="归零" />
                     <Button
                         Grid.Row="2"
                         Grid.Column="1"
                         Width="80"
-                        Command="{Binding BreakEnableCmd}"
+                        Command="{Binding ZAxisSetSpeedCmd}"
                         Content="设置速度" />
                     <Button
                         Grid.Row="2"
                         Grid.Column="2"
                         Width="80"
-                        Command="{Binding BreakEnableCmd}"
+                        Command="{Binding ZAxisReadPosCmd}"
                         Content="读位置" />
                     <!--  第四行  -->
                     <Button
                         Grid.Row="3"
                         Grid.Column="0"
                         Width="80"
-                        Command="{Binding BreakEnableCmd}"
+                        Command="{Binding ZAxisEnabledCmd}"
                         Content="开机使能" />
                     <Button
                         Grid.Row="3"
                         Grid.Column="1"
                         Width="80"
-                        Command="{Binding BreakEnableCmd}"
+                        Command="{Binding ZAxisMoveCmd}"
                         Content="移动" />
                     <Button
                         Grid.Row="3"
                         Grid.Column="2"
                         Width="80"
-                        Command="{Binding BreakEnableCmd}"
+                        Command="{Binding ZAxisStopCmd}"
                         Content="停止" />
                 </Grid>
             </Border>

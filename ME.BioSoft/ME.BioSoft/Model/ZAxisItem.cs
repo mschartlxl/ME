@@ -13,6 +13,18 @@ namespace ME.BioSoft.Model
         {
 
         }
+        private int id;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Id
+        {
+            get => id;
+            set
+            {
+                SetProperty(ref id, value);
+            }
+        }
         private bool isCheck = true;
         /// <summary>
         /// 
@@ -22,7 +34,6 @@ namespace ME.BioSoft.Model
             get => isCheck;
             set
             {
-                isCheck = value;
                 SetProperty(ref isCheck, value);
             }
         }
@@ -35,7 +46,6 @@ namespace ME.BioSoft.Model
             get => ckContent;
             set
             {
-                ckContent = value;
                 SetProperty(ref ckContent,value);
             }
         }

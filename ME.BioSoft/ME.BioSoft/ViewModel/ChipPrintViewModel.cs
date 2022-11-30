@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using HandyControl.Controls;
 using LinqToDB.Common;
+using ME.BaseCore;
 using ME.BaseCore.Instrument;
 using ME.BioSoft.Model;
 using ME.ControlLibrary.Model;
@@ -34,9 +35,9 @@ namespace ME.BioSoft.ViewModel
         private void InitPlatForm()
         {
             PlatForm();
-            PlatFormFiled();
+            PlatFormCmd();
         }
-        private void PlatFormFiled ()
+        private void PlatFormCmd ()
         {
             SendSportCmd = new RelayCommand(SendSport);
             FindOriginCmd = new RelayCommand(FindOrigin);
@@ -365,9 +366,36 @@ namespace ME.BioSoft.ViewModel
                 SetProperty(ref zAxisItems, value);
             }
         }
+        private int zAxisDistance;
+
+        public int ZAxisDistance
+        {
+            get { return zAxisDistance; }
+            set
+            {
+                SetProperty(ref zAxisDistance, value);
+            }
+        }
+        public ICommand ZAxisFindZeroCmd { get; private set; }
+        public ICommand ZAxisSetSpeedCmd { get; private set; }
+        public ICommand ZAxisReadPosCmd { get; private set; }
+        public ICommand ZAxisEnabledCmd { get; private set; }
+        public ICommand ZAxisMoveCmd { get; private set; }
+        public ICommand ZAxisStopCmd { get; private set; }
         private void InitZAxis()
         {
             ZAxisFiled();
+            InitZAxisCmd();
+        }
+        private void InitZAxisCmd() 
+        {
+            ZAxisFindZeroCmd = new RelayCommand(ZAxisFindZero);
+            ZAxisSetSpeedCmd = new RelayCommand(ZAxisSetSpeed);
+            ZAxisReadPosCmd = new RelayCommand(ZAxisReadPos);
+            ZAxisEnabledCmd = new RelayCommand(ZAxisEnabled);
+            ZAxisMoveCmd = new RelayCommand(ZAxisMove);
+            ZAxisStopCmd = new RelayCommand(ZAxisStop);
+
         }
         private void ZAxisFiled() 
         {
@@ -375,8 +403,44 @@ namespace ME.BioSoft.ViewModel
            var zlist= ListConfig.GetInstance().ListZAxisNumber;
             foreach (var z in zlist) 
             {
-                ZAxisItems.Add(new ZAxisItem() { IsCheck=true,CkContent=$"Z{z.Type}"});
+                ZAxisItems.Add(new ZAxisItem() { IsCheck=true,CkContent=$"Z{z.Type}",Id=z.Type});
             }
+        }
+        private void ZAxisFindZero() 
+        {
+            if (!UtilsFun._AbtInstrument.SerialSwitch.IsOpen)
+            {
+                MessageBox.Show($"请连接设备", "提示", 1);
+                return;
+            }
+            foreach (var item in ZAxisItems)
+            {
+                if (item.IsCheck) 
+                {
+                    //SendZAxisMotorFindZero(1);
+                }
+            }
+
+        }
+        private void ZAxisSetSpeed()
+        {
+
+        }
+        private void ZAxisReadPos()
+        {
+
+        }
+        private void ZAxisEnabled()
+        {
+
+        }
+        private void ZAxisMove()
+        {
+
+        }
+        private void ZAxisStop()
+        {
+
         }
         #endregion
         public void Receive(string message)
