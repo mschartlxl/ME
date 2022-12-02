@@ -64,6 +64,13 @@ namespace ME.BioSoft
            
                 _instance = new AppContext();
                 _stepInfo.InitIS();
+                var ds = ABTInstrument.float2String(6000).ToByteArray(16);
+               var ddsds= UInt32.Parse("45BB8000", System.Globalization.NumberStyles.AllowHexSpecifier);
+                var di = BitConverter.GetBytes(ddsds);
+                var g = new byte[] { 0x00, 0x80, 0xbb, 0x45 };
+                var bg=BitConverter.ToSingle(g,0);
+
+                //actdistance = Convert.ToInt32(strlist[4] + strlist[3], 16);
                 //GlobalVariables.Instance.InitReset();
                 if (!UtilsFun._AbtInstrument.IsOpen(UtilsFun._AbtInstrument.SerialPump) || !UtilsFun._AbtInstrument.IsOpen(UtilsFun._AbtInstrument.SerialSwitch))
                 {

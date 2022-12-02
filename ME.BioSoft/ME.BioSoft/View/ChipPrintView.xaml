@@ -229,7 +229,7 @@
             </Border>
             <Border
                 Grid.Row="1"
-                Height="200"
+                Height="250"
                 Margin="2"
                 VerticalAlignment="Top"
                 Background="#D5D5D5"
@@ -242,6 +242,8 @@
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
+                        <RowDefinition />
+
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -271,51 +273,87 @@
                     </ItemsControl>
                     <StackPanel
                         Grid.Row="1"
-                        Grid.ColumnSpan="3"
-                        HorizontalAlignment="Center"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="速度:" />
+                        <TextBox Width="100" Text="{Binding ZAxisSpeed}" />
+                        <Button
+                            Width="80"
+                            Margin="3,0,0,0"
+                            Command="{Binding ZAxisSetSpeedCmd}"
+                            Content="设置速度" />
+                    </StackPanel>
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="80"
+                        Margin="3,0,0,0"
+                        Command="{Binding ZAxisReadSpeedCmd}"
+                        Content="读取速度" />
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Text="距离:" />
-                        <TextBox Width="120" Text="{Binding ZAxisDistance}" />
+                        <TextBox Width="100" Text="{Binding ZAxisDistance}" />
+                        <Button
+                            Width="80"
+                            Margin="3,0,0,0"
+                            Command="{Binding ZAxisMoveCmd}"
+                            Content="移动" />
                     </StackPanel>
-                    <!--  第三行  -->
-                    <Button
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Width="80"
-                        Command="{Binding ZAxisFindZeroCmd}"
-                        Content="归零" />
-                    <Button
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Width="80"
-                        Command="{Binding ZAxisSetSpeedCmd}"
-                        Content="设置速度" />
                     <Button
                         Grid.Row="2"
                         Grid.Column="2"
                         Width="80"
                         Command="{Binding ZAxisReadPosCmd}"
                         Content="读位置" />
-                    <!--  第四行  -->
-                    <Button
+                    <!--  第三行  -->
+                    <Grid
                         Grid.Row="3"
-                        Grid.Column="0"
-                        Width="80"
-                        Command="{Binding ZAxisEnabledCmd}"
-                        Content="开机使能" />
-                    <Button
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Width="80"
-                        Command="{Binding ZAxisMoveCmd}"
-                        Content="移动" />
-                    <Button
-                        Grid.Row="3"
-                        Grid.Column="2"
-                        Width="80"
-                        Command="{Binding ZAxisStopCmd}"
-                        Content="停止" />
+                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Width="80"
+                            Command="{Binding ZAxisEnabledCmd}"
+                            Content="使能" />
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Width="80"
+                            Command="{Binding ZAxisFindZeroCmd}"
+                            Content="归零" />
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Width="80"
+                            Command="{Binding ZAxisNoEnabledCmd}"
+                            Content="失能" />
+
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="80"
+                            Command="{Binding ZAxisStopCmd}"
+                            Content="停止" />
+
+                    </Grid>
+
                 </Grid>
             </Border>
         </Grid>
