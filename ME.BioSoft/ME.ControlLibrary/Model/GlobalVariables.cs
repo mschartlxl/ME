@@ -62,7 +62,7 @@ namespace ME.ControlLibrary.Model
             get => _TreeItemCopy;
             set { _TreeItemCopy = value; }
         }
-        public void InitReset() 
+        public void InitReset(bool flag) 
         {
             System.Func<bool> cancelFun = () =>
             {
@@ -71,6 +71,30 @@ namespace ME.ControlLibrary.Model
             AllPumpReset(cancelFun);
             AllReCircleReset(cancelFun);
             AllSwitchReset(cancelFun);
+            if (flag) 
+            {
+                AllZAxisReset(cancelFun);
+            }
+         
+        }
+        private void AllZAxisReset(Func<bool> cancelFun)
+        {
+            List<Task> tasklist = new List<Task>();
+            var zlist = ListConfig.GetInstance().ListZAxisNumber;
+            foreach (var z in zlist)
+            {
+                byte[] senddata = InstructionConfig.cmdZAxisReset;
+                senddata[0] = Convert.ToByte(z.Type.ToString("X2"), 16);
+                var crcdata = CRC.CRC16(senddata);
+                var senddatanew = senddata.ToList();
+                senddatanew.AddRange(crcdata.Reverse());
+                var temps = senddatanew.ToArray().Clone() as byte[];
+                tasklist.Add(Task.Run(() =>
+                {
+                    UtilsFun._AbtInstrument.Send_16(cancelFun, temps, true, UtilsFun._AbtInstrument.SerialSwitch, 5);
+                }));
+            }
+            Task.WaitAll(tasklist.ToArray());
         }
         /// <summary>
         /// 所有电磁阀复位

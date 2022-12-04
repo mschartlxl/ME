@@ -52,7 +52,6 @@ namespace ME.ControlLibrary.View
             _Owner = owner;
             listview.ItemsSource = CommandMessage.Instance.Messages;
             _Owner.Closing += _Owner_Closing;
-            //var dddd=  PlatformActionDAL.Instance.SearchMany(null);
             System.Windows.Forms.Label.CheckForIllegalCrossThreadCalls = false;
             WeakReferenceMessenger.Default.Register<MessageInfo>(this, (th, me) =>
             {
@@ -263,7 +262,7 @@ namespace ME.ControlLibrary.View
             textRange.ClearAllProperties();
             listAll = textRange.Text.Replace("\n", "").Replace(" ", "").Replace("\t", "").Replace("\r", "").ToCharArray().ToList();
             var itemindex = 2;
-        
+
             var tabcount = 0;
             foreach (var item in listAll)
             {
@@ -403,7 +402,7 @@ namespace ME.ControlLibrary.View
         }
         private void btnInit_Click(object sender, RoutedEventArgs e)
         {
-            GlobalVariables.Instance.InitReset();
+            GlobalVariables.Instance.InitReset(false);
         }
 
         private void menuBtnClear_Click(object sender, RoutedEventArgs e)

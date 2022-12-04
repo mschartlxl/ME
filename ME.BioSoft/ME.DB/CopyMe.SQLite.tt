@@ -38,7 +38,7 @@
 
 	NamespaceName = "ME.DB";
 
-	LoadSQLiteMetadata(@"C:\ME.BioSoft\ME.BioSoft\bin\Debug", "MEDB.db3");
+	LoadSQLiteMetadata(@"C:\Work\ME.BioSoft\ME.BioSoft\bin\Debug", "ME.db3");
 //	LoadSQLiteMetadata(string connectionString);
 
 	GenerateModel();

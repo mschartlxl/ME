@@ -67,6 +67,7 @@ namespace ME.BaseCore
                 return abtInstrument;
             }
         }
+
         /// <summary>
         /// 获取时间ID
         /// </summary>

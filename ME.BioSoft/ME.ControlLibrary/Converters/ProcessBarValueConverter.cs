@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Threading;
 
 namespace ME.ControlLibrary.Converters
 {
@@ -12,6 +13,7 @@ namespace ME.ControlLibrary.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
+            
             if (values.Length != 0&&values.Length==2) 
             {
                 double valueact = 0;

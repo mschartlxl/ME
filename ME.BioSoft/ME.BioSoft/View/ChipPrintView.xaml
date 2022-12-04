@@ -2,6 +2,7 @@
     x:Class="ME.BioSoft.View.ChipPrintView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviour="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="clr-namespace:HandyControl.Controls;assembly=HandyControl"
     xmlns:local="clr-namespace:ME.BioSoft.View"
@@ -25,31 +26,57 @@
 
     <Grid Background="#F0F0F0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="1.5*" />
-            <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Border
-                Margin="2"
-                Background="#D5D5D5"
-                BorderBrush="#1f62cb"
-                BorderThickness="1"
-                CornerRadius="3,3,3,0">
-                <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="1"
+            Margin="2"
+            Background="#D5D5D5"
+            BorderBrush="#1f62cb"
+            BorderThickness="1"
+            CornerRadius="3,3,3,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <CheckBox
+                    HorizontalAlignment="Center"
+                    Content="X轴"
+                    IsChecked="{Binding XAxisIsCheck}" />
+                <CheckBox
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    Content="Y轴"
+                    IsChecked="{Binding YAxisIsCheck}" />
+                <CheckBox
+                    Grid.Column="2"
+                    HorizontalAlignment="Center"
+                    Content="R轴"
+                    IsChecked="{Binding RAxisIsCheck}" />
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="3">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition />
+                        <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
@@ -59,304 +86,410 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <CheckBox
-                        HorizontalAlignment="Center"
-                        Content="X轴"
-                        IsChecked="{Binding XAxisIsCheck}" />
-                    <CheckBox
+                    <!--  第一行  -->
+                    <TextBlock
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="加速度" />
+                    <TextBox
                         Grid.Column="1"
-                        HorizontalAlignment="Center"
-                        Content="Y轴"
-                        IsChecked="{Binding YAxisIsCheck}" />
-                    <CheckBox
-                        Grid.Column="2"
-                        HorizontalAlignment="Center"
-                        Content="R轴"
-                        IsChecked="{Binding RAxisIsCheck}" />
-                    <Grid
-                        Grid.Row="1"
-                        Grid.RowSpan="2"
-                        Grid.ColumnSpan="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <!--  第一行  -->
-                        <TextBlock
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Text="加速度" />
-                        <TextBox
-                            Grid.Column="1"
-                            Width="100"
-                            VerticalAlignment="Center"
-                            Text="{Binding PlusSpeed}" />
+                        Width="100"
+                        VerticalAlignment="Center"
+                        Text="{Binding PlusSpeed}" />
 
-                        <TextBlock
-                            Grid.Column="2"
-                            VerticalAlignment="Center"
-                            Text="pulsel/s^2" />
-                        <!--  第二行  -->
-                        <TextBlock
-                            Grid.Row="1"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Text="减速度" />
-                        <TextBox
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Width="100"
-                            VerticalAlignment="Center"
-                            Text="{Binding ReduceSpeed}" />
-                        <TextBlock
-                            Grid.Row="1"
-                            Grid.Column="2"
-                            VerticalAlignment="Center"
-                            Text="pulsel/s^2" />
-                        <!--  第三行  -->
-                        <TextBlock
-                            Grid.Row="2"
-                            Grid.Column="0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Text="速度" />
-                        <TextBox
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            Width="100"
-                            VerticalAlignment="Center"
-                            Text="{Binding Speed}" />
-                        <TextBlock
-                            Grid.Row="2"
-                            Grid.Column="2"
-                            VerticalAlignment="Center"
-                            Text="pulsel/s" />
-                        <!--  第四行  -->
-                        <TextBlock
-                            Grid.Row="3"
-                            Grid.Column="0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Text="距离" />
-                        <TextBox
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            Width="100"
-                            VerticalAlignment="Center"
-                            Text="{Binding Length}" />
-                        <TextBlock
-                            Grid.Row="3"
-                            Grid.Column="2"
-                            VerticalAlignment="Center"
-                            Text="pulsel" />
-                        <!--  第五行  -->
-                        <TextBlock
-                            Grid.Row="4"
-                            Grid.Column="0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Text="脉冲当量" />
-                        <TextBox
-                            Grid.Row="4"
-                            Grid.Column="1"
-                            Width="100"
-                            VerticalAlignment="Center"
-                            Text="{Binding Pulse}" />
-                        <TextBlock
-                            Grid.Row="4"
-                            Grid.Column="2"
-                            VerticalAlignment="Center"
-                            Text="p/mm" />
-                    </Grid>
-                    <Grid
+                    <TextBlock
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Text="pulsel/s^2" />
+                    <!--  第二行  -->
+                    <TextBlock
+                        Grid.Row="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="减速度" />
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="100"
+                        VerticalAlignment="Center"
+                        Text="{Binding ReduceSpeed}" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Text="pulsel/s^2" />
+                    <!--  第三行  -->
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="速度" />
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="100"
+                        VerticalAlignment="Center"
+                        Text="{Binding Speed}" />
+                    <TextBlock
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Text="pulsel/s" />
+                    <!--  第四行  -->
+                    <TextBlock
                         Grid.Row="3"
                         Grid.Column="0"
-                        Grid.ColumnSpan="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button
-                            Width="80"
-                            Command="{Binding SendSportCmd}"
-                            Content="发送运动" />
-                        <Button
-                            Grid.Column="1"
-                            Width="80"
-                            Command="{Binding FindOriginCmd}"
-                            Content="找原点"
-                            IsEnabled="{Binding FindOriginEnable}" />
-                        <Button
-                            Grid.Column="2"
-                            Width="80"
-                            Command="{Binding BreakEnableCmd}"
-                            Content="断使能" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Width="80"
-                            Command="{Binding EmergencyStopCmd}"
-                            Content="急停" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Width="80"
-                            Command="{Binding ConnectCmd}"
-                            Content="{Binding ConnectText}" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="2"
-                            Width="80"
-                            Command="{Binding EnableCmd}"
-                            Content="使能" />
-
-                    </Grid>
-
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="距离" />
+                    <TextBox
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Width="100"
+                        VerticalAlignment="Center"
+                        Text="{Binding Length}" />
+                    <TextBlock
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Text="pulsel" />
+                    <!--  第五行  -->
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Text="脉冲当量" />
+                    <TextBox
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Width="100"
+                        VerticalAlignment="Center"
+                        Text="{Binding Pulse}" />
+                    <TextBlock
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Text="p/mm" />
                 </Grid>
-            </Border>
-            <Border
-                Grid.Row="1"
-                Height="250"
-                Margin="2"
-                VerticalAlignment="Top"
-                Background="#D5D5D5"
-                BorderBrush="#1f62cb"
-                BorderThickness="1"
-                CornerRadius="3,3,3,0">
-                <Grid>
+                <Grid
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <ItemsControl
-                        Grid.ColumnSpan="3"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        ItemsSource="{Binding ZAxisItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <WrapPanel>
-                                    <CheckBox
-                                        Margin="10,0,10,0"
-                                        Content="{Binding CkContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        IsChecked="{Binding IsCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                </WrapPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    <StackPanel
+                    <Button
+                        Width="80"
+                        Command="{Binding SendSportCmd}"
+                        Content="发送运动" />
+                    <Button
+                        Grid.Column="1"
+                        Width="80"
+                        Command="{Binding FindOriginCmd}"
+                        Content="找原点"
+                        IsEnabled="{Binding FindOriginEnable}" />
+                    <Button
+                        Grid.Column="2"
+                        Width="80"
+                        Command="{Binding BreakEnableCmd}"
+                        Content="断使能" />
+                    <Button
                         Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="速度:" />
-                        <TextBox Width="100" Text="{Binding ZAxisSpeed}" />
-                        <Button
-                            Width="80"
-                            Margin="3,0,0,0"
-                            Command="{Binding ZAxisSetSpeedCmd}"
-                            Content="设置速度" />
-                    </StackPanel>
+                        Grid.Column="0"
+                        Width="80"
+                        Command="{Binding EmergencyStopCmd}"
+                        Content="急停" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="80"
+                        Command="{Binding ConnectCmd}"
+                        Content="{Binding ConnectText}" />
                     <Button
                         Grid.Row="1"
                         Grid.Column="2"
                         Width="80"
-                        Margin="3,0,0,0"
-                        Command="{Binding ZAxisReadSpeedCmd}"
-                        Content="读取速度" />
-
-                    <StackPanel
-                        Grid.Row="2"
-                        Grid.ColumnSpan="2"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="距离:" />
-                        <TextBox Width="100" Text="{Binding ZAxisDistance}" />
-                        <Button
-                            Width="80"
-                            Margin="3,0,0,0"
-                            Command="{Binding ZAxisMoveCmd}"
-                            Content="移动" />
-                    </StackPanel>
-                    <Button
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Width="80"
-                        Command="{Binding ZAxisReadPosCmd}"
-                        Content="读位置" />
-                    <!--  第三行  -->
-                    <Grid
-                        Grid.Row="3"
-                        Grid.RowSpan="2"
-                        Grid.ColumnSpan="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Width="80"
-                            Command="{Binding ZAxisEnabledCmd}"
-                            Content="使能" />
-                        <Button
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            Width="80"
-                            Command="{Binding ZAxisFindZeroCmd}"
-                            Content="归零" />
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Width="80"
-                            Command="{Binding ZAxisNoEnabledCmd}"
-                            Content="失能" />
-
-                        <Button
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Width="80"
-                            Command="{Binding ZAxisStopCmd}"
-                            Content="停止" />
-
-                    </Grid>
+                        Command="{Binding EnableCmd}"
+                        Content="使能" />
 
                 </Grid>
-            </Border>
+
+            </Grid>
+        </Border>
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="2"
+            AutoGenerateColumns="False"
+            Background="White"
+            BorderThickness="1"
+            CanUserAddRows="False"
+            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
+            FontSize="14"
+            HeadersVisibility="Column"
+            IsReadOnly="True"
+            ItemsSource="{Binding PlatformActionList}"
+            RowStyle="{StaticResource DataGridRowStyle}"
+            ScrollViewer.CanContentScroll="False"
+            SelectionUnit="FullRow">
+            <behaviour:Interaction.Triggers>
+                <behaviour:EventTrigger EventName="LoadingRow">
+                    <behaviour:CallMethodAction MethodName="DataGrid_LoadingRow" TargetObject="{Binding}" />
+                </behaviour:EventTrigger>
+            </behaviour:Interaction.Triggers>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <!--  全选  -->
+                        <DataTemplate>
+                            <CheckBox
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Command="{Binding DataContext.AllCheckedCmd, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+                                Content="" />
+                        </DataTemplate>
+
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn
+                    Width="60"
+                    Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridRow}}, Path=Header}"
+                    Header="序号" />
+                <DataGridTextColumn
+                    Width="120"
+                    Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                    Header="名称" />
+                <DataGridTextColumn
+                    Width="120"
+                    Binding="{Binding X, UpdateSourceTrigger=PropertyChanged}"
+                    Header="X" />
+                <DataGridTextColumn
+                    Width="120"
+                    Binding="{Binding Y, UpdateSourceTrigger=PropertyChanged}"
+                    Header="Y" />
+                <DataGridTextColumn
+                    Width="120"
+                    Binding="{Binding R, UpdateSourceTrigger=PropertyChanged}"
+                    Header="R" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Z, UpdateSourceTrigger=PropertyChanged}"
+                    Header="Z" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.18*" />
+                <RowDefinition Height="0.18*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="名称" />
+                <TextBox
+                    Width="80"
+                    Margin="5,0"
+                    Text="{Binding CurrentDataGridItem.Name}" />
+                <TextBlock VerticalAlignment="Center" Text="X" />
+                <TextBox
+                    Width="80"
+                    Margin="5,0"
+                    Text="{Binding CurrentDataGridItem.X}" />
+                <TextBlock VerticalAlignment="Center" Text="Y" />
+                <TextBox
+                    Width="80"
+                    Margin="5,0"
+                    Text="{Binding CurrentDataGridItem.Y}" />
+                <TextBlock VerticalAlignment="Center" Text="R" />
+                <TextBox
+                    Width="80"
+                    Margin="5,0"
+                    Text="{Binding CurrentDataGridItem.R}" />
+                <ItemsControl
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    ItemsSource="{Binding ZAxisItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding CkContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox
+                                    Width="80"
+                                    Margin="10,0,10,0"
+                                    Text="{Binding CkTxt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button
+                    Margin="5,0"
+                    Command="{Binding DataGridAddCmd}"
+                    Content="添加" />
+                <Rectangle Width="10" />
+                <Button Margin="5,0" Content="修改" />
+                <Rectangle Width="10" />
+                <Button Margin="5,0" Content="删除" />
+            </StackPanel>
         </Grid>
+
+        <Border
+            Grid.Row="1"
+            Grid.Column="3"
+            Height="300"
+            Margin="2"
+            VerticalAlignment="Center"
+            Background="#D5D5D5"
+            BorderBrush="#1f62cb"
+            BorderThickness="1"
+            CornerRadius="3,3,3,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ItemsControl
+                    Grid.ColumnSpan="3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    ItemsSource="{Binding ZAxisItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <CheckBox
+                                    Margin="10,0,10,0"
+                                    Content="{Binding CkContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    IsChecked="{Binding IsCheck, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="速度:" />
+                    <TextBox Width="100" Text="{Binding ZAxisSpeed}" />
+                    <Button
+                        Width="80"
+                        Margin="3,0,0,0"
+                        Command="{Binding ZAxisSetSpeedCmd}"
+                        Content="设置速度" />
+                </StackPanel>
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Width="80"
+                    Margin="3,0,0,0"
+                    Command="{Binding ZAxisReadSpeedCmd}"
+                    Content="读取速度" />
+
+                <StackPanel
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="距离:" />
+                    <TextBox Width="100" Text="{Binding ZAxisDistance}" />
+                    <Button
+                        Width="80"
+                        Margin="3,0,0,0"
+                        Command="{Binding ZAxisMoveCmd}"
+                        Content="移动" />
+                </StackPanel>
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Width="80"
+                    Command="{Binding ZAxisReadPosCmd}"
+                    Content="读位置" />
+                <!--  第三行  -->
+                <Grid
+                    Grid.Row="3"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Width="80"
+                        Command="{Binding ZAxisEnabledCmd}"
+                        Content="使能" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="80"
+                        Command="{Binding ZAxisFindZeroCmd}"
+                        Content="归零" />
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Width="80"
+                        Command="{Binding ZAxisNoEnabledCmd}"
+                        Content="失能" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="80"
+                        Command="{Binding ZAxisStopCmd}"
+                        Content="停止" />
+
+                </Grid>
+
+            </Grid>
+        </Border>
 
     </Grid>
 </UserControl>

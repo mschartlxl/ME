@@ -806,6 +806,7 @@ namespace ME.ControlLibrary.View
                                     LoopMode loopMode = selectNodeInfo.objParent as LoopMode;
                                     int CycleNumber = loopMode.CycleNumber;
                                     WeakReferenceMessenger.Default.Send(new MessageInfo() { Flag=ismenuexecute});
+                                    selectItem.StrCycleNum = "";
                                     do
                                     {
                                         //循环数

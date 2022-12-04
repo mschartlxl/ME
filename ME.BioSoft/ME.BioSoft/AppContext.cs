@@ -82,7 +82,7 @@ namespace ME.BioSoft
                     }
                     else
                     {
-                        GlobalVariables.Instance.InitReset();
+                        GlobalVariables.Instance.InitReset(true);
                     }
                 }
             }

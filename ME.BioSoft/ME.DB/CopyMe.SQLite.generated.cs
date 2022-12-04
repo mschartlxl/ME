@@ -16,21 +16,21 @@ using LinqToDB.Mapping;
 namespace ME.DB
 {
 	/// <summary>
-	/// Database       : MEDB
-	/// Data Source    : MEDB
+	/// Database       : ME
+	/// Data Source    : ME
 	/// Server Version : 3.24.0
 	/// </summary>
-	public partial class MEDBDB : LinqToDB.Data.DataConnection
+	public partial class MEDB : LinqToDB.Data.DataConnection
 	{
 		public ITable<PlatformAction> PlatformActions { get { return this.GetTable<PlatformAction>(); } }
 
-		public MEDBDB()
+		public MEDB()
 		{
 			InitDataContext();
 			InitMappingSchema();
 		}
 
-		public MEDBDB(string configuration)
+		public MEDB(string configuration)
 			: base(configuration)
 		{
 			InitDataContext();
@@ -44,8 +44,12 @@ namespace ME.DB
 	[Table("PlatformAction")]
 	public partial class PlatformAction
 	{
-		[Column("id"),   PrimaryKey,  NotNull] public string Id   { get; set; } // varchar(36)
-		[Column("name"),    Nullable         ] public string Name { get; set; } // varchar(36)
+		[Column("id"),   PrimaryKey, NotNull] public string Id   { get; set; } // varchar(36)
+		[Column("name"),             NotNull] public string Name { get; set; } // varchar(36)
+		[Column(),                   NotNull] public int    X    { get; set; } // int
+		[Column(),                   NotNull] public int    Y    { get; set; } // int
+		[Column(),                   NotNull] public int    R    { get; set; } // int
+		[Column(),                   NotNull] public object Z    { get; set; } // varchar2
 	}
 
 	public static partial class TableExtensions

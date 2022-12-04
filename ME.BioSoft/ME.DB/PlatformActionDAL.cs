@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Utility.Logger;
+
 
 namespace ME.DB
 {
@@ -45,7 +45,7 @@ namespace ME.DB
             try
             {
                 List<PlatformAction> lst = null;
-                using (var db = new DB.MEDBDB())
+                using (var db = new DB.MEDB())
                 {
                     var data = from n in db.PlatformActions
                                select n;
@@ -58,7 +58,7 @@ namespace ME.DB
             }
             catch (Exception ex)
             {
-                LogHelper.Error($"批量查询标定数据异常：{ex.Message}", ex);
+                //LogHelper.Error($"批量查询标定数据异常：{ex.Message}", ex);
                 return default(IEnumerable<PlatformAction>);
             }
         }

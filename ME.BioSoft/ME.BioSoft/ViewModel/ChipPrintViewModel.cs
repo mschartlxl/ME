@@ -1,12 +1,15 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AutoMapper;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using HandyControl.Controls;
 using LinqToDB.Common;
 using ME.BaseCore;
 using ME.BaseCore.Instrument;
+using ME.BioSoft.AutoMapper;
 using ME.BioSoft.Model;
 using ME.ControlLibrary.Model;
+using ME.DB;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +19,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using MessageBox = ME.ControlLibrary.View.UMessageBox;
@@ -26,11 +31,16 @@ namespace ME.BioSoft.ViewModel
         private string platform = ConfigurationManager.AppSettings["SystemPlatform"].ToString();
         gclib gclib = new gclib();
         bool platStatus = false;
+        /// <summary>
+        /// 对象映射
+        /// </summary>
+        public IMapper mapper;
         public static int timespan = 120;
         public ChipPrintViewModel()
         {
             InitPlatForm();
             InitZAxis();
+            InitDataGrid();
             this.IsActive = true;
         }
         private void InitPlatForm()
@@ -363,7 +373,6 @@ namespace ME.BioSoft.ViewModel
             get => zAxisItems;
             set
             {
-                zAxisItems = value;
                 SetProperty(ref zAxisItems, value);
             }
         }
@@ -463,7 +472,7 @@ namespace ME.BioSoft.ViewModel
                 MessageBox.Show($"请连接设备", "提示", 1);
                 return;
             }
-            foreach (var item in ZAxisItems.Where(t => t.Id == 1))
+            foreach (var item in ZAxisItems)
             {
                 if (item.IsCheck)
                 {
@@ -492,7 +501,7 @@ namespace ME.BioSoft.ViewModel
                 MessageBox.Show($"请连接设备", "提示", 1);
                 return;
             }
-            foreach (var item in ZAxisItems.Where(t => t.Id == 1))
+            foreach (var item in ZAxisItems)
             {
                 if (item.IsCheck)
                 {
@@ -592,7 +601,7 @@ namespace ME.BioSoft.ViewModel
                 MessageBox.Show($"请连接设备", "提示", 1);
                 return;
             }
-            foreach (var item in ZAxisItems.Where(t => t.Id == 1))
+            foreach (var item in ZAxisItems)
             {
                 if (item.IsCheck)
                 {
@@ -666,6 +675,79 @@ namespace ME.BioSoft.ViewModel
                 });
             });
             return taskresult;
+        }
+        #endregion
+        #region
+        private void InitDataGrid()
+        {
+            InitDataGridField();
+            InitData();
+        }
+        private void InitDataGridField()
+        {
+            PlatformActionList = new ObservableCollection<PlatformActionDTO>();
+            AllCheckedCmd = new RelayCommand<bool>(AllChecked);
+            DataGridAddCmd = new RelayCommand(DataGridAdd);
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<OrginalProfile>();
+            });
+            mapper = config.CreateMapper();
+        }
+        private void InitData()
+        {
+            var alldata = PlatformActionDAL.Instance.SearchMany(null);
+            
+            foreach (var data in alldata)
+            {
+                var model = mapper.Map<PlatformActionDTO>(data);
+                PlatformActionList.Add(model);
+            }
+        }
+        public ICommand AllCheckedCmd { get; private set; }
+        public ICommand DataGridAddCmd { get; private set; }
+        private ObservableCollection<PlatformActionDTO> platformActionList;
+        /// <summary>
+        /// 
+        /// </summary>
+        public ObservableCollection<PlatformActionDTO> PlatformActionList
+        {
+            get => platformActionList;
+            set
+            {
+                SetProperty(ref platformActionList, value);
+            }
+        }
+        private PlatformActionDTO currentDataGridItem=new PlatformActionDTO ();
+        public PlatformActionDTO CurrentDataGridItem 
+        {
+            get => currentDataGridItem;
+            set
+            {
+                SetProperty(ref currentDataGridItem, value);
+            }
+        }
+        public void AllChecked(bool flag)
+        {
+            foreach (var item in PlatformActionList)
+            {
+                item.IsChecked = flag;
+            }
+
+        }
+        private void DataGridAdd()
+        {
+            var z = "";
+            foreach (var item in ZAxisItems)
+            {
+               z+=  $"{item.CkContent}:{item.CkTxt},";
+            }
+            CurrentDataGridItem.Z= z.TrimEnd(',');
+            PlatformActionList.Add(CurrentDataGridItem);
+        }
+        public void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = e.Row.GetIndex() + 1;
         }
         #endregion
         public void Receive(string message)

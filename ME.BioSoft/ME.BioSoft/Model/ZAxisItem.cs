@@ -49,6 +49,18 @@ namespace ME.BioSoft.Model
                 SetProperty(ref ckContent,value);
             }
         }
-        
+        private string ckTxt;
+        /// <summary>
+        /// 
+        /// </summary>
+        public string CkTxt
+        {
+            get => ckTxt;
+            set
+            {
+                SetProperty(ref ckTxt, value);
+            }
+        }
+
     }
 }

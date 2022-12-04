@@ -45,7 +45,7 @@ namespace ME.DB
                     strResult.Append($"{property.Name}={property.GetValue(obj)?.ToString()},");
                 }
 
-                return strResult.ToString().TrimEnd(",");
+                return strResult.ToString();//.TrimEnd(",");
             }
             catch (Exception)
             {

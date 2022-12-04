@@ -24,6 +24,11 @@ namespace ME.BioSoft.View
         public ChipPrintView()
         {
             InitializeComponent();
+            this.Loaded += ChipPrintView_Loaded;
+        }
+
+        private void ChipPrintView_Loaded(object sender, RoutedEventArgs e)
+        {
             this.DataContext = new ChipPrintViewModel();
         }
     }
