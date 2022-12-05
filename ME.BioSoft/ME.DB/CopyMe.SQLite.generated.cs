@@ -44,7 +44,7 @@ namespace ME.DB
 	[Table("PlatformAction")]
 	public partial class PlatformAction
 	{
-		[Column("id"),   PrimaryKey, NotNull] public string Id   { get; set; } // varchar(36)
+		[Column("id"),   PrimaryKey, NotNull] public object Id   { get; set; } // varchar2
 		[Column("name"),             NotNull] public string Name { get; set; } // varchar(36)
 		[Column(),                   NotNull] public int    X    { get; set; } // int
 		[Column(),                   NotNull] public int    Y    { get; set; } // int
@@ -54,7 +54,7 @@ namespace ME.DB
 
 	public static partial class TableExtensions
 	{
-		public static PlatformAction Find(this ITable<PlatformAction> table, string Id)
+		public static PlatformAction Find(this ITable<PlatformAction> table, object Id)
 		{
 			return table.FirstOrDefault(t =>
 				t.Id == Id);

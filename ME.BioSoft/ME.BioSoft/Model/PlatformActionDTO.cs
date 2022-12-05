@@ -13,6 +13,18 @@ namespace ME.BioSoft.Model
         {
 
         }
+        private int index;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Index
+        {
+            get => index;
+            set
+            {
+                SetProperty(ref index, value);
+            }
+        }
         private bool isChecked;
         /// <summary>
         /// 
@@ -96,6 +108,10 @@ namespace ME.BioSoft.Model
             {
                 SetProperty(ref z, value);
             }
+        }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

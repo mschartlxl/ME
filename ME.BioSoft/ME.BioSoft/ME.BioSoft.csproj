@@ -105,7 +105,10 @@
     <Compile Include="AutoMapper\OrginalProfile.cs" />
     <Compile Include="Model\PlatformActionDTO.cs" />
     <Compile Include="Model\ZAxisItem.cs" />
+    <Compile Include="ViewModel\ChipPrintListViewViewModel.cs" />
     <Compile Include="ViewModel\ChipPrintViewModel.cs" />
+    <Compile Include="ViewModel\ChipPrintDataGridViewModel.cs" />
+    <Compile Include="ViewModel\ChipPrintZAxisViewModel.cs" />
     <Compile Include="View\ChipPrintView.xaml.cs">
       <DependentUpon>ChipPrintView.xaml</DependentUpon>
     </Compile>

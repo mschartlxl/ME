@@ -5,8 +5,10 @@
     xmlns:behaviour="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    xmlns:i="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:ME.BioSoft.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tree="clr-namespace:ME.ControlLibrary.Model;assembly=ME.ControlLibrary"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -225,6 +227,7 @@
             </Grid>
         </Border>
         <DataGrid
+            x:Name="datagrid"
             Grid.Row="1"
             Grid.Column="1"
             Grid.ColumnSpan="2"
@@ -241,11 +244,16 @@
             RowStyle="{StaticResource DataGridRowStyle}"
             ScrollViewer.CanContentScroll="False"
             SelectionUnit="FullRow">
-            <behaviour:Interaction.Triggers>
+            <!--<behaviour:Interaction.Triggers>
                 <behaviour:EventTrigger EventName="LoadingRow">
                     <behaviour:CallMethodAction MethodName="DataGrid_LoadingRow" TargetObject="{Binding}" />
                 </behaviour:EventTrigger>
-            </behaviour:Interaction.Triggers>
+            </behaviour:Interaction.Triggers>-->
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding MouseDoubleCmd}" CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid, AncestorLevel=1}}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
 
@@ -269,7 +277,7 @@
                 </DataGridTemplateColumn>
                 <DataGridTextColumn
                     Width="60"
-                    Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridRow}}, Path=Header}"
+                    Binding="{Binding Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Header="序号" />
                 <DataGridTextColumn
                     Width="120"
@@ -354,10 +362,55 @@
                     Command="{Binding DataGridAddCmd}"
                     Content="添加" />
                 <Rectangle Width="10" />
-                <Button Margin="5,0" Content="修改" />
+                <Button
+                    Margin="5,0"
+                    Command="{Binding DataGridEditCmd}"
+                    Content="修改" />
                 <Rectangle Width="10" />
-                <Button Margin="5,0" Content="删除" />
+                <Button
+                    Margin="5,0"
+                    Command="{Binding DataGridDelCmd}"
+                    Content="删除" />
             </StackPanel>
+            <ListView
+                Grid.Row="2"
+                Margin="0,5"
+                Background="White"
+                ItemsSource="{Binding Messages}">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Command="{Binding ListViewCopyCmd}" Header="复制" />
+                        <MenuItem
+                            x:Name="menuBtnClear"
+                            Command="{Binding ListViewClearCmd}"
+                            Header="清除" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="ToolTip" Value="{Binding ContentCmd}" />
+                        <Setter Property="tree:ListViewDependency.ScrolledToView" Value="True" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn
+                                Width="Auto"
+                                DisplayMemberBinding="{Binding Path=TimeCmd}"
+                                Header="时间" />
+                            <GridViewColumn
+                                Width="Auto"
+                                DisplayMemberBinding="{Binding Path=IsSendCmd}"
+                                Header="是否接受" />
+                            <GridViewColumn
+                                Width="300"
+                                DisplayMemberBinding="{Binding Path=ContentCmd}"
+                                Header="指令" />
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
 
         <Border

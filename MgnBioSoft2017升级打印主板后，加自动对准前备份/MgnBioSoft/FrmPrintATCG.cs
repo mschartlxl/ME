@@ -711,23 +711,24 @@ namespace MGNBIO
             */
 
             List<MoveStartPosition> move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("A喷头"));
-            float y_offset_a = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_a = (move_start_position_list[0].Y_axis) * ((float)1 / 100000);
 
             move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("T喷头"));
-            float y_offset_t = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_t = (move_start_position_list[0].Y_axis) * ((float)1 / 100000);
 
             move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("C喷头"));
-            float y_offset_c = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_c = (move_start_position_list[0].Y_axis) * ((float)1 / 100000);
 
             move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("G喷头"));
-            float y_offset_g = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_g = (move_start_position_list[0].Y_axis) * ((float)1 / 100000);
 
             move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("ALL喷头"));
-            float y_offset_all = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_all = (move_start_position_list[0].Y_axis) * ((float)1 / 100000);
 
             PhysicalHead ph = PhysicalHead.Default;
             //int y_offset = (int)(((32 - 11.3) / 2.54) * 2400);                //这个为基准，下面的值都必须比这个值大，如果打出来的偏右了，把值调小一些，如果打出来靠左一些，把值高大一些。
-            int y_offset = (int)(((32 - y_offset_a) / 2.54) * 2400);
+            //int y_offset = (int)(((32 - y_offset_a) / 2.54) * 2400);
+            int y_offset = (int)(((28 - Math.Abs(y_offset_a)) / 2.54) * 2400);
             ph.y_offset = y_offset;
             ph.head_type = HeadType.Gen5;
             ph.num_child_heads = 1;
@@ -739,7 +740,7 @@ namespace MGNBIO
 
             PhysicalHead ph_c = PhysicalHead.Default;
             //ph_c.y_offset = (int)(((32 - 13.8) / 2.54) * 2400);
-            ph_c.y_offset = (int)(((32 - y_offset_t) / 2.54) * 2400);
+            ph_c.y_offset = (int)(((28 - Math.Abs(y_offset_t)) / 2.54) * 2400);
             ph_c.head_type = HeadType.Gen5;
             ph_c.num_child_heads = 1;
             ph_c.child_channels[0] = ColorChannel.C; //T
@@ -748,7 +749,7 @@ namespace MGNBIO
 
             PhysicalHead ph_m = PhysicalHead.Default;
             //ph_m.y_offset = (int)(((32 - 16.3) / 2.54) * 2400);
-            ph_m.y_offset = (int)(((32 - y_offset_c) / 2.54) * 2400);
+            ph_m.y_offset = (int)(((28 - Math.Abs(y_offset_c)) / 2.54) * 2400);
             ph_m.head_type = HeadType.Gen5;
             ph_m.num_child_heads = 1;
             ph_m.child_channels[0] = ColorChannel.M; //C
@@ -757,7 +758,7 @@ namespace MGNBIO
 
             PhysicalHead ph_y = PhysicalHead.Default;
             //ph_y.y_offset = (int)(((32 - 18.8) / 2.54) * 2400);
-            ph_y.y_offset = (int)(((32 - y_offset_g) / 2.54) * 2400);
+            ph_y.y_offset = (int)(((28 - Math.Abs(y_offset_g)) / 2.54) * 2400);
             ph_y.head_type = HeadType.Gen5;
             ph_y.num_child_heads = 1;
             ph_y.child_channels[0] = ColorChannel.Y; //G
@@ -766,7 +767,7 @@ namespace MGNBIO
 
             PhysicalHead ph_w = PhysicalHead.Default;
             //ph_w.y_offset = (int)(((32 - 21.3) / 2.54) * 2400);
-            ph_w.y_offset = (int)(((32 - y_offset_all) / 2.54) * 2400);
+            ph_w.y_offset = (int)(((28 - Math.Abs(y_offset_all)) / 2.54) * 2400);
             ph_w.head_type = HeadType.Gen5;
             ph_w.num_child_heads = 1;
             ph_w.child_channels[0] = ColorChannel.White; //all
@@ -3648,7 +3649,8 @@ namespace MGNBIO
                                 try
                                 {
 
-                                    ReadPrint();
+                                    //ReadPrint();
+                                    AddPrintOneStepSystem2(true);
                                     if (!m_total_run_stop_flage)
                                     {
                                         FrmPrintATCG.mainFrm.Invoke((EventHandler)(delegate
@@ -3698,7 +3700,8 @@ namespace MGNBIO
                                     }));
                                     goto RESTART;
                                 }
-
+                                //m_test_print_add_content_flage = false;
+                                //SendPageDataWork_Test_Y_Position(); 
                                 send_offset_list_g = new List<SendOffset>();
                                 Thread.Sleep(160);
                                 TriggerPrint();
@@ -4901,8 +4904,8 @@ namespace MGNBIO
                         if (system_type.Equals("1"))
                         {
                             label33.Text = "pulse" + system_type;
-                            textBox4.Text = "16666";
-                            textBox6.Text = "10000";
+                            textBox4.Text = "76666";
+                            textBox6.Text = "1000";
                             ucBtnImg16.BtnText = "急停";
                         }
                     }
@@ -4976,7 +4979,7 @@ namespace MGNBIO
             {
                 PumpReset();
             }
-            if (serialPortvalve_Send.IsOpen)//&& serialPort_Send.IsOpen
+            if (serialPortvalve_Send.IsOpen && serialPort_Send.IsOpen)
             {
                 //开启线程
                 try
@@ -6445,20 +6448,19 @@ namespace MGNBIO
                     send_offset_z1.Status = 0;
                     send_offset_z1.Id = send_offset_list_g.Count + 1;
                     send_offset_list_g.Add(send_offset_z1);
-                    //lxl
-                    //SendOffset send_offset_z2 = new SendOffset();
-                    //send_offset_z2.Offset = move_start_position_list[i].Z2_axis;
-                    //send_offset_z2.Type = 5;
-                    //send_offset_z2.Status = 0;
-                    //send_offset_z2.Id = send_offset_list_g.Count + 1;
-                    //send_offset_list_g.Add(send_offset_z2);
+                    SendOffset send_offset_z2 = new SendOffset();
+                    send_offset_z2.Offset = move_start_position_list[i].Z2_axis;
+                    send_offset_z2.Type = 5;
+                    send_offset_z2.Status = 0;
+                    send_offset_z2.Id = send_offset_list_g.Count + 1;
+                    send_offset_list_g.Add(send_offset_z2);
 
-                    //SendOffset send_offset_z3 = new SendOffset();
-                    //send_offset_z3.Offset = move_start_position_list[i].Z3_axis;
-                    //send_offset_z3.Type = 6;
-                    //send_offset_z3.Status = 0;
-                    //send_offset_z3.Id = send_offset_list_g.Count + 1;
-                    //send_offset_list_g.Add(send_offset_z3);
+                    SendOffset send_offset_z3 = new SendOffset();
+                    send_offset_z3.Offset = move_start_position_list[i].Z3_axis;
+                    send_offset_z3.Type = 6;
+                    send_offset_z3.Status = 0;
+                    send_offset_z3.Id = send_offset_list_g.Count + 1;
+                    send_offset_list_g.Add(send_offset_z3);
 
                     //if (system_type.Equals("2"))
                     //{
@@ -6966,7 +6968,7 @@ namespace MGNBIO
             }
             move_offset += ";";
             move_offset += "BG" + move_offset_end;
-            move_offset = three + move_offset;
+            move_offset = three + y_speed + move_offset;
             g_Controller.GCommand(move_offset);
         }
         public void System2MoveAxisValue(int axis_type, int offset)
@@ -11596,8 +11598,10 @@ namespace MGNBIO
             m_total_run_stop_flage = true;
             m_total_run_pause_flage = false;
             ucBtnImg41.Enabled = false;
+
             CloseAllSwitch();
             //Task.Factory.StartNew(() => { StartToRun_New(); });
+
         }
 
         private void ucBtnImg44_BtnClick(object sender, EventArgs e)
@@ -11892,8 +11896,8 @@ namespace MGNBIO
                 Task.Factory.StartNew(() => { SendPageDataWork_Test_Y_Position(); });
             } while (false);
         }
-     
-        public void AddPrintOneStepSystem2()
+
+        public void AddPrintOneStepSystem2(bool isZong)
         {
             a_valid_a = 0;
             a_valid_t = 0;
@@ -12011,9 +12015,12 @@ namespace MGNBIO
 
                 //
                 //打印内容添加
-                ucBtnImg53.Enabled = false;
-                m_test_print_add_content_flage = false;
-                Task.Factory.StartNew(() => { SendPageDataWork_Test_Y_Position(); });
+                if (!isZong)
+                {
+                    ucBtnImg53.Enabled = false;
+                    m_test_print_add_content_flage = false;
+                    Task.Factory.StartNew(() => { SendPageDataWork_Test_Y_Position(); });
+                }
             } while (false);
 
         }
@@ -12027,7 +12034,7 @@ namespace MGNBIO
 
             if (system_type.Equals("2"))
             {
-                AddPrintOneStepSystem2();
+                AddPrintOneStepSystem2(false);
             }
         }
 
@@ -12037,15 +12044,15 @@ namespace MGNBIO
             int headBoardId = 0;
 
             List<MoveStartPosition> move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("A喷头"));
-            float y_offset_a = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_a = (move_start_position_list[0].Y_axis) * ((float)1 / 200000);
             move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("T喷头"));
-            float y_offset_t = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_t = (move_start_position_list[0].Y_axis) * ((float)1 / 200000);
             move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("C喷头"));
-            float y_offset_c = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_c = (move_start_position_list[0].Y_axis) * ((float)1 / 200000);
             move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("G喷头"));
-            float y_offset_g = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_g = (move_start_position_list[0].Y_axis) * ((float)1 / 200000);
             move_start_position_list = move_start_position_list_g.FindAll(o => o.Name.Equals("ALL喷头"));
-            float y_offset_all = (move_start_position_list[0].Y_axis) * ((float)1 / 20000);
+            float y_offset_all = (move_start_position_list[0].Y_axis) * ((float)1 / 200000);
 
             PhysicalHead ph = PhysicalHead.Default;
             //int y_offset = (int)(((32 - 11.3) / 2.54) * 2400);                //这个为基准，下面的值都必须比这个值大，如果打出来的偏右了，把值调小一些，如果打出来靠左一些，把值高大一些。

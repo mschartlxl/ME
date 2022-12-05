@@ -37,6 +37,7 @@ namespace ME.ControlLibrary.Model
             }
         }
         public ObservableCollection<MessageCmd> Messages { get; set; } = new ObservableCollection<MessageCmd>();
+      
         public bool Flag { get; set; } = true;
         public CancellationTokenSource tokenSource = new CancellationTokenSource();
         public CancellationToken Token { get { return tokenSource.Token; }  }

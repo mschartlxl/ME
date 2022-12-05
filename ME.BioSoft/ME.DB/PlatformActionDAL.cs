@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using LinqToDB;
 
 namespace ME.DB
 {
@@ -40,12 +40,42 @@ namespace ME.DB
         private PlatformActionDAL()
         { }
         #endregion
+        public override bool Add(PlatformAction data)
+        {
+            using (var db = new MEDB())
+            {
+                try
+                {
+                    db.Insert<PlatformAction>(data);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+        public override bool Delete(PlatformAction data)
+        {
+            using (var db = new MEDB())
+            {
+                try
+                {
+                    db.Delete<PlatformAction>(data);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
         public override IEnumerable<PlatformAction> SearchMany(Func<PlatformAction, bool> search)
         {
             try
             {
                 List<PlatformAction> lst = null;
-                using (var db = new DB.MEDB())
+                using (var db = new MEDB())
                 {
                     var data = from n in db.PlatformActions
                                select n;
