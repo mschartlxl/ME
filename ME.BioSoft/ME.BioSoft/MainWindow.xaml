@@ -10,7 +10,6 @@
     Title="维护"
     Width="1000"
     Height="600"
- 
     FontFamily="{StaticResource baseFontFamily}"
     FontSize="14"
     WindowState="Maximized"
@@ -53,6 +52,9 @@
             <TabItem Name="mainUcTabItem" Header="脚本" />
             <TabItem Name="chipUcTabItem" Header="芯片打印">
                 <view:ChipPrintView />
+            </TabItem>
+            <TabItem Name="SystemSetTab" Header="系统设置">
+                <view:SystemSetView />
             </TabItem>
         </TabControl>
         <Grid

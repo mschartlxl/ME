@@ -12,6 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MessageBox = ME.ControlLibrary.View.UMessageBox;
+using System.Threading;
+using System.Diagnostics;
+
 namespace ME.BioSoft.ViewModel
 {
     public partial class ChipPrintViewModel
@@ -91,7 +94,7 @@ namespace ME.BioSoft.ViewModel
             var zlist = ListConfig.GetInstance().ListZAxisNumber;
             foreach (var z in zlist)
             {
-                ZAxisItems.Add(new ZAxisItem() { IsCheck = true, CkContent = $"Z{z.Type}", Id = z.Type });
+                ZAxisItems.Add(new ZAxisItem() { IsCheck = true, CkContent = $"Z{z.Number}", Id = z.Number });
             }
         }
         private void ZAxisFindZero()
@@ -106,7 +109,7 @@ namespace ME.BioSoft.ViewModel
                 if (item.IsCheck)
                 {
                     //SendZAxisMotorFindZero(1);
-                    byte[] senddata = InstructionConfig.cmdZAxisReset;
+                    byte[] senddata = ZAxisResetConfig.cmdZAxisReset; //InstructionConfig.cmdZAxisReset;
                     senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
                     var crcdata = CRC.CRC16(senddata);
                     var senddatanew = senddata.ToList();
@@ -130,7 +133,7 @@ namespace ME.BioSoft.ViewModel
                 if (item.IsCheck)
                 {
                     //SendZAxisMotorFindZero(1);
-                    byte[] senddata = InstructionConfig.cmdZAxisReadSpeed;
+                    byte[] senddata = ZAxisReadSpeedConfig.cmdZAxisReadSpeed; //InstructionConfig.cmdZAxisReadSpeed;
                     senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
 
                     var crcdata = CRC.CRC16(senddata);
@@ -159,7 +162,7 @@ namespace ME.BioSoft.ViewModel
                 if (item.IsCheck)
                 {
                     //SendZAxisMotorFindZero(1);
-                    byte[] senddata = InstructionConfig.cmdZAxisSetSpeed;
+                    byte[] senddata = ZAxisSetSpeedConfig.cmdZAxisSetSpeed; //InstructionConfig.cmdZAxisSetSpeed;
                     senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
                     var speedx16 = ABTInstrument.float2String(ZAxisSpeed).ToByteArray(16);
                     senddata[7] = speedx16[1];
@@ -186,22 +189,29 @@ namespace ME.BioSoft.ViewModel
                 if (item.IsCheck)
                 {
                     //SendZAxisMotorFindZero(1);
-                    byte[] senddata = InstructionConfig.cmdZAxisPos;
-                    senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
-                    var crcdata = CRC.CRC16(senddata);
-                    var senddatanew = senddata.ToList();
-                    senddatanew.AddRange(crcdata.Reverse());
-                    var temps = senddatanew.ToArray().Clone() as byte[];
-                    var result = Send(() => { return false; }, temps, UtilsFun._AbtInstrument.SerialSwitch);
-                    if (result != null)
-                    {
-                        var str16 = CRC.byteToHexStr(result.ToArray());
-                        var strlist = str16.Split(' ');
-                        ZAxisDistance = Convert.ToInt32(strlist[5] + strlist[6] + strlist[3] + strlist[4], 16);
-                    }
-
+                    ZAxisDistance = ZReadPos(item);
                 }
             }
+
+        }
+        private int ZReadPos(ZAxisItem item)
+        {
+            var distance = 0;
+            byte[] senddata = ZAxisPosConfig.cmdZAxisPos; //InstructionConfig.cmdZAxisPos;
+            senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
+            var crcdata = CRC.CRC16(senddata);
+            var senddatanew = senddata.ToList();
+            senddatanew.AddRange(crcdata.Reverse());
+            var temps = senddatanew.ToArray().Clone() as byte[];
+            var result = Send(() => { return false; }, temps, UtilsFun._AbtInstrument.SerialSwitch);
+
+            if (result != null)
+            {
+                var str16 = CRC.byteToHexStr(result.ToArray());
+                var strlist = str16.Split(' ');
+                distance = Convert.ToInt32(strlist[5] + strlist[6] + strlist[3] + strlist[4], 16);
+            }
+            return distance;
         }
         private void ZAxisEnabled()
         {
@@ -215,13 +225,14 @@ namespace ME.BioSoft.ViewModel
                 if (item.IsCheck)
                 {
                     //SendZAxisMotorFindZero(1);
-                    byte[] senddata = InstructionConfig.cmdZAxisEnable;
+                    byte[] senddata = ZAxisEnableConfig.cmdZAxisEnable; //InstructionConfig.cmdZAxisEnable;
                     senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
                     var crcdata = CRC.CRC16(senddata);
                     var senddatanew = senddata.ToList();
                     senddatanew.AddRange(crcdata.Reverse());
                     var temps = senddatanew.ToArray().Clone() as byte[];
                     Send(() => { return false; }, temps, UtilsFun._AbtInstrument.SerialSwitch);
+
                 }
             }
         }
@@ -237,7 +248,7 @@ namespace ME.BioSoft.ViewModel
                 if (item.IsCheck)
                 {
                     //SendZAxisMotorFindZero(1);
-                    byte[] senddata = InstructionConfig.cmdZAxisNoEnable;
+                    byte[] senddata = ZAxisNoEnableConfig.cmdZAxisNoEnable; //InstructionConfig.cmdZAxisNoEnable;
                     senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
                     var crcdata = CRC.CRC16(senddata);
                     var senddatanew = senddata.ToList();
@@ -258,24 +269,42 @@ namespace ME.BioSoft.ViewModel
             {
                 if (item.IsCheck)
                 {
-                    //SendZAxisMotorFindZero(1);
-                    byte[] senddata = InstructionConfig.cmdZAxisMove;
-                    senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
-                    var x16 = ZAxisDistance.ToString("X8");
-                    var data = x16.ToByteArray(16);
-                    senddata[7] = data[2];
-                    senddata[8] = data[3];
+                    Task.Run(() =>
+                    {
+                        var date = DateTime.Now;
+                        Now = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second);
+                        ZMove(item, date,ZAxisDistance);
 
-                    senddata[9] = data[0];
-                    senddata[10] = data[1];
-
-                    var crcdata = CRC.CRC16(senddata);
-                    var senddatanew = senddata.ToList();
-                    senddatanew.AddRange(crcdata.Reverse());
-                    var temps = senddatanew.ToArray().Clone() as byte[];
-                    Send(() => { return false; }, temps, UtilsFun._AbtInstrument.SerialSwitch);
+                    });
+                    Thread.Sleep(10);
                 }
             }
+
+        }
+
+        public DateTime Now
+        {
+            get; set;
+        }
+        private void ZMove(ZAxisItem item, DateTime date,int distance)
+        {
+            Task.Delay(MEGlobal.SystemSet.CmdInterval);
+            byte[] senddata = ZAxisMoveConfig.cmdZAxisMove; //InstructionConfig.cmdZAxisMove;
+            senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
+            var x16 = distance.ToString("X8");
+            var data = x16.ToByteArray(16);
+            senddata[7] = data[2];
+            senddata[8] = data[3];
+
+            senddata[9] = data[0];
+            senddata[10] = data[1];
+
+            var crcdata = CRC.CRC16(senddata);
+            var senddatanew = senddata.ToList();
+            senddatanew.AddRange(crcdata.Reverse());
+            var temps = senddatanew.ToArray().Clone() as byte[];
+           Send(() => { return false; }, temps, UtilsFun._AbtInstrument.SerialSwitch);
+   
         }
         private void ZAxisStop()
         {
@@ -290,7 +319,7 @@ namespace ME.BioSoft.ViewModel
                 if (item.IsCheck)
                 {
                     //SendZAxisMotorFindZero(1);
-                    byte[] senddata = InstructionConfig.cmdZAxisStop;
+                    byte[] senddata = ZAxisStopConfig.cmdZAxisStop; //InstructionConfig.cmdZAxisStop;
                     senddata[0] = Convert.ToByte(item.Id.ToString("X2"), 16);
                     var crcdata = CRC.CRC16(senddata);
                     var senddatanew = senddata.ToList();
@@ -314,7 +343,7 @@ namespace ME.BioSoft.ViewModel
 
             var tasksingle = Task.Run(() =>
             {
-                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, serialPort, 5);
+                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, serialPort, MEGlobal.SystemSet.CmdReSend, 4, temp[0]);
             });
             tasksingle.Wait();
             var taskresult = tasksingle.Result;

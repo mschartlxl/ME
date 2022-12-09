@@ -1,0 +1,69 @@
+﻿<UserControl
+    x:Class="ME.BioSoft.View.SystemSetView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+    xmlns:local="clr-namespace:ME.BioSoft.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ME.Controls;component/Themes/HandyControlStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style BasedOn="{StaticResource ButtonPrimary}" TargetType="Button" />
+            <Style x:Key="TextBlockKB" TargetType="TextBlock">
+                <Setter Property="Margin" Value="20,0" />
+                <Setter Property="Foreground" Value="#666" />
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Margin="10,10,0,0"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <TextBlock VerticalAlignment="Center" Text="指令间隔时间" />
+
+            <hc:NumericUpDown
+                Name="loopNum"
+                Width="100"
+                Margin="10,0,0,0"
+                Value="{Binding CurrentModel.CmdInterval}" />
+            <TextBlock
+                Margin="3,0,0,0"
+                VerticalAlignment="Center"
+                Text="毫秒" />
+            <Rectangle Width="30" />
+            <TextBlock VerticalAlignment="Center" Text="指令重发时间" />
+
+            <hc:NumericUpDown
+                Width="100"
+                Margin="10,0,0,0"
+                Value="{Binding CurrentModel.CmdReSend}" />
+            <TextBlock
+                Margin="3,0,0,0"
+                VerticalAlignment="Center"
+                Text="秒" />
+            <Button
+                Width="80"
+                Margin="10,0,0,0"
+                Command="{Binding SystemSetSaveCmd}"
+                Content="设置" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>

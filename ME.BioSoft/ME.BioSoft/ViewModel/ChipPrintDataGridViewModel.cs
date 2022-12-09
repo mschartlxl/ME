@@ -9,9 +9,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
-
+using MessageBox = ME.ControlLibrary.View.UMessageBox;
 namespace ME.BioSoft.ViewModel
 {
     public partial class ChipPrintViewModel
@@ -29,11 +31,9 @@ namespace ME.BioSoft.ViewModel
             DataGridDelCmd = new RelayCommand(DataGridDel);
             MouseDoubleCmd = new RelayCommand<object>(MouseDouble);
             DataGridEditCmd = new RelayCommand(DataGridEdit);
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<OrginalProfile>();
-            });
-            mapper = config.CreateMapper();
+            DataGridRunCmd = new RelayCommand(DataGridRun);
+
+
         }
         private void InitData()
         {
@@ -41,17 +41,19 @@ namespace ME.BioSoft.ViewModel
             var index = 1;
             foreach (var data in alldata)
             {
-                var model = mapper.Map<PlatformActionDTO>(data);
+                var model = GlobalMapper.Instance.mapper.Map<PlatformActionDTO>(data);
                 model.Index = index;
                 PlatformActionList.Add(model);
                 index++;
             }
+
         }
         public ICommand AllCheckedCmd { get; private set; }
         public ICommand DataGridAddCmd { get; private set; }
         public ICommand DataGridDelCmd { get; private set; }
         public ICommand MouseDoubleCmd { get; private set; }
         public ICommand DataGridEditCmd { get; private set; }
+        public ICommand DataGridRunCmd { get; private set; }
         private ObservableCollection<PlatformActionDTO> platformActionList;
         /// <summary>
         /// 
@@ -71,6 +73,15 @@ namespace ME.BioSoft.ViewModel
             set
             {
                 SetProperty(ref currentDataGridItem, value);
+            }
+        }
+        private PlatformActionDTO selectedDataGridItem;
+        public PlatformActionDTO SelectedDataGridItem
+        {
+            get => selectedDataGridItem;
+            set
+            {
+                SetProperty(ref selectedDataGridItem, value);
             }
         }
         public void AllChecked(bool flag)
@@ -93,7 +104,7 @@ namespace ME.BioSoft.ViewModel
             CurrentDataGridItem.Index = (PlatformActionList.Count == 0) ? 1 : (PlatformActionList.Max(t => t.Index) + 1);
             var newModel = (PlatformActionDTO)CurrentDataGridItem.Clone();
             PlatformActionList.Add(newModel);
-            var newModelDTO = mapper.Map<PlatformAction>(newModel);
+            var newModelDTO = GlobalMapper.Instance.mapper.Map<PlatformAction>(newModel);
             PlatformActionDAL.Instance.Add(newModelDTO);
             CurrentDataGridItem = new PlatformActionDTO();
 
@@ -122,6 +133,11 @@ namespace ME.BioSoft.ViewModel
         private void DataGridEdit()
         {
             var modeledit = PlatformActionList.FirstOrDefault(t => t.Id == CurrentDataGridItem.Id);
+            if (modeledit == null)
+            {
+                MessageBox.Show("不存在该项,请添加!");
+                return;
+            }
             modeledit.Name = CurrentDataGridItem.Name;
             modeledit.X = CurrentDataGridItem.X;
             modeledit.Y = CurrentDataGridItem.Y;
@@ -132,7 +148,7 @@ namespace ME.BioSoft.ViewModel
                 z += $"{item.CkContent}:{item.CkTxt},";
             }
             modeledit.Z = z.TrimEnd(',');
-            var newModel = mapper.Map<PlatformAction>(modeledit);
+            var newModel = GlobalMapper.Instance.mapper.Map<PlatformAction>(modeledit);
             PlatformActionDAL.Instance.Update(newModel);
             CurrentDataGridItem = new PlatformActionDTO();
         }
@@ -141,11 +157,37 @@ namespace ME.BioSoft.ViewModel
             List<PlatformActionDTO> selectModels = PlatformActionList.Where(t => t.IsChecked == true).ToList();
             for (int t = 0; t < selectModels.Count; t++)
             {
-                var newModel = mapper.Map<PlatformAction>(selectModels[t]);
+                var newModel = GlobalMapper.Instance.mapper.Map<PlatformAction>(selectModels[t]);
                 PlatformActionDAL.Instance.Delete(newModel);
                 PlatformActionList.Remove(selectModels[t]);
             }
 
+        }
+        private async void DataGridRun()
+        {
+            List<Task> tasks = new List<Task>();
+            if (SelectedDataGridItem != null)
+            {
+                tasks.Add(Task.Run(() =>
+                {
+                    if (!platStatus)
+                    {
+                        return;
+                    }
+                    SendSportComm(SelectedDataGridItem.X, SelectedDataGridItem.Y, SelectedDataGridItem.R, true, true, true);
+                }));
+                var zlist = SelectedDataGridItem.Z.ToString().Split(',');
+                foreach (var zstr in zlist)
+                {
+                    var z = zstr.Split(':');
+                    var date = DateTime.Now;
+                    Now = new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second);
+                    var zitem = new ZAxisItem() { Id = Convert.ToInt32(z[0].Substring(1)) };
+                    tasks.Add(Task.Run(() => { ZMove(zitem, date, Convert.ToInt32(z[1])); }));
+                    Thread.Sleep(10);
+                }
+            }
+            await Task.WhenAll(tasks.ToArray());
         }
     }
 }

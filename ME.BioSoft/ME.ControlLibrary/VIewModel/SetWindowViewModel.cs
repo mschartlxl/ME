@@ -49,12 +49,12 @@ namespace ME.ControlLibrary.VIewModel
             {
                 return false;
             };
-            byte[] senddata = InstructionConfig.cmdPumpReadAddr;
+            byte[] senddata = PumpReadAddrConfig.cmdPumpReadAddr;// InstructionConfig.cmdPumpReadAddr;
             var senddatanew = CRC.GetNewCrcArray(senddata);
             var temp = senddatanew.Clone() as byte[];
             var tasksingle = Task.Run(() =>
             {
-                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, UtilsFun._AbtInstrument.SerialPump, 5);
+                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, UtilsFun._AbtInstrument.SerialPump, 5, PumpReadAddrConfig.type,0);
             });
             tasksingle.Wait();
            var  result = tasksingle.Result;
@@ -73,7 +73,7 @@ namespace ME.ControlLibrary.VIewModel
             {
                 return false;
             };
-            byte[] senddata = InstructionConfig.cmdPumpWriteAddr;
+            byte[] senddata = PumpWriteAddrConfig.cmdPumpWriteAddr;// InstructionConfig.cmdPumpWriteAddr;
             senddata[1] = Convert.ToByte(ReadNumber.ToString("X2"), 16);
             senddata[7]= Convert.ToByte(EditNumber.ToString("X2"), 16);
             var senddatanew = CRC.GetNewCrcArray(senddata);

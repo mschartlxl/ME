@@ -35,7 +35,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1">
             <TextBlock Text="编号：" />
-            <ComboBox
+            <hc:ComboBox
                 x:Name="cbNumberList"
                 Width="180"
                 VerticalAlignment="Center" />

@@ -358,21 +358,40 @@
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button
+                    Width="80"
                     Margin="5,0"
                     Command="{Binding DataGridAddCmd}"
                     Content="添加" />
                 <Rectangle Width="10" />
                 <Button
+                    Width="80"
                     Margin="5,0"
                     Command="{Binding DataGridEditCmd}"
                     Content="修改" />
                 <Rectangle Width="10" />
                 <Button
+                    Width="80"
                     Margin="5,0"
                     Command="{Binding DataGridDelCmd}"
                     Content="删除" />
+
+                <hc:ComboBox
+                    Width="120"
+                    Height="30"
+                    Margin="5,0"
+                    VerticalAlignment="Center"
+                    DisplayMemberPath="Name"
+                    ItemsSource="{Binding PlatformActionList}"
+                    SelectedIndex="0"
+                    SelectedItem="{Binding SelectedDataGridItem}" />
+                <Button
+                    Width="80"
+                    Margin="5,0"
+                    Command="{Binding DataGridRunCmd}"
+                    Content="运行" />
             </StackPanel>
             <ListView
+                x:Name="lis"
                 Grid.Row="2"
                 Margin="0,5"
                 Background="White"
@@ -390,6 +409,7 @@
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="ToolTip" Value="{Binding ContentCmd}" />
                         <Setter Property="tree:ListViewDependency.ScrolledToView" Value="True" />
+                        <Setter Property="IsSelected" Value="{Binding IsSelect}" />
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>

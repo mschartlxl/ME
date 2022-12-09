@@ -169,7 +169,7 @@
                 </StackPanel>
                 <ListView
                     x:Name="listview"
-                    Grid.Column="1"
+                    Grid.Column="1" 
                     Background="White">
                     <ListView.ContextMenu>
                         <ContextMenu>

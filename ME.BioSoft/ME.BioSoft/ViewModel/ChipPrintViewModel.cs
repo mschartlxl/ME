@@ -31,10 +31,7 @@ namespace ME.BioSoft.ViewModel
         private string platform = ConfigurationManager.AppSettings["SystemPlatform"].ToString();
         gclib gclib = new gclib();
         bool platStatus = false;
-        /// <summary>
-        /// 对象映射
-        /// </summary>
-        public IMapper mapper;
+
         public static int timespan = 120;
         public ChipPrintViewModel()
         {
@@ -231,26 +228,31 @@ namespace ME.BioSoft.ViewModel
                 MessageBox.Show("位移平台未上电，或是未连接");
                 return;
             }
+            SendSportComm(Length, Length, Length, XAxisIsCheck, YAxisIsCheck, RAxisIsCheck);
+        }
+        private void SendSportComm(int xlength, int ylength, int rlength, bool xIsCheck, bool yIsCheck, bool rIsCheck)
+        {
+            
             string move_offset = "PA";
             string move_offset_end = "";
             string moveexpression = $"ACX={PlusSpeed * Pulse};DCX={ReduceSpeed * Pulse};SPX={Speed * Pulse};";
-            if (XAxisIsCheck)
+            if (xIsCheck)
             {
-                string strText = String.Format("{0}", Length * Pulse);
+                string strText = String.Format("{0}", xlength * Pulse);
                 move_offset += strText;
                 move_offset_end += "X";
             }
             move_offset += ",";
-            if (YAxisIsCheck)
+            if (yIsCheck)
             {
-                string strText = String.Format("{0}", Length * Pulse);
+                string strText = String.Format("{0}", ylength * Pulse);
                 move_offset += strText;
                 move_offset_end += "Y";
             }
             move_offset += ",";
-            if (RAxisIsCheck)
+            if (rIsCheck)
             {
-                string strText = String.Format("{0}", Length * Pulse);
+                string strText = String.Format("{0}", rlength * Pulse);
                 move_offset += strText;
                 move_offset_end += "Z";
             }
@@ -363,8 +365,8 @@ namespace ME.BioSoft.ViewModel
         {
             PlatForm();
         }
-       
-       
+
+
         #endregion
         public void Receive(string message)
         {

@@ -35,14 +35,14 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1">
             <TextBlock Text="编号：" />
-            <ComboBox
+            <hc:ComboBox
                 x:Name="cbNumberList"
                 Width="180"
                 VerticalAlignment="Center" />
         </StackPanel>
         <StackPanel Grid.Row="2">
             <TextBlock Text="开阀孔：" />
-            <ComboBox
+            <hc:ComboBox
                 x:Name="cbHoleList"
                 Width="180"
                 Height="30"

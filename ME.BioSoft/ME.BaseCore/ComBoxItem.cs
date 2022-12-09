@@ -10,5 +10,6 @@ namespace ME.BaseCore
     {
         public string Name { get; set; }
         public int Type { get; set; }
+        public int Number { get; set; }
     }
 }

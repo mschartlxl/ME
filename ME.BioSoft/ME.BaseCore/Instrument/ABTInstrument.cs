@@ -15,6 +15,7 @@ using System.IO;
 using ME.Language;
 using System.Runtime.Remoting.Channels;
 using ME.BaseCore.Models.Enums;
+using NPOI.SS.Formula.Functions;
 
 namespace ME.BaseCore.Instrument
 {
@@ -93,7 +94,7 @@ namespace ME.BaseCore.Instrument
             {
                 serialPort.Close();
             }
-            
+
             if (!serialPort.IsOpen)
             {
                 try
@@ -111,10 +112,10 @@ namespace ME.BaseCore.Instrument
             Monitor.Exit(serialPort);
             //ABTGlobal.SerialPortStatus = Channel.DriverStatusEnum.FailedToConnecte;
             return false;
-        
+
         }
 
-
+        public object o = new object();
         /// <summary>
         /// 
         /// </summary>
@@ -124,8 +125,9 @@ namespace ME.BaseCore.Instrument
         /// <param name="overtime">单位是s</param>
         /// <returns></returns>
         [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized)]
-        public byte[] Send_16(Func<bool> cancelFun, byte[] sendData, bool isReadData, SerialPort newSerial, decimal overtime = 0)
+        public byte[] Send_16(Func<bool> cancelFun, byte[] sendData, bool isReadData, SerialPort newSerial, decimal overtime = 0, int type = 0, int number = 0)
         {
+
             byte[] readD = null;
             try
             {
@@ -142,17 +144,33 @@ namespace ME.BaseCore.Instrument
                         //当前指令发送之后，下位机在时间范围内或者下位机故障未给上位机发送数据则进行三次重发
                         while (readNullCount < 3)
                         {
-                            readD = ReadAnything_16(cancelFun, MB_MOTOR, overtime, newSerial, out stateValue);
-                            if (readD == null || readD.Count() <= 3)
+                            readD = ReadAnything_16(cancelFun, sendData, type, overtime, newSerial, out stateValue);
+                            if (readD == null)
                             {
+                                Thread.Sleep(MEGlobal.SystemSet.CmdInterval);
                                 newSerial.DiscardInBuffer();
                                 newSerial.Write(sendData, 0, sendData.Length);
+                                Thread.Sleep(MEGlobal.SystemSet.CmdInterval);
                                 stateValue = 0;
                                 readNullCount++;
                             }
                             else
                             {
-                                break;
+
+                                if (!CheckIsOK(type, number, readD, sendData))
+                                {
+                                    Thread.Sleep(MEGlobal.SystemSet.CmdInterval);
+                                    newSerial.DiscardInBuffer();
+                                    newSerial.Write(sendData, 0, sendData.Length);
+                                    Thread.Sleep(MEGlobal.SystemSet.CmdInterval);
+                                    stateValue = 0;
+                                    readNullCount++;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+
                             }
                         }
                         if (readNullCount >= 3)
@@ -181,20 +199,25 @@ namespace ME.BaseCore.Instrument
             catch (Exception ex)
             {
 
-                ABTGlobal.IsStop = true;
+                MEGlobal.IsStop = true;
                 if (ex.Message.IndexOf("端口") >= 0)
                 {
                     if (ex.Message.IndexOf("被关闭") >= 0)
                     {
-                        ABTGlobal.SerialPortStatus = DriverStatusEnum.FailedToConnecte;
+                        MEGlobal.SerialPortStatus = DriverStatusEnum.FailedToConnecte;
                     }
                     if (ex.Message.IndexOf("访问被拒绝") >= 0)
                     {
-                        ABTGlobal.SerialPortStatus = DriverStatusEnum.FailedToConnecte;
+                        MEGlobal.SerialPortStatus = DriverStatusEnum.FailedToConnecte;
                     }
                 }
                 return null;
             }
+            finally
+            {
+
+            }
+
         }
         static int CNum = 0;
         public static void ClearMemory10()
@@ -222,14 +245,8 @@ namespace ME.BaseCore.Instrument
         }
         DateTime overdateTime = DateTime.Now;
         List<byte> _buffer;//数据缓冲
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cancelFun"></param>
-        /// <param name="MB_MOTOR"></param>
-        /// <param name="overTime">单位是s</param>
-        /// <returns></returns>
-        public byte[] ReadAnything_16(Func<bool> cancelFun, byte MB_MOTOR, decimal overTime, SerialPort serialPort, out byte state)
+
+        public byte[] ReadAnything_16(Func<bool> cancelFun, byte[] senddata, int type, decimal overTime, SerialPort serialPort, out byte state)
         {
             state = 0;
             //overdateTime = DateTime.Now.AddSeconds(overTime);
@@ -247,21 +264,15 @@ namespace ME.BaseCore.Instrument
                         _buffer = new List<byte>();
                     if (null != _buffer)
                     {
-                        if (_buffer.Count <= 8)
+                        if ((type == 4 && (senddata[1] == 3 || senddata[1] == 4))||type==3)
                         {
                             _buffer.Add(data);
                         }
                         else
                         {
-                            if (_buffer.Count < _buffer[3])
+                            if (_buffer.Count < 8)
                             {
                                 _buffer.Add(data);
-                            }
-                            if (_buffer.Count >= _buffer[3])
-                            {
-                                //if (_buffer[1] == (byte)(MB_MOTOR | 0x80))
-                                //{ }
-                                break;
                             }
                         }
                     }
@@ -274,7 +285,18 @@ namespace ME.BaseCore.Instrument
                     }
                     else
                     {
-                        break;
+                        if (type == 4 && (senddata[1] == 3 || senddata[1] == 4))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            if (_buffer.Count == 8)
+                            {
+                                break;
+                            }
+                        }
+
                     }
                 }
                 if (overTime > 0)
@@ -290,7 +312,7 @@ namespace ME.BaseCore.Instrument
             if (_buffer != null)
             {
                 LogHelper.SystemError("返回指令:" + BitConverter.ToString(_buffer?.ToArray()));
-                ABTGlobal.IsDevicePower = 2;
+                MEGlobal.IsDevicePower = 2;
             }
             return _buffer?.ToArray();
         }
@@ -354,7 +376,56 @@ namespace ME.BaseCore.Instrument
             //hex[3] = (byte)((velocity >> 24) & 0xff);
             return hex;
         }
+        public bool CheckIsOK(int type, int number, byte[] result, byte[] senddata)
+        {
+            var returncount = result.Count();
+            if (returncount > 4)
+            {
+                var jiyanmascr = result.Reverse().Take(2).ToList();
+                var normal = result.Take(returncount - 2);
+                if (type == 1 || type == 2)
+                {
+                    var crcact = CRC.GetNewCrcArray(normal.ToArray()).Reverse().ToList();
+                    if (jiyanmascr[0] == crcact[0] && jiyanmascr[1] == crcact[1])
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (type == 4||type==3)
+                    {
+                        if (senddata[0] != result[0])
+                        {
+                            return false;
+                        }
+                        var crc = CRC.CRC16(normal.ToArray());
+                        if (jiyanmascr[0] == crc[0] && jiyanmascr[1] == crc[1])
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                   
+                    else
+                    {
+                        return false;
+                    }
 
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
 

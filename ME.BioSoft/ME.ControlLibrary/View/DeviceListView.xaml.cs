@@ -83,7 +83,7 @@ namespace ME.ControlLibrary.View
                             SelectDevice.Name = txtName.Text;
                             SelectDevice.Type = selectItem.Type;
                             SelectDevice.Distance = pumpDeviceInfoWin.numDistance.Value.ToString();
-                            SelectDevice.Number = pumpDeviceInfoWin.SelectNumber.Type;
+                            SelectDevice.Number = pumpDeviceInfoWin.SelectNumber.Number;
                             SelectDevice.Speed =Convert.ToInt32( pumpDeviceInfoWin.numSpeed.Value);
                             //SelectDevice.IsChecked=
                         }
@@ -95,9 +95,9 @@ namespace ME.ControlLibrary.View
                         if (reCircleDeviceInfoWin.DialogResult == true)
                         {
                             SelectDevice.Name = txtName.Text;
-                            SelectDevice.Number = reCircleDeviceInfoWin.SelectNumber.Type;
+                            SelectDevice.Number = reCircleDeviceInfoWin.SelectNumber.Number;
                             SelectDevice.Type = selectItem.Type;
-                            SelectDevice.Hole = reCircleDeviceInfoWin.SelectItem.Type.ToString();
+                            SelectDevice.Hole = reCircleDeviceInfoWin.SelectItem.Number.ToString();
                         }
                     }
                     else if (selectItem.Type == 3)
@@ -109,7 +109,7 @@ namespace ME.ControlLibrary.View
                             SelectDevice.Name = txtName.Text;
                             SelectDevice.Type = selectItem.Type;
                             SelectDevice.Flag = eleValueDeviceInfoWin.rbtnOpen.IsChecked.Value == true ? 1 : 0;
-                            SelectDevice.Number = eleValueDeviceInfoWin.SelectNumber.Type;
+                            SelectDevice.Number = eleValueDeviceInfoWin.SelectNumber.Number;
                         }
                     }
                 }

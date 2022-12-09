@@ -49,7 +49,7 @@ namespace ME.ControlLibrary.Model
         #region 构造函数
         private GlobalVariables()
         {
-         
+
         }
         #endregion
 
@@ -62,7 +62,7 @@ namespace ME.ControlLibrary.Model
             get => _TreeItemCopy;
             set { _TreeItemCopy = value; }
         }
-        public void InitReset(bool flag) 
+        public void InitReset(bool flag)
         {
             System.Func<bool> cancelFun = () =>
             {
@@ -71,11 +71,11 @@ namespace ME.ControlLibrary.Model
             AllPumpReset(cancelFun);
             AllReCircleReset(cancelFun);
             AllSwitchReset(cancelFun);
-            if (flag) 
+            if (flag)
             {
                 AllZAxisReset(cancelFun);
             }
-         
+
         }
         private void AllZAxisReset(Func<bool> cancelFun)
         {
@@ -83,15 +83,15 @@ namespace ME.ControlLibrary.Model
             var zlist = ListConfig.GetInstance().ListZAxisNumber;
             foreach (var z in zlist)
             {
-                byte[] senddata = InstructionConfig.cmdZAxisReset;
-                senddata[0] = Convert.ToByte(z.Type.ToString("X2"), 16);
+                byte[] senddata = ZAxisResetConfig.cmdZAxisReset; //InstructionConfig.cmdZAxisReset;
+                senddata[0] = Convert.ToByte(z.Number.ToString("X2"), 16);
                 var crcdata = CRC.CRC16(senddata);
                 var senddatanew = senddata.ToList();
                 senddatanew.AddRange(crcdata.Reverse());
                 var temps = senddatanew.ToArray().Clone() as byte[];
                 tasklist.Add(Task.Run(() =>
                 {
-                    UtilsFun._AbtInstrument.Send_16(cancelFun, temps, true, UtilsFun._AbtInstrument.SerialSwitch, 5);
+                    UtilsFun._AbtInstrument.Send_16(cancelFun, temps, true, UtilsFun._AbtInstrument.SerialSwitch, 5, ZAxisResetConfig.type,z.Number);
                 }));
             }
             Task.WaitAll(tasklist.ToArray());
@@ -100,17 +100,17 @@ namespace ME.ControlLibrary.Model
         /// 所有电磁阀复位
         /// </summary>
         /// <param name="cancelFun"></param>
-        private  void AllSwitchReset(Func<bool> cancelFun)
+        private void AllSwitchReset(Func<bool> cancelFun)
         {
             List<Task> tasklist = new List<Task>();
             var list = ListConfig.GetInstance().ListSwitchNumber;
-            var senddata = InstructionConfig.cmdSwitchReset.ToList();
+            var senddata = SwitchResetConfig.cmdSwitchReset.ToList(); //InstructionConfig.cmdSwitchReset.ToList();
             var crcarry = CRC.CRC16(senddata.ToArray());
             senddata.Add(crcarry[1]);
             senddata.Add(crcarry[0]);
             tasklist.Add(Task.Run(() =>
             {
-                UtilsFun._AbtInstrument.Send_16(cancelFun, senddata.ToArray(), true, UtilsFun._AbtInstrument.SerialSwitch, 5);
+               UtilsFun._AbtInstrument.Send_16(cancelFun, senddata.ToArray(), true, UtilsFun._AbtInstrument.SerialSwitch, 5, SwitchResetConfig.type,1);
             }));
 
             Task.WaitAll(tasklist.ToArray());
@@ -119,19 +119,19 @@ namespace ME.ControlLibrary.Model
         /// 所有旋切阀复位
         /// </summary>
         /// <param name="cancelFun"></param>
-        private  void AllReCircleReset(Func<bool> cancelFun)
+        private void AllReCircleReset(Func<bool> cancelFun)
         {
             List<Task> tasklist = new List<Task>();
             var list = ListConfig.GetInstance().ListReCircleNumber;
-            byte[] senddata = InstructionConfig.cmdReCircleReset;
+            byte[] senddata = ReCircleResetConfig.cmdReCircleReset;// InstructionConfig.cmdReCircleReset;
             foreach (var t in list)
             {
                 Thread.Sleep(50);
-                senddata[1] = Convert.ToByte(t.Type.ToString("X2"), 16); //X4;
+                senddata[1] = Convert.ToByte(t.Number.ToString("X2"), 16); //X4;
                 var senddatanew = CRC.GetNewCrcArray(senddata);
                 tasklist.Add(Task.Run(() =>
                 {
-                    UtilsFun._AbtInstrument.Send_16(cancelFun, senddatanew, true, UtilsFun._AbtInstrument.SerialPump, 5);
+                    UtilsFun._AbtInstrument.Send_16(cancelFun, senddatanew, true, UtilsFun._AbtInstrument.SerialPump, 5, ReCircleResetConfig.type,t.Number);
                 }));
             }
             Task.WaitAll(tasklist.ToArray());
@@ -140,23 +140,24 @@ namespace ME.ControlLibrary.Model
         /// 所有泵复位
         /// </summary>
         /// <param name="cancelFun"></param>
-        private  void AllPumpReset(Func<bool> cancelFun)
+        private void AllPumpReset(Func<bool> cancelFun)
         {
             List<Task> tasklist = new List<Task>();
             var list = ListConfig.GetInstance().ListPumpNumber;
-            byte[] senddata = InstructionConfig.cmdPumpReset;
+            byte[] senddata = PumpResetConfig.cmdPumpReset;// InstructionConfig.cmdPumpReset;
             foreach (var t in list)
             {
                 Thread.Sleep(50);
-                senddata[1] = Convert.ToByte(t.Type.ToString("X2"), 16); //X4;
+                senddata[1] = Convert.ToByte(t.Number.ToString("X2"), 16); //X4;
                 var senddatanew = CRC.GetNewCrcArray(senddata);
                 tasklist.Add(Task.Run(() =>
                 {
-                    UtilsFun._AbtInstrument.Send_16(cancelFun, senddatanew, true, UtilsFun._AbtInstrument.SerialPump, 5);
+                    UtilsFun._AbtInstrument.Send_16(cancelFun, senddatanew, true, UtilsFun._AbtInstrument.SerialPump, 5, PumpResetConfig.type, t.Number);
                 }));
             }
             Task.WaitAll(tasklist.ToArray());
         }
+       
 
     }
 }

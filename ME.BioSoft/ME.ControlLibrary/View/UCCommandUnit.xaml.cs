@@ -935,7 +935,7 @@ namespace ME.ControlLibrary.View
                     var iteminfolist = item.ParaName.Split(',');
                     var number = Convert.ToInt32(iteminfolist[0].ToSecond());
 
-                    byte[] senddataS = InstructionConfig.cmdPumpSpeed;
+                    byte[] senddataS = PumpSpeedConfig.cmdPumpSpeed; //InstructionConfig.cmdPumpSpeed;
                     senddataS[1] = Convert.ToByte(number.ToString("X2"), 16);
                     var speed = Convert.ToInt32(iteminfolist[3].ToSecond());
                     var bytespeed = ABTInstrument.ConvertHex2(speed);
@@ -944,9 +944,9 @@ namespace ME.ControlLibrary.View
                     senddataS[8] = bytespeed[1];
                     var senddataNewS = CRC.GetNewCrcArray(senddataS);
                     var temps = senddataNewS.Clone() as byte[];
-                    Send(cancelFun, cmdMode, temps, UtilsFun._AbtInstrument.SerialPump);
+                    Send(cancelFun, cmdMode, temps, UtilsFun._AbtInstrument.SerialPump, PumpSpeedConfig.type, number);
 
-                    byte[] senddata = InstructionConfig.cmdPumpDistance;
+                    byte[] senddata = PumpDistanceConfig.cmdPumpDistance;// InstructionConfig.cmdPumpDistance;
 
                     var distance = Convert.ToInt32(iteminfolist[2].ToSecond());
                     senddata[1] = Convert.ToByte(number.ToString("X2"), 16);
@@ -955,7 +955,7 @@ namespace ME.ControlLibrary.View
                     senddata[4] = arrdistance[1];
                     var senddatanew = CRC.GetNewCrcArray(senddata);
                     var temp = senddatanew.Clone() as byte[];
-                    Send(cancelFun, cmdMode, temp, UtilsFun._AbtInstrument.SerialPump);
+                    Send(cancelFun, cmdMode, temp, UtilsFun._AbtInstrument.SerialPump, PumpDistanceConfig.type, number);
 
 
                 }
@@ -966,7 +966,7 @@ namespace ME.ControlLibrary.View
                     var hole = Convert.ToInt32(iteminfolist[2].ToSecond());
                     if (hole != 0)//准备开孔
                     {
-                        byte[] senddataH = InstructionConfig.cmdReCircleHole;
+                        byte[] senddataH = ReCircleHoleConfig.cmdReCircleHole; //InstructionConfig.cmdReCircleHole;
                         senddataH[1] = Convert.ToByte(number.ToString("X2"), 16);
                         var silbhole = -1;
                         if (hole - 1 > 0)
@@ -981,16 +981,16 @@ namespace ME.ControlLibrary.View
                         senddataH[4] = Convert.ToByte(silbhole);
                         var senddatanew = CRC.GetNewCrcArray(senddataH);
                         var temp = senddatanew.Clone() as byte[];
-                        Send(cancelFun, cmdMode, temp, UtilsFun._AbtInstrument.SerialPump);
+                        Send(cancelFun, cmdMode, temp, UtilsFun._AbtInstrument.SerialPump, ReCircleHoleConfig.type, number);
                     }
                     else
                     {
                         //准备复位，关
-                        byte[] senddataH = InstructionConfig.cmdReCircleReset;
+                        byte[] senddataH = ReCircleResetConfig.cmdReCircleReset; //InstructionConfig.cmdReCircleReset;
                         senddataH[1] = Convert.ToByte(number.ToString("X2"), 16);
                         var senddatanew = CRC.GetNewCrcArray(senddataH);
                         var temp = senddatanew.Clone() as byte[];
-                        Send(cancelFun, cmdMode, temp, UtilsFun._AbtInstrument.SerialPump);
+                        Send(cancelFun, cmdMode, temp, UtilsFun._AbtInstrument.SerialPump, ReCircleResetConfig.type, number);
                     }
                 }
                 if (item.ParaType == 3)
@@ -1018,14 +1018,14 @@ namespace ME.ControlLibrary.View
                     m = m | res[i];
                 }
                 var x16 = m.ToString("X8");//转换为4个字节的十六进制
-                var senddatas = InstructionConfig.cmdSwitchReset.ToList();
+                var senddatas = SwitchResetConfig.cmdSwitchReset.ToList(); //InstructionConfig.cmdSwitchReset.ToList();
                 senddatas.RemoveRange(7, 4);
                 var x16reverse = x16.ToByteArray(16).Reverse();//字节排序下
                 senddatas.AddRange(x16reverse);
                 var crcarry = CRC.CRC16(senddatas.ToArray());
                 senddatas.Add(crcarry[1]);
                 senddatas.Add(crcarry[0]);
-                Send(cancelFun, cmdMode, senddatas.ToArray(), UtilsFun._AbtInstrument.SerialSwitch);
+                Send(cancelFun, cmdMode, senddatas.ToArray(), UtilsFun._AbtInstrument.SerialSwitch, SwitchResetConfig.type,0);
 
             }
 
@@ -1037,7 +1037,7 @@ namespace ME.ControlLibrary.View
                 if (item.ParaType == 1)
                 {
                     var iteminfolist = item.ParaName.Split(',');
-                    byte[] senddata = InstructionConfig.cmdPumpDistanceGet;
+                    byte[] senddata = PumpDistanceGetConfig.cmdPumpDistanceGet;// InstructionConfig.cmdPumpDistanceGet;
                     var number = Convert.ToInt32(iteminfolist[0].ToSecond());
                     var targetdistance = Convert.ToInt32(iteminfolist[2].ToSecond());
                     senddata[1] = Convert.ToByte(number.ToString("X2"), 16);
@@ -1057,7 +1057,7 @@ namespace ME.ControlLibrary.View
 
                         var tasksingle = Task.Run(() =>
                 {
-                    return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, UtilsFun._AbtInstrument.SerialPump, cmdMode.Overtime);
+                    return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, UtilsFun._AbtInstrument.SerialPump, cmdMode.Overtime, PumpDistanceGetConfig.type, number);
                 });
                         tasksingle.Wait();
                         var taskresult = tasksingle.Result;
@@ -1071,7 +1071,7 @@ namespace ME.ControlLibrary.View
                 if (item.ParaType == 2)
                 {
                     var iteminfolist = item.ParaName.Split(',');
-                    byte[] senddata = InstructionConfig.cmdReCircleHoleGet;
+                    byte[] senddata = ReCircleHoleGetConfig.cmdReCircleHoleGet; //InstructionConfig.cmdReCircleHoleGet;
                     var number = Convert.ToInt32(iteminfolist[0].ToSecond());
                     var targethole = Convert.ToInt32(iteminfolist[2].ToSecond());
                     senddata[1] = Convert.ToByte(number.ToString("X2"), 16);
@@ -1093,7 +1093,7 @@ namespace ME.ControlLibrary.View
 
                             var tasksingle = Task.Run(() =>
                             {
-                                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, UtilsFun._AbtInstrument.SerialPump, cmdMode.Overtime);
+                                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, UtilsFun._AbtInstrument.SerialPump, cmdMode.Overtime, ReCircleHoleGetConfig.type, number);
                             });
                             tasksingle.Wait();
                             result = tasksingle.Result;
@@ -1113,7 +1113,7 @@ namespace ME.ControlLibrary.View
 
                             var tasksingle = Task.Run(() =>
                             {
-                                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, UtilsFun._AbtInstrument.SerialPump, cmdMode.Overtime);
+                                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, UtilsFun._AbtInstrument.SerialPump, cmdMode.Overtime, ReCircleHoleGetConfig.type, number);
                             });
                             tasksingle.Wait();
                             result = tasksingle.Result;
@@ -1135,7 +1135,7 @@ namespace ME.ControlLibrary.View
             //}
             return null;
         }
-        private void Send(Func<bool> cancelFun, CommonMode cmdMode, byte[] temp, SerialPort serialPort)
+        private void Send(Func<bool> cancelFun, CommonMode cmdMode, byte[] temp, SerialPort serialPort,int type,int number)
         {
             this.Dispatcher.Invoke(() =>
             {
@@ -1149,7 +1149,7 @@ namespace ME.ControlLibrary.View
 
             var tasksingle = Task.Run(() =>
             {
-                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, serialPort, cmdMode.Overtime);
+                return UtilsFun._AbtInstrument.Send_16(cancelFun, temp, true, serialPort, cmdMode.Overtime,type,number);
             });
             tasksingle.Wait();
             var taskresult = tasksingle.Result;

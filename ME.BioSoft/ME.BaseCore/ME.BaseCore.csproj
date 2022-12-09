@@ -35,6 +35,9 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>DLL\NPOI\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\ME.BioSoft\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI">
       <HintPath>DLL\NPOI\NPOI.dll</HintPath>
     </Reference>
@@ -49,6 +52,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,7 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABTGlobal.cs" />
+    <Compile Include="MEGlobal.cs" />
     <Compile Include="ComBoxItem.cs" />
     <Compile Include="CRC.cs" />
     <Compile Include="ExcelExporter.cs" />
@@ -82,11 +87,18 @@
       <Project>{D1F3733D-459E-4772-97ED-74434FA3DB4A}</Project>
       <Name>LogHelperLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ME.DB\ME.DB.csproj">
+      <Project>{7D48124F-47F8-4C1C-A82D-C3BDC5EB2BF6}</Project>
+      <Name>ME.DB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ME.Language\ME.Language.csproj">
       <Project>{b2bcd922-1f61-4fc0-a0d7-7733e09168bb}</Project>
       <Name>ME.Language</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

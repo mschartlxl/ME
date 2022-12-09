@@ -73,6 +73,7 @@
     <Compile Include="DALBase.cs" />
     <Compile Include="PlatformActionDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemSetDAL.cs" />
     <Compile Include="TableClassExtension.cs" />
   </ItemGroup>
   <ItemGroup>

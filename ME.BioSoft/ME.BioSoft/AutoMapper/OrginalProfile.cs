@@ -14,7 +14,8 @@ namespace ME.BioSoft.AutoMapper
         public OrginalProfile()
         {
             CreateMap<PlatformActionDTO, PlatformAction>().ReverseMap();
-           
+            CreateMap<SystemSetDTO, SystemSet>().ReverseMap();
+
         }
     }
 }

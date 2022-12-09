@@ -48,27 +48,28 @@ namespace ME.BaseCore.Instrument
                 foreach (XElement instrumentEE in instrumentXES)
                 {
                     var paramNum = XMLHelper.GetAttributeStringValue(instrumentEE, "Name");
+                    var paramType = XMLHelper.GetAttributeStringValue(instrumentEE, "Type");
                     if (paramNum == "Pump")
                     {
-                        ListPumpNumber = GetElement(instrumentEE);
+                        ListPumpNumber = GetElement(instrumentEE,paramType);
                     }
                     if (paramNum == "ReCircle")
                     {
-                        ListReCircleNumber = GetElement(instrumentEE);
+                        ListReCircleNumber = GetElement(instrumentEE, paramType);
                     }
                     if (paramNum == "Switch")
                     {
-                        ListSwitchNumber = GetElement(instrumentEE);
+                        ListSwitchNumber = GetElement(instrumentEE,paramType);
                     }
                     if (paramNum == "ZAxis")
                     {
-                        ListZAxisNumber = GetElement(instrumentEE);
+                        ListZAxisNumber = GetElement(instrumentEE, paramType);
                     }
                     
                 }
             }
         }
-        public static List<ComBoxItem> GetElement(XElement instrumentEE)
+        public static List<ComBoxItem> GetElement(XElement instrumentEE,string type)
         {
             List<ComBoxItem> comBoxItems = new List<ComBoxItem>();
             List<XElement> paramXES = instrumentEE.Elements().ToList();
@@ -77,7 +78,8 @@ namespace ME.BaseCore.Instrument
             {
                 ComBoxItem comBoxItem = new ComBoxItem();
                 comBoxItem.Name = param.Value;
-                comBoxItem.Type=Convert.ToInt32( param.Value);
+                comBoxItem.Number=Convert.ToInt32( param.Value);
+                comBoxItem.Type = Convert.ToInt32(type);
                 comBoxItems.Add(comBoxItem);
             }
             return comBoxItems;

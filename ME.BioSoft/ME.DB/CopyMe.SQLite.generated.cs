@@ -23,6 +23,7 @@ namespace ME.DB
 	public partial class MEDB : LinqToDB.Data.DataConnection
 	{
 		public ITable<PlatformAction> PlatformActions { get { return this.GetTable<PlatformAction>(); } }
+		public ITable<SystemSet>      SystemSets      { get { return this.GetTable<SystemSet>(); } }
 
 		public MEDB()
 		{
@@ -52,9 +53,23 @@ namespace ME.DB
 		[Column(),                   NotNull] public object Z    { get; set; } // varchar2
 	}
 
+	[Table("SystemSet")]
+	public partial class SystemSet
+	{
+		[Column("id"), PrimaryKey, NotNull] public object Id          { get; set; } // varchar2
+		[Column(),                 NotNull] public int    CmdInterval { get; set; } // int
+		[Column(),                 NotNull] public int    CmdReSend   { get; set; } // int
+	}
+
 	public static partial class TableExtensions
 	{
 		public static PlatformAction Find(this ITable<PlatformAction> table, object Id)
+		{
+			return table.FirstOrDefault(t =>
+				t.Id == Id);
+		}
+
+		public static SystemSet Find(this ITable<SystemSet> table, object Id)
 		{
 			return table.FirstOrDefault(t =>
 				t.Id == Id);
